@@ -13,7 +13,8 @@ Page({
         coordinates: { latitude: 22.490000, longitude: 113.940000 },
         description: "深圳最知名的国际候鸟天堂，记录鸟类200+种。黑脸琵鹭是这里的明星物种，占全球总数近1/10。最佳观鸟时间为10月至次年4月，低潮位时是观察水鸟的最佳时机。",
         best_time: "10月-次年4月（低潮位最佳）",
-        transport: "地铁9号线深圳湾公园站D2出口"
+        transport: "地铁9号线深圳湾公园站D2出口",
+        latest_observation_date: "2026-05-20"
       },
       {
         name: "福田红树林生态公园",
@@ -22,7 +23,8 @@ Page({
         coordinates: { latitude: 22.483333, longitude: 113.950000 },
         description: "与香港米埔自然保护区一河之隔，同属深圳湾生态系统核心。红雨湖的生态浮岛是秋季观鸟的好地方，吸引大量水鸟在此栖息。",
         best_time: "全年，春秋迁徙季节最佳",
-        transport: "地铁3号线益田站D出口 / 7号线沙尾站B出口"
+        transport: "地铁3号线益田站D出口 / 7号线沙尾站B出口",
+        latest_observation_date: "2026-05-20"
       },
       {
         name: "华侨城国家湿地公园",
@@ -31,7 +33,8 @@ Page({
         coordinates: { latitude: 22.478000, longitude: 113.935000 },
         description: "深圳湾滨海湿地系统重要组成部分，被誉为隐藏在城市中的花园绿洲。拥有木质观景台和观鸟屋，是黑脸琵鹭等冬候鸟的重要栖息地。",
         best_time: "11月-次年3月",
-        transport: "地铁1号线侨城东站B口 / 9号线深圳湾公园站D1口"
+        transport: "地铁1号线侨城东站B口 / 9号线深圳湾公园站D1口",
+        latest_observation_date: "2026-05-20"
       },
       {
         name: "内伶仃福田国家级自然保护区",
@@ -40,7 +43,8 @@ Page({
         coordinates: { latitude: 22.483000, longitude: 113.945000 },
         description: "中国面积最小的国家级自然保护区，却有189种鸟类。拥有70公顷天然红树林，6公里'绿色长城'，23种国家保护珍稀濒危鸟类在此栖息。",
         best_time: "春秋迁徙季节",
-        transport: "地铁1号线竹子林站"
+        transport: "地铁1号线竹子林站",
+        latest_observation_date: "2026-05-20"
       },
       {
         name: "仙湖植物园",
@@ -49,7 +53,8 @@ Page({
         coordinates: { latitude: 22.546000, longitude: 114.135000 },
         description: "深圳十佳观鸟地点之一，记录120+种鸟类。夜鹭、白鹭、池鹭四季在此繁殖，还可观赏赤红山椒鸟、朱背啄花鸟等市区罕见的林鸟。",
         best_time: "四季皆宜，清晨最佳",
-        transport: "地铁2/8号线仙湖路站C3出口"
+        transport: "地铁2/8号线仙湖路站C3出口",
+        latest_observation_date: "2026-05-20"
       }
     ],
     selectedSpot: null,

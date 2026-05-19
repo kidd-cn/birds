@@ -20,6 +20,10 @@
           <text class="label">明星鸟种：</text>
           <text class="value">{{item.special_species.join(', ')}}</text>
         </view>
+        <view class="detail-item">
+          <text class="label">最新观察：</text>
+          <text class="value">{{item.latest_observation_date}}</text>
+        </view>
       </view>
       <view class="spot-action">
         <text class="action-btn" bindtap="viewSpotDetail" data-spot="{{item}}">查看详情</text>
@@ -56,6 +60,10 @@
         <view class="modal-section">
           <text class="section-title">生态环境</text>
           <text class="section-content">{{currentSpotDetail.habitat}}</text>
+        </view>
+        <view class="modal-section">
+          <text class="section-title">最新观察日期</text>
+          <text class="section-content">{{currentSpotDetail.latest_observation_date}}</text>
         </view>
         <view class="modal-section">
           <text class="section-title">明星鸟种</text>
