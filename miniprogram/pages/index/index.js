@@ -1,0 +1,344 @@
+// pages/index/index.js
+const { realBirdObservations } = require('../../utils/birdData');
+
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    longitude: 114.085947, // 深圳中心经度
+    latitude: 22.547000,   // 深圳中心纬度
+    scale: 12,
+    markers: [],
+    showDetail: false,
+    currentBird: {},
+    birdData: [],
+    featuredSpots: []
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    // 检查是否有选中的观鸟点
+    const selectedSpot = wx.getStorageSync('selectedSpot');
+    if (selectedSpot) {
+      this.setData({
+        longitude: selectedSpot.coordinates.longitude,
+        latitude: selectedSpot.coordinates.latitude,
+        scale: 14 // 更大的比例尺，便于查看特定地点
+      });
+    }
+
+    // 首先尝试从云端加载数据，如果失败则使用本地数据
+    this.loadBirdData()
+      .catch(error => {
+        console.warn('云端数据加载失败，使用本地数据:', error);
+        this.loadLocalBirdData();
+      });
+  },
+
+  /**
+   * 加载鸟类数据
+   */
+  loadBirdData() {
+    return new Promise((resolve, reject) => {
+      // 检查是否有选中的观鸟点
+      const selectedSpot = wx.getStorageSync('selectedSpot');
+
+      if (selectedSpot) {
+        // 如果有选中的观鸟点，则获取该地点的特定数据
+        this.loadBirdDataBySpot(selectedSpot.name)
+          .then(success => {
+            if (success) {
+              resolve(true);
+            } else {
+              // 如果云端获取失败，使用本地数据
+              this.loadLocalBirdData();
+              resolve(false);
+            }
+          })
+          .catch(error => {
+            console.error('云端数据加载失败，使用本地数据:', error);
+            this.loadLocalBirdData();
+            resolve(false);
+          });
+      } else {
+        // 否则获取深圳代表性观鸟点的数据
+        this.loadBirdDataFromCloud()
+          .then(success => {
+            if (success) {
+              resolve(true);
+            } else {
+              // 如果云端获取失败，使用本地数据
+              this.loadLocalBirdData();
+              resolve(false);
+            }
+          })
+          .catch(error => {
+            console.error('云端数据加载失败，使用本地数据:', error);
+            this.loadLocalBirdData();
+            resolve(false);
+          });
+      }
+    });
+  },
+
+  /**
+   * 从云端加载指定观鸟点的鸟类数据
+   */
+  async loadBirdDataBySpot(spotName) {
+    try {
+      // 调用云函数获取特定观鸟点的鸟类观察数据
+      const result = await wx.cloud.callFunction({
+        name: 'getBirdDataBySpot',
+        data: {
+          spotName: spotName,
+          limit: 100
+        }
+      });
+
+      if (result.result.success) {
+        const birdData = result.result.data;
+
+        // 转换为地图标记格式
+        const markers = birdData.map(bird => ({
+          id: bird._id ? parseInt(bird._id.slice(-6), 16) : bird.id, // 如果有数据库ID，转换为数字ID
+          latitude: bird.location.latitude,
+          longitude: bird.location.longitude,
+          width: 30,
+          height: 30,
+          callout: {
+            content: `${bird.commonName || bird.species}\n${bird.locationName}`,
+            display: 'BYCLICK',
+            padding: 8,
+            borderRadius: 4,
+            bgColor: '#ffffff',
+            color: '#000000',
+            fontSize: 10,
+            textAlign: 'center'
+          },
+          label: {
+            content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
+            color: '#ffffff',
+            fontSize: 12,
+            bgColor: '#4CAF50',
+            borderColor: '#ffffff',
+            borderWidth: 1,
+            borderRadius: 5,
+            padding: 5
+          }
+        }));
+
+        this.setData({
+          markers: markers,
+          birdData: birdData,
+          selectedSpot: result.result.selectedSpot
+        });
+
+        return true;
+      }
+    } catch (error) {
+      console.error('从云端加载指定观鸟点鸟类数据失败:', error);
+      // 抛出错误以便调用者可以处理
+      throw error;
+    }
+  },
+
+  /**
+   * 从云端加载代表性观鸟点的鸟类数据
+   */
+  async loadBirdDataFromCloud() {
+    try {
+      // 调用云函数获取深圳代表性观鸟点的鸟类观察数据
+      const result = await wx.cloud.callFunction({
+        name: 'getFeaturedBirdingSpots',
+        data: {
+          includeNearby: false,
+          limit: 100
+        }
+      });
+
+      if (result.result.success) {
+        const birdData = result.result.data;
+
+        // 转换为地图标记格式
+        const markers = birdData.map(bird => ({
+          id: bird._id ? parseInt(bird._id.slice(-6), 16) : bird.id, // 如果有数据库ID，转换为数字ID
+          latitude: bird.location.latitude,
+          longitude: bird.location.longitude,
+          width: 30,
+          height: 30,
+          callout: {
+            content: `${bird.commonName || bird.species}\n${bird.locationName}`,
+            display: 'BYCLICK',
+            padding: 8,
+            borderRadius: 4,
+            bgColor: '#ffffff',
+            color: '#000000',
+            fontSize: 10,
+            textAlign: 'center'
+          },
+          label: {
+            content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
+            color: '#ffffff',
+            fontSize: 12,
+            bgColor: '#4CAF50',
+            borderColor: '#ffffff',
+            borderWidth: 1,
+            borderRadius: 5,
+            padding: 5
+          }
+        }));
+
+        this.setData({
+          markers: markers,
+          birdData: birdData,
+          featuredSpots: result.result.spotsList
+        });
+
+        return true;
+      }
+    } catch (error) {
+      console.error('从云端加载鸟类数据失败:', error);
+      // 抛出错误以便调用者可以处理
+      throw error;
+    }
+  },
+
+  /**
+   * 加载本地鸟类数据（备用）
+   */
+  loadLocalBirdData() {
+    // 使用真实鸟类观察数据作为备选
+    const birdData = require('../../utils/birdData').realBirdObservations;
+
+    // 转换为地图标记格式
+    const markers = birdData.map(bird => ({
+      id: bird.id,
+      latitude: bird.location.latitude,
+      longitude: bird.location.longitude,
+      width: 30,
+      height: 30,
+      callout: {
+        content: `${bird.commonName}\n${bird.locationName}`,
+        display: 'BYCLICK',
+        padding: 8,
+        borderRadius: 4,
+        bgColor: '#ffffff',
+        color: '#000000',
+        fontSize: 10,
+        textAlign: 'center'
+      },
+      label: {
+        content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
+        color: '#ffffff',
+        fontSize: 12,
+        bgColor: '#4CAF50',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 5
+      }
+    }));
+
+    this.setData({
+      markers: markers,
+      birdData: birdData
+    });
+  },
+
+  /**
+   * 点击标记事件
+   */
+  onMarkerTap(e) {
+    const markerId = e.detail.markerId;
+    const selectedBird = this.data.birdData.find(bird => bird.id === markerId);
+
+    if (selectedBird) {
+      this.setData({
+        showDetail: true,
+        currentBird: selectedBird
+      });
+    }
+  },
+
+  /**
+   * 关闭详情弹窗
+   */
+  closeDetail() {
+    this.setData({
+      showDetail: false,
+      currentBird: {}
+    });
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+    // 页面渲染完成后执行
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    // 页面显示时检查是否有选中的观鸟点，如果有则重新加载数据
+    const selectedSpot = wx.getStorageSync('selectedSpot');
+    if (selectedSpot &&
+        (!this.data.selectedSpot || this.data.selectedSpot.name !== selectedSpot.name)) {
+      this.setData({
+        longitude: selectedSpot.coordinates.longitude,
+        latitude: selectedSpot.coordinates.latitude,
+        scale: 14 // 更大的比例尺，便于查看特定地点
+      });
+
+      // 重新加载数据以反映所选观鸟点
+      this.loadBirdData()
+        .catch(error => {
+          console.warn('云端数据加载失败，使用本地数据:', error);
+          this.loadLocalBirdData();
+        });
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+    // 页面隐藏时执行
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+    // 页面卸载时执行
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+    // 下拉刷新时执行
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+    // 上拉触底时执行
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+    // 分享时返回的内容
+    return {
+      title: '深圳鸟类分布图',
+      path: '/pages/index/index'
+    };
+  }
+});

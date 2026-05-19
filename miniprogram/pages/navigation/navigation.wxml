@@ -1,0 +1,36 @@
+<!--pages/navigation/navigation.wxml-->
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/images/bird-logo.png" mode="aspectFit"></image>
+    <text class="title">深圳观鸟助手</text>
+    <text class="subtitle">发现深圳丰富的鸟类多样性</text>
+  </view>
+
+  <view class="features">
+    <view class="feature-card" bindtap="goToMap">
+      <view class="card-icon">🗺️</view>
+      <view class="card-content">
+        <text class="card-title">观鸟地图</text>
+        <text class="card-desc">查看深圳各区域鸟类分布，探索真实观察记录</text>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
+
+    <view class="feature-card" bindtap="goToBirdingSpots">
+      <view class="card-icon">🔍</view>
+      <view class="card-content">
+        <text class="card-title">推荐观鸟点</text>
+        <text class="card-desc">深圳5大代表性观鸟地点，了解最佳观测时机</text>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="intro">
+    <text class="intro-title">关于深圳鸟类</text>
+    <text class="intro-text">
+      深圳地处东亚-澳大利西亚候鸟迁飞通道，拥有丰富的鸟类多样性。
+      深圳湾、红树林等湿地是重要的候鸟驿站，每年吸引数十万只候鸟在此停歇。
+    </text>
+  </view>
+</view>

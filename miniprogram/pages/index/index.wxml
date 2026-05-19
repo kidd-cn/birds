@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<view class="container">
+  <map
+    id="birdMap"
+    class="map-container"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+    show-location="{{true}}"
+  ></map>
+
+  <!-- 鸟类详情弹窗 -->
+  <view class="bird-detail-modal" wx:if="{{showDetail}}">
+    <view class="bird-detail-header">
+      <text class="bird-detail-close" bindtap="closeDetail">✕</text>
+      <text class="bird-detail-title">{{currentBird.commonName}}</text>
+      <text></text> <!-- 占位符，保持居中 -->
+    </view>
+
+    <image class="bird-image" src="{{currentBird.imageUrl}}" mode="aspectFit"></image>
+
+    <view class="bird-info">
+      <view class="bird-name">{{currentBird.species}}</view>
+      <view class="bird-scientific-name">{{currentBird.scientificName}}</view>
+      <view class="bird-description">{{currentBird.description}}</view>
+
+      <!-- 附加信息 -->
+      <view class="bird-additional-info">
+        <view class="info-item">
+          <text class="info-label">观察地点：</text>
+          <text class="info-value">{{currentBird.locationName}}</text>
+        </view>
+        <view class="info-item" wx:if="{{currentBird.spotInfo && currentBird.spotInfo.habitat}}">
+          <text class="info-label">栖息环境：</text>
+          <text class="info-value">{{currentBird.spotInfo.habitat}}</text>
+        </view>
+        <view class="info-item" wx:else>
+          <text class="info-label">栖息环境：</text>
+          <text class="info-value">{{currentBird.habitat}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">最佳观赏季节：</text>
+          <text class="info-value">{{currentBird.season}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">观察时间：</text>
+          <text class="info-value">{{currentBird.date}} {{currentBird.time}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">观察者：</text>
+          <text class="info-value">{{currentBird.observer}}</text>
+        </view>
+        <view class="info-item" wx:if="{{currentBird.spotInfo && currentBird.spotInfo.special_species.length > 0}}">
+          <text class="info-label">同类明星鸟种：</text>
+          <text class="info-value">{{currentBird.spotInfo.special_species.join(', ')}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

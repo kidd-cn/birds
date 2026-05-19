@@ -1,0 +1,19 @@
+{
+  "name": "shenzhen-bird-map",
+  "version": "1.0.0",
+  "description": "深圳市鸟类分布地图微信小程序",
+  "main": "miniprogram/app.js",
+  "scripts": {
+    "dev": "echo \"请在微信开发者工具中打开此项目\"",
+    "build": "echo \"构建需在微信开发者工具中进行\""
+  },
+  "keywords": [
+    "wechat",
+    "mini-program",
+    "birds",
+    "shenzhen",
+    "map"
+  ],
+  "author": "Mini Program Developer",
+  "license": "MIT"
+}
