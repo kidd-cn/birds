@@ -45,8 +45,8 @@ const realBirdObservations = [
     scientificName: "Ardea cinerea",
     commonName: "苍鹭",
     location: {
-      latitude: 22.525000,
-      longitude: 113.958000
+      latitude: 22.527000,
+      longitude: 113.983000
     },
     locationName: "华侨城国家湿地公园",
     date: "2026-05-20",
@@ -83,8 +83,8 @@ const realBirdObservations = [
     scientificName: "Nycticorax nycticorax",
     commonName: "夜鹭",
     location: {
-      latitude: 22.546000,
-      longitude: 114.135000
+      latitude: 22.586000,
+      longitude: 114.175000
     },
     locationName: "仙湖植物园",
     date: "2026-05-20",
@@ -102,8 +102,8 @@ const realBirdObservations = [
     scientificName: "Accipiter soloensis",
     commonName: "赤腹鹰",
     location: {
-      latitude: 22.516000,
-      longitude: 113.998000
+      latitude: 22.525000,
+      longitude: 114.005000
     },
     locationName: "内伶仃福田国家级自然保护区",
     date: "2026-05-20",
@@ -121,8 +121,8 @@ const realBirdObservations = [
     scientificName: "Pycnonotus sinensis",
     commonName: "白头鹎",
     location: {
-      latitude: 22.535000,
-      longitude: 114.065947
+      latitude: 22.550000,
+      longitude: 114.055947
     },
     locationName: "莲花山公园",
     date: "2026-05-20",
@@ -140,8 +140,8 @@ const realBirdObservations = [
     scientificName: "Emberiza aureola",
     commonName: "黄胸鹀",
     location: {
-      latitude: 22.513000,
-      longitude: 114.001000
+      latitude: 22.520000,
+      longitude: 114.010000
     },
     locationName: "福田红树林生态公园",
     date: "2026-05-20",

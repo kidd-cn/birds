@@ -10,6 +10,7 @@ Page({
     latitude: 22.547000,   // 深圳中心纬度
     scale: 12,
     markers: [],
+    mapIncludePoints: [],
     showDetail: false,
     currentBird: {},
     birdData: [],
@@ -20,14 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // 检查是否有选中的观鸟点
-    const selectedSpot = wx.getStorageSync('selectedSpot');
+    const selectedSpot = this.resolveSelectedSpot(options);
     if (selectedSpot) {
-      this.setData({
-        longitude: selectedSpot.coordinates.longitude,
-        latitude: selectedSpot.coordinates.latitude,
-        scale: 14 // 更大的比例尺，便于查看特定地点
-      });
+      wx.setStorageSync('selectedSpot', selectedSpot);
+      this.applyMapCenterFromSpot(selectedSpot);
     }
 
     // 首先尝试从云端加载数据，如果失败则使用本地数据
@@ -101,31 +98,13 @@ Page({
       if (result.result.success) {
         const birdData = result.result.data;
 
-        // 转换为地图标记格式
-        const markers = birdData.map(bird => ({
-          id: bird._id ? parseInt(bird._id.slice(-6), 16) : bird.id, // 如果有数据库ID，转换为数字ID
-          latitude: bird.location.latitude,
-          longitude: bird.location.longitude,
-          width: 30,
-          height: 30,
-          callout: {
-            content: `${bird.commonName || bird.species}\n${bird.locationName}`,
-            display: 'BYCLICK',
-            padding: 8,
-            borderRadius: 4,
-            bgColor: '#ffffff',
-            color: '#000000',
-            fontSize: 10,
-            textAlign: 'center'
-          },
-          iconPath: ""
-        }));
-
-        this.setData({
-          markers: markers,
-          birdData: birdData,
-          selectedSpot: result.result.selectedSpot
+        this.updateMapMarkers(birdData, {
+          selectedSpot: result.result.selectedSpot,
+          extra: { selectedSpot: result.result.selectedSpot }
         });
+
+        const storedSpot = wx.getStorageSync('selectedSpot');
+        this.applyMapCenterFromSpot(storedSpot || result.result.selectedSpot);
 
         return true;
       }
@@ -153,30 +132,8 @@ Page({
       if (result.result.success) {
         const birdData = result.result.data;
 
-        // 转换为地图标记格式
-        const markers = birdData.map(bird => ({
-          id: bird._id ? parseInt(bird._id.slice(-6), 16) : bird.id, // 如果有数据库ID，转换为数字ID
-          latitude: bird.location.latitude,
-          longitude: bird.location.longitude,
-          width: 30,
-          height: 30,
-          callout: {
-            content: `${bird.commonName || bird.species}\n${bird.locationName}`,
-            display: 'BYCLICK',
-            padding: 8,
-            borderRadius: 4,
-            bgColor: '#ffffff',
-            color: '#000000',
-            fontSize: 10,
-            textAlign: 'center'
-          },
-          iconPath: ""
-        }));
-
-        this.setData({
-          markers: markers,
-          birdData: birdData,
-          featuredSpots: result.result.spotsList
+        this.updateMapMarkers(birdData, {
+          extra: { featuredSpots: result.result.spotsList }
         });
 
         return true;
@@ -192,42 +149,22 @@ Page({
    * 加载本地鸟类数据（备用）
    */
   loadLocalBirdData() {
-    // 使用真实鸟类观察数据作为备选
-    const birdData = require('../../utils/birdData').realBirdObservations;
+    let birdData = require('../../utils/birdData').realBirdObservations;
+    const selectedSpot = wx.getStorageSync('selectedSpot');
 
-    // 转换为地图标记格式
-    const markers = birdData.map(bird => ({
-      id: bird.id,
-      latitude: bird.location.latitude,
-      longitude: bird.location.longitude,
-      width: 30,
-      height: 30,
-      callout: {
-        content: `${bird.commonName}\n${bird.locationName}`,
-        display: 'BYCLICK',
-        padding: 8,
-        borderRadius: 4,
-        bgColor: '#ffffff',
-        color: '#000000',
-        fontSize: 10,
-        textAlign: 'center'
-      },
-      label: {
-        content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
-        color: '#ffffff',
-        fontSize: 12,
-        bgColor: '#4CAF50',
-        borderColor: '#ffffff',
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 5
+    if (selectedSpot && selectedSpot.name) {
+      const filtered = birdData.filter(bird =>
+        bird.locationName === selectedSpot.name ||
+        bird.locationName.includes(selectedSpot.name) ||
+        selectedSpot.name.includes(bird.locationName)
+      );
+      if (filtered.length > 0) {
+        birdData = filtered;
       }
-    }));
+      this.applyMapCenterFromSpot(selectedSpot);
+    }
 
-    this.setData({
-      markers: markers,
-      birdData: birdData
-    });
+    this.updateMapMarkers(birdData);
   },
 
   /**
@@ -235,7 +172,12 @@ Page({
    */
   onMarkerTap(e) {
     const markerId = e.detail.markerId;
-    const selectedBird = this.data.birdData.find(bird => bird.id === markerId);
+    const selectedBird = this.data.birdData.find(bird => {
+      const birdMarkerId = bird._id
+        ? parseInt(bird._id.slice(-6), 16)
+        : bird.id;
+      return birdMarkerId === markerId;
+    });
 
     if (selectedBird) {
       this.setData({
@@ -259,7 +201,104 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    // 页面渲染完成后执行
+    const selectedSpot = wx.getStorageSync('selectedSpot');
+    if (selectedSpot) {
+      // 地图组件渲染后再定位一次，确保中心点生效
+      setTimeout(() => {
+        this.applyMapCenterFromSpot(selectedSpot);
+      }, 100);
+    }
+  },
+
+  resolveSelectedSpot(options = {}) {
+    if (options.latitude && options.longitude) {
+      return {
+        name: options.spotName ? decodeURIComponent(options.spotName) : '',
+        coordinates: {
+          latitude: Number(options.latitude),
+          longitude: Number(options.longitude)
+        }
+      };
+    }
+
+    return wx.getStorageSync('selectedSpot') || null;
+  },
+
+  applyMapCenterFromSpot(spot) {
+    const coords = spot && spot.coordinates;
+    if (!coords) return false;
+
+    const latitude = Number(coords.latitude);
+    const longitude = Number(coords.longitude);
+    if (Number.isNaN(latitude) || Number.isNaN(longitude)) return false;
+
+    this.setData({
+      longitude,
+      latitude,
+      scale: 14
+    });
+    return true;
+  },
+
+  buildBirdMarkers(birdData) {
+    return birdData.map(bird => ({
+      id: bird._id ? parseInt(bird._id.slice(-6), 16) : bird.id,
+      latitude: bird.location.latitude,
+      longitude: bird.location.longitude,
+      width: 30,
+      height: 30,
+      callout: {
+        content: `${bird.commonName || bird.species}\n${bird.locationName}`,
+        display: 'BYCLICK',
+        padding: 8,
+        borderRadius: 4,
+        bgColor: '#ffffff',
+        color: '#000000',
+        fontSize: 10,
+        textAlign: 'center'
+      },
+      label: {
+        content: (bird.commonName || bird.species || '?').charAt(0),
+        color: '#ffffff',
+        fontSize: 12,
+        bgColor: '#4CAF50',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 5
+      }
+    }));
+  },
+
+  updateMapMarkers(birdData, options = {}) {
+    const markers = this.buildBirdMarkers(birdData);
+    const selectedSpot = wx.getStorageSync('selectedSpot');
+    let mapIncludePoints;
+
+    if (selectedSpot && selectedSpot.coordinates) {
+      mapIncludePoints = [
+        {
+          latitude: Number(selectedSpot.coordinates.latitude),
+          longitude: Number(selectedSpot.coordinates.longitude)
+        },
+        ...markers.map(marker => ({
+          latitude: marker.latitude,
+          longitude: marker.longitude
+        }))
+      ];
+    } else {
+      mapIncludePoints = markers.map(marker => ({
+        latitude: marker.latitude,
+        longitude: marker.longitude
+      }));
+    }
+
+    this.setData({
+      markers,
+      birdData,
+      mapIncludePoints,
+      ...(options.extra || {})
+    });
   },
 
   /**
@@ -270,11 +309,7 @@ Page({
     const selectedSpot = wx.getStorageSync('selectedSpot');
     if (selectedSpot &&
         (!this.data.selectedSpot || this.data.selectedSpot.name !== selectedSpot.name)) {
-      this.setData({
-        longitude: selectedSpot.coordinates.longitude,
-        latitude: selectedSpot.coordinates.latitude,
-        scale: 14 // 更大的比例尺，便于查看特定地点
-      });
+      this.applyMapCenterFromSpot(selectedSpot);
 
       // 重新加载数据以反映所选观鸟点
       this.loadBirdData()

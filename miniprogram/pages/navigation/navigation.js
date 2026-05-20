@@ -19,6 +19,7 @@ Page({
    * 前往地图页面
    */
   goToMap() {
+    wx.removeStorageSync('selectedSpot');
     wx.navigateTo({
       url: '../index/index'
     });

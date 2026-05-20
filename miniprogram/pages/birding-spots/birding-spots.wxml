@@ -6,7 +6,7 @@
   </view>
 
   <scroll-view class="spots-list" scroll-y="true">
-    <view class="spot-card {{selectedSpot && selectedSpot.name == item.name ? 'selected' : ''}}" wx:for="{{birdingSpots}}" wx:key="index" bindtap="selectSpot" data-spot="{{item}}">
+    <view class="spot-card {{selectedSpot && selectedSpot.name == item.name ? 'selected' : ''}}" wx:for="{{birdingSpots}}" wx:for-index="spotIndex" wx:key="name" bindtap="selectSpot" data-index="{{spotIndex}}">
       <view class="spot-header">
         <text class="spot-name">{{item.name}}</text>
         <text class="spot-status">{{item.special_species.length}}种明星鸟</text>
@@ -26,7 +26,7 @@
         </view>
       </view>
       <view class="spot-action">
-        <text class="action-btn" catchtap="viewSpotDetail" data-spot="{{item}}">查看详情</text>
+        <text class="action-btn" catchtap="viewSpotDetail" data-index="{{spotIndex}}">查看详情</text>
       </view>
     </view>
   </scroll-view>

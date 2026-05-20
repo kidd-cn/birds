@@ -73,7 +73,9 @@ Page({
    * 选择观鸟点
    */
   selectSpot(e) {
-    const spot = e.currentTarget.dataset.spot;
+    const spot = this.getSpotFromEvent(e);
+    if (!spot) return;
+
     this.setData({
       selectedSpot: spot
     });
@@ -88,11 +90,18 @@ Page({
    * 查看观鸟点详情
    */
   viewSpotDetail(e) {
-    const spot = e.currentTarget.dataset.spot;
+    const spot = this.getSpotFromEvent(e);
+    if (!spot) return;
+
     this.setData({
       currentSpotDetail: spot,
       showDetailModal: true
     });
+  },
+
+  getSpotFromEvent(e) {
+    const index = e.currentTarget.dataset.index;
+    return this.data.birdingSpots[index] || null;
   },
 
   /**
@@ -109,13 +118,18 @@ Page({
    * 前往观鸟地图
    */
   goToMap() {
-    if (this.data.selectedSpot) {
-      // 传递选中的观鸟点信息到地图页面
-      wx.setStorageSync('selectedSpot', this.data.selectedSpot);
+    const spot = this.data.selectedSpot;
+    if (spot && spot.coordinates) {
+      const { latitude, longitude } = spot.coordinates;
+      const spotPayload = {
+        name: spot.name,
+        coordinates: { latitude, longitude }
+      };
 
-      // 使用 redirectTo 跳转到地图页面
+      wx.setStorageSync('selectedSpot', spotPayload);
+
       wx.redirectTo({
-        url: '../index/index'
+        url: `../index/index?latitude=${latitude}&longitude=${longitude}&spotName=${encodeURIComponent(spot.name)}`
       });
     } else {
       wx.showToast({

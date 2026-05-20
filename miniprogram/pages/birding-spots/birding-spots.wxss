@@ -211,6 +211,8 @@ page {
   word-wrap: break-word;
   word-break: break-word;
   white-space: normal;
+  text-align: justify; /* 设置为两端对齐 */
+  text-justify: inter-word; /* 调整单词间距以实现更好的对齐 */
 }
 
 .species-list {
