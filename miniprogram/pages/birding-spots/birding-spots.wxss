@@ -1,6 +1,6 @@
 /* pages/birding-spots/birding-spots.wxss */
 page {
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
   height: 100%;
 }
 
@@ -10,27 +10,27 @@ page {
   height: 100vh;
   padding: 20rpx;
   box-sizing: border-box;
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
 }
 
 .header {
   padding: 30rpx 0;
   text-align: center;
-  border-bottom: 1rpx solid var(--border-light, #eeeeee);
+  border-bottom: 1rpx solid var(--border-light);
 }
 
 .title {
   display: block;
   font-size: 36rpx;
   font-weight: bold;
-  color: var(--text-primary, #333333);
+  color: var(--text-primary);
   margin-bottom: 10rpx;
 }
 
 .subtitle {
   display: block;
   font-size: 28rpx;
-  color: var(--text-secondary, #666666);
+  color: var(--text-secondary);
 }
 
 .spots-list {
@@ -39,18 +39,18 @@ page {
 }
 
 .spot-card {
-  background-color: var(--bg-card, #ffffff);
-  border-radius: var(--radius-card, 15rpx);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
   padding: 30rpx;
   margin-bottom: 20rpx;
-  box-shadow: var(--shadow-card, 0 4rpx 12rpx rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-card);
   transition: all 0.3s ease;
 }
 
 .spot-card.selected {
-  border: 3rpx solid #007AFF;
-  box-shadow: 0 4rpx 16rpx rgba(0, 122, 255, 0.3);
-  background-color: #f0f8ff;
+  border: 3rpx solid var(--primary-green);
+  box-shadow: 0 4rpx 16rpx rgba(46, 139, 87, 0.3);
+  background-color: var(--bg-card-alt);
 }
 
 .spot-header {
@@ -63,13 +63,13 @@ page {
 .spot-name {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .spot-status {
   font-size: 24rpx;
-  color: #007AFF;
-  background-color: #f0f8ff;
+  color: var(--primary-green);
+  background-color: var(--bg-card-alt);
   padding: 8rpx 16rpx;
   border-radius: 20rpx;
 }
@@ -85,13 +85,13 @@ page {
 
 .label {
   font-size: 26rpx;
-  color: #666;
+  color: var(--text-secondary);
   min-width: 140rpx;
 }
 
 .value {
   font-size: 26rpx;
-  color: #333;
+  color: var(--text-primary);
   flex: 1;
   word-break: break-all;
 }
@@ -102,8 +102,8 @@ page {
 
 .action-btn {
   font-size: 26rpx;
-  color: #007AFF;
-  border: 1rpx solid #007AFF;
+  color: var(--primary-green);
+  border: 1rpx solid var(--primary-green);
   padding: 10rpx 20rpx;
   border-radius: 30rpx;
 }
@@ -113,7 +113,7 @@ page {
 }
 
 .primary-btn {
-  background-color: #007AFF;
+  background-color: var(--primary-green);
   color: white;
   border: none;
   border-radius: 50rpx;
@@ -146,12 +146,16 @@ page {
 
 .modal-content {
   position: relative;
-  background-color: var(--bg-card, #ffffff);
-  border-radius: var(--radius-card, 15rpx);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
   width: 90%;
-  max-height: 80%;
+  max-width: 680rpx;
+  max-height: 85%;
   overflow: hidden;
   z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .modal-header {
@@ -159,43 +163,54 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 30rpx 30rpx 10rpx;
-  border-bottom: 1rpx solid #eee;
+  border-bottom: 1rpx solid var(--border-light);
+  flex-shrink: 0;
 }
 
 .modal-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .modal-close {
   font-size: 40rpx;
-  color: #999;
+  color: var(--text-muted);
   line-height: 1;
 }
 
 .modal-body {
-  padding: 20rpx 30rpx;
-  max-height: 60vh;
+  flex: 1;
+  min-height: 0;
+  height: 60vh;
+  padding: 20rpx 30rpx 30rpx;
+  box-sizing: border-box;
 }
 
 .modal-section {
   margin-bottom: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section-title {
   display: block;
   font-size: 28rpx;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 10rpx;
 }
 
 .section-content {
   display: block;
+  width: 100%;
+  box-sizing: border-box;
   font-size: 26rpx;
-  color: #666;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .species-list {
@@ -206,8 +221,8 @@ page {
 .species-item {
   display: inline-block;
   font-size: 24rpx;
-  color: #007AFF;
-  background-color: #f0f8ff;
+  color: var(--primary-green);
+  background-color: var(--bg-card-alt);
   padding: 6rpx 16rpx;
   border-radius: 20rpx;
   margin: 5rpx;

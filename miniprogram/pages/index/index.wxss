@@ -1,7 +1,7 @@
 /* pages/index/index.wxss */
 page {
   height: 100%;
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
 }
 
 .container {
@@ -12,7 +12,7 @@ page {
   justify-content: flex-start;
   align-items: stretch;
   box-sizing: border-box;
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
 }
 
 .map-container {
@@ -36,13 +36,15 @@ page {
   left: 0;
   width: 100%;
   max-height: 85vh;
-  background: var(--bg-card, #ffffff);
-  border-radius: var(--radius-card, 15rpx) var(--radius-card, 15rpx) 0 0;
+  background: var(--bg-card);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
   padding: 40rpx 30rpx calc(30rpx + env(safe-area-inset-bottom));
   overflow-y: auto;
   z-index: 1000;
   box-sizing: border-box;
-  box-shadow: var(--shadow-card, 0 4rpx 12rpx rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
 }
 
 .bird-detail-header {
@@ -52,13 +54,14 @@ page {
   position: relative;
   margin-bottom: 20rpx;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid var(--border-light, #eeeeee);
+  border-bottom: 1rpx solid var(--border-light);
+  flex-shrink: 0;
 }
 
 .bird-detail-title {
   font-size: 36rpx;
   font-weight: bold;
-  color: var(--text-primary, #333333);
+  color: var(--text-primary);
 }
 
 .bird-detail-close {
@@ -66,7 +69,7 @@ page {
   right: 0;
   top: 0;
   font-size: 40rpx;
-  color: var(--text-muted, #999999);
+  color: var(--text-muted);
   background: none;
   border: none;
   padding: 10rpx;
@@ -75,31 +78,38 @@ page {
 .bird-name {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
   margin: 20rpx 0;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .bird-scientific-name {
   font-size: 24rpx;
-  color: #666;
+  color: var(--text-secondary);
   font-style: italic;
   margin: 10rpx 0;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .bird-description {
   font-size: 28rpx;
-  color: #555;
+  color: var(--text-primary);
   line-height: 1.6;
   margin: 20rpx 0;
-  text-align: justify;
+  text-align: justify; /* 设置为两端对齐 */
+  text-justify: inter-word; /* 调整单词间距以实现更好的对齐 */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .bird-additional-info {
   margin-top: 20rpx;
   padding-top: 20rpx;
-  border-top: 1rpx solid #eee;
+  border-top: 1rpx solid var(--border-light);
+  flex-shrink: 0;
 }
 
 .info-item {
@@ -109,12 +119,12 @@ page {
 }
 
 .info-label {
-  color: #666;
+  color: var(--text-secondary);
   min-width: 160rpx;
 }
 
 .info-value {
-  color: #333;
+  color: var(--text-primary);
   flex: 1;
   word-wrap: break-word;
 }

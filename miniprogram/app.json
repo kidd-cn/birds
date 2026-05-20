@@ -5,13 +5,13 @@
     "pages/birding-spots/birding-spots"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2e8b57",
     "navigationBarTitleText": "深圳观鸟助手",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#e8f4ec",
-    "backgroundColorTop": "#e8f4ec",
-    "backgroundColorBottom": "#e8f4ec"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f0f8f4",
+    "backgroundColorTop": "#f0f8f4",
+    "backgroundColorBottom": "#f0f8f4"
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

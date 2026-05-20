@@ -26,7 +26,7 @@
         </view>
       </view>
       <view class="spot-action">
-        <text class="action-btn" bindtap="viewSpotDetail" data-spot="{{item}}">查看详情</text>
+        <text class="action-btn" catchtap="viewSpotDetail" data-spot="{{item}}">查看详情</text>
       </view>
     </view>
   </scroll-view>
@@ -47,23 +47,23 @@
       <scroll-view class="modal-body" scroll-y="true">
         <view class="modal-section">
           <text class="section-title">简介</text>
-          <text class="section-content">{{currentSpotDetail.description}}</text>
+          <view class="section-content">{{currentSpotDetail.description}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">最佳观鸟时间</text>
-          <text class="section-content">{{currentSpotDetail.best_time}}</text>
+          <view class="section-content">{{currentSpotDetail.best_time}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">交通指南</text>
-          <text class="section-content">{{currentSpotDetail.transport}}</text>
+          <view class="section-content">{{currentSpotDetail.transport}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">生态环境</text>
-          <text class="section-content">{{currentSpotDetail.habitat}}</text>
+          <view class="section-content">{{currentSpotDetail.habitat}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">最新观察日期</text>
-          <text class="section-content">{{currentSpotDetail.latest_observation_date}}</text>
+          <view class="section-content">{{currentSpotDetail.latest_observation_date}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">明星鸟种</text>

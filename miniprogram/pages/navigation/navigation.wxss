@@ -1,6 +1,6 @@
 /* pages/navigation/navigation.wxss */
 page {
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
   height: 100%;
 }
 
@@ -8,7 +8,7 @@ page {
   padding: 40rpx;
   height: 100%;
   box-sizing: border-box;
-  background-color: var(--bg-page, #e8f4ec);
+  background-color: var(--bg-page);
 }
 
 .header {
@@ -26,14 +26,14 @@ page {
   display: block;
   font-size: 40rpx;
   font-weight: bold;
-  color: var(--text-primary, #333333);
+  color: var(--text-primary);
   margin-bottom: 10rpx;
 }
 
 .subtitle {
   display: block;
   font-size: 28rpx;
-  color: var(--text-secondary, #666666);
+  color: var(--text-secondary);
 }
 
 .features {
@@ -43,11 +43,11 @@ page {
 .feature-card {
   display: flex;
   align-items: center;
-  background-color: var(--bg-card, #ffffff);
-  border-radius: var(--radius-card, 15rpx);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
   padding: 30rpx;
   margin-bottom: 20rpx;
-  box-shadow: var(--shadow-card, 0 4rpx 12rpx rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-card);
 }
 
 .card-icon {
@@ -55,6 +55,7 @@ page {
   margin-right: 20rpx;
   width: 60rpx;
   text-align: center;
+  color: var(--primary-green);
 }
 
 .card-content {
@@ -65,40 +66,40 @@ page {
   display: block;
   font-size: 32rpx;
   font-weight: bold;
-  color: var(--text-primary, #333333);
+  color: var(--text-primary);
   margin-bottom: 10rpx;
 }
 
 .card-desc {
   display: block;
   font-size: 26rpx;
-  color: var(--text-secondary, #666666);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
 .card-arrow {
   font-size: 40rpx;
-  color: #ccc;
+  color: var(--text-muted);
 }
 
 .intro {
-  background-color: var(--bg-card, #ffffff);
-  border-radius: var(--radius-card, 15rpx);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
   padding: 30rpx;
-  box-shadow: var(--shadow-card, 0 4rpx 12rpx rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-card);
 }
 
 .intro-title {
   display: block;
   font-size: 32rpx;
   font-weight: bold;
-  color: var(--text-primary, #333333);
+  color: var(--text-primary);
   margin-bottom: 20rpx;
 }
 
 .intro-text {
   display: block;
   font-size: 28rpx;
-  color: var(--text-secondary, #666666);
+  color: var(--text-secondary);
   line-height: 1.6;
 }

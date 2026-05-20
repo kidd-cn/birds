@@ -1,21 +1,133 @@
 /**
  * 深圳观鸟助手 — 全局主题
- * 浅灰页面底 + 白色卡片 + 深灰文字
+ * 自然生态主题色
  */
 
 page {
-  /* 湿地浅绿：呼应红树林、候鸟驿站等观鸟场景 */
-  --bg-page: #e8f4ec;
-  --bg-card: #ffffff;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --text-muted: #999999;
-  --border-light: #eeeeee;
-  --shadow-card: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  /* 主题色彩系统 */
+  --primary-green: #2e8b57;       /* 海岛绿，主色调 */
+  --secondary-green: #3cb371;     /* 中海绿，次要色调 */
+  --accent-green: #98fb98;        /* 碧绿，点缀色 */
+  --bg-page: #f0f8f4;            /* 页面背景：浅绿白 */
+  --bg-card: #ffffff;             /* 卡片背景：纯白 */
+  --bg-card-alt: #f9fdfb;         /* 辅助卡片：淡绿 */
+
+  /* 文字颜色 */
+  --text-primary: #2c3e50;        /* 深蓝灰，主要文字 */
+  --text-secondary: #7f8c8d;      /* 中灰，次要文字 */
+  --text-muted: #bdc3c7;          /* 浅灰，禁用/弱化文字 */
+  --text-accent: #2e8b57;         /* 主色调，强调文字 */
+
+  /* 边框和分割线 */
+  --border-light: #e0e6e8;
+  --border-medium: #d0d8da;
+  --border-dark: #bdc3c7;
+
+  /* 阴影 */
+  --shadow-card: 0 4rpx 12rpx rgba(46, 139, 87, 0.1);
+  --shadow-modal: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+
+  /* 圆角 */
   --radius-card: 15rpx;
+  --radius-small: 8rpx;
+  --radius-large: 20rpx;
+
+  /* 功能色 */
+  --success: #27ae60;             /* 成功状态 */
+  --warning: #f39c12;             /* 警告状态 */
+  --error: #e74c3c;               /* 错误状态 */
+  --info: #3498db;                /* 信息状态 */
 
   background-color: var(--bg-page);
   color: var(--text-primary);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 地图相关样式 */
+.map-container {
+  width: 100%;
+  height: 100vh;
+}
+
+/* 鸟类详情弹窗样式 */
+.bird-detail-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background-color: var(--bg-card);
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
+  padding: 30rpx;
+  box-shadow: var(--shadow-card);
+  z-index: 1000;
+}
+
+.bird-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.bird-detail-close {
+  font-size: 36rpx;
+  color: var(--text-muted);
+}
+
+.bird-detail-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+  color: var(--text-primary);
+}
+
+.bird-image {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.bird-info {
+  margin-top: 20rpx;
+}
+
+.bird-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: var(--text-primary);
+}
+
+.bird-scientific-name {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 10rpx;
+}
+
+.bird-description {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* 按钮样式 */
+.button {
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 10rpx;
+  text-align: center;
 }
 
 .container {
