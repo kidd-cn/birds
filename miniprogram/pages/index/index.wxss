@@ -9,6 +9,81 @@ page {
   height: 100vh;
 }
 
+.bird-image {
+  width: 100%;
+  max-height: 50vh; /* Allow image to take up to 50% of screen height */
+  min-height: 200rpx; /* Ensure minimum visibility */
+  object-fit: cover; /* Crop image to fill space while maintaining aspect ratio */
+  display: block;
+  margin: 20rpx auto;
+}
+
+.bird-detail-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-height: 90vh; /* Increase maximum height */
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx 30rpx 30rpx;
+  overflow-y: auto;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.bird-detail-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.bird-detail-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.bird-detail-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 40rpx;
+  color: #999;
+  background: none;
+  border: none;
+  padding: 10rpx;
+}
+
+.bird-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin: 20rpx 0;
+  text-align: center;
+}
+
+.bird-scientific-name {
+  font-size: 24rpx;
+  color: #666;
+  font-style: italic;
+  margin: 10rpx 0;
+  text-align: center;
+}
+
+.bird-description {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.6;
+  margin: 20rpx 0;
+  text-align: justify;
+}
+
 .bird-additional-info {
   margin-top: 20rpx;
   padding-top: 20rpx;
@@ -29,4 +104,5 @@ page {
 .info-value {
   color: #333;
   flex: 1;
+  word-wrap: break-word;
 }

@@ -118,16 +118,7 @@ Page({
             fontSize: 10,
             textAlign: 'center'
           },
-          label: {
-            content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
-            color: '#ffffff',
-            fontSize: 12,
-            bgColor: '#4CAF50',
-            borderColor: '#ffffff',
-            borderWidth: 1,
-            borderRadius: 5,
-            padding: 5
-          }
+          iconPath: ""
         }));
 
         this.setData({
@@ -179,16 +170,7 @@ Page({
             fontSize: 10,
             textAlign: 'center'
           },
-          label: {
-            content: bird.commonName.charAt(0), // 使用鸟类名称的首字母
-            color: '#ffffff',
-            fontSize: 12,
-            bgColor: '#4CAF50',
-            borderColor: '#ffffff',
-            borderWidth: 1,
-            borderRadius: 5,
-            padding: 5
-          }
+          iconPath: ""
         }));
 
         this.setData({
