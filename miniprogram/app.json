@@ -6,9 +6,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "深圳观鸟助手",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#e8f4ec",
+    "backgroundColorTop": "#e8f4ec",
+    "backgroundColorBottom": "#e8f4ec"
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

@@ -6,7 +6,7 @@
   </view>
 
   <scroll-view class="spots-list" scroll-y="true">
-    <view class="spot-card" wx:for="{{birdingSpots}}" wx:key="index" bindtap="selectSpot" data-spot="{{item}}">
+    <view class="spot-card {{selectedSpot && selectedSpot.name == item.name ? 'selected' : ''}}" wx:for="{{birdingSpots}}" wx:key="index" bindtap="selectSpot" data-spot="{{item}}">
       <view class="spot-header">
         <text class="spot-name">{{item.name}}</text>
         <text class="spot-status">{{item.special_species.length}}种明星鸟</text>
