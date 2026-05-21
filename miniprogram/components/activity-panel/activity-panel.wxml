@@ -1,0 +1,31 @@
+<!-- Activity Panel Component -->
+<view class="activity-panel-container" wx:if="{{visible}}">
+  <!-- Overlay -->
+  <view class="overlay" bindtap="handleOverlayClick" id="overlay"></view>
+
+  <!-- Panel Content -->
+  <view class="panel-content">
+    <!-- Header -->
+    <view class="header">
+      <text class="title">Activities</text>
+      <button class="close-btn" bindtap="handleClose">
+        <text class="close-icon">✕</text>
+      </button>
+    </view>
+
+    <!-- Activities Grid -->
+    <view class="activities-grid">
+      <view
+        class="activity-item"
+        wx:for="{{activities}}"
+        wx:key="id"
+        data-activity-id="{{item.id}}"
+        bindtap="handleActivitySelect"
+      >
+        <view class="activity-icon">{{item.icon}}</view>
+        <view class="activity-title">{{item.title}}</view>
+        <view class="activity-description">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!-- Demo page for Bird Identification Game -->
+<view class="container">
+  <text class="title">Bird Identification Game</text>
+  <text class="subtitle">Test your bird recognition skills!</text>
+
+  <bird-identification-game
+    bird-data="{{birdData}}"
+  ></bird-identification-game>
+</view>

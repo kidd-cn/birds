@@ -1,0 +1,229 @@
+/* Bird Identification Game Component Styles */
+
+.bird-game-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.score-text, .question-num {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.difficulty-selector {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.difficulty-title {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.difficulty-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.difficulty-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #333;
+}
+
+.difficulty-btn.selected {
+  background-color: #007aff;
+  color: white;
+  border-color: #007aff;
+}
+
+.start-btn {
+  background-color: #007aff;
+  color: white;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.start-btn[disabled] {
+  background-color: #ccc;
+  color: #666;
+}
+
+.game-content {
+  width: 100%;
+}
+
+.bird-image-container {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.bird-image {
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: filter 0.3s ease;
+}
+
+.progress-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.option-item {
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-item.selected {
+  border-color: #007aff;
+  background-color: #e6f0ff;
+}
+
+.option-item.correct {
+  border-color: #4cd964;
+  background-color: #dfffe6;
+}
+
+.option-item.incorrect {
+  border-color: #ff3b30;
+  background-color: #ffe6e6;
+}
+
+.option-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.feedback-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.feedback-text {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.correct-text {
+  color: #4cd964;
+}
+
+.incorrect-text {
+  color: #ff3b30;
+}
+
+.bird-info {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.next-btn {
+  background-color: #007aff;
+  color: white;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+}
+
+.game-result {
+  text-align: center;
+  padding: 20px;
+}
+
+.final-score-container {
+  margin-bottom: 30px;
+}
+
+.final-score-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.final-score {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007aff;
+}
+
+.performance {
+  display: block;
+  font-size: 18px;
+  color: #666;
+}
+
+.restart-btn {
+  background-color: #007aff;
+  color: white;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bird-image {
+    width: 250px;
+    height: 250px;
+  }
+}

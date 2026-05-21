@@ -2,7 +2,8 @@
   "pages": [
     "pages/navigation/navigation",
     "pages/index/index",
-    "pages/birding-spots/birding-spots"
+    "pages/birding-spots/birding-spots",
+    "pages/bird-game-demo/bird-game-demo"
   ],
   "window": {
     "backgroundTextStyle": "dark",
