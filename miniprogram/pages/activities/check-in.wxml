@@ -1,0 +1,49 @@
+<!-- pages/activities/check-in.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">每日签到</text>
+  </view>
+
+  <view class="checkin-card">
+    <view class="streak-info">
+      <text class="streak-message">{{streakMessage}}</text>
+    </view>
+
+    <view class="stats-container">
+      <view class="stat-item">
+        <text class="stat-number">{{consecutiveDays}}</text>
+        <text class="stat-label">连续天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{totalCheckIns}}</text>
+        <text class="stat-label">总签到</text>
+      </view>
+    </view>
+
+    <button
+      class="checkin-button {{todayCheckedIn ? 'checked-in' : 'not-checked-in'}}"
+      bindtap="checkIn"
+      disabled="{{todayCheckedIn}}"
+    >
+      {{todayCheckedIn ? '今日已签到' : '立即签到'}}
+    </button>
+
+    <view class="success-animation" wx:if="{{showSuccess}}">
+      <text class="success-text">✓ 签到成功！</text>
+    </view>
+  </view>
+
+  <view class="tips-section">
+    <text class="tips-title">签到奖励</text>
+    <view class="tips-list">
+      <text class="tip-item">• 连续签到可获得徽章奖励</text>
+      <text class="tip-item">• 达成里程碑解锁特殊称号</text>
+      <text class="tip-item">• 培养观鸟好习惯</text>
+    </view>
+  </view>
+
+  <view class="buttons-container">
+    <button class="action-button achievements" bindtap="viewAchievements">查看成就</button>
+    <button class="action-button exit" bindtap="exitCheckIn">返回首页</button>
+  </view>
+</view>

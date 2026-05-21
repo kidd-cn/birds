@@ -1,0 +1,54 @@
+<!-- pages/activities/knowledge-quiz.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">鸟类知识问答</text>
+    <text class="score">得分: {{score}}/{{questions.length}}</text>
+  </view>
+
+  <view class="progress-container">
+    <progress percent="{{(currentQuestion / questions.length) * 100}}" stroke-width="6" activeColor="#2196F3"/>
+    <text class="progress-text">{{currentQuestion}} / {{questions.length}}</text>
+  </view>
+
+  <block wx:if="{{quizStarted && !quizCompleted}}">
+    <view class="question-container" wx:if="{{currentQuestionData}}">
+      <view class="question-text">
+        <text>{{currentQuestionData.question}}</text>
+      </view>
+
+      <view class="options-container">
+        <button
+          wx:for="{{currentQuestionData.options}}"
+          wx:key="index"
+          class="option-button {{showResult && item === correctAnswer ? 'correct' : ''}} {{showResult && item === userAnswer && item !== correctAnswer ? 'incorrect' : ''}}"
+          data-answer="{{item}}"
+          bindtap="selectAnswer"
+          disabled="{{showResult}}"
+        >
+          {{item}}
+        </button>
+      </view>
+
+      <view class="feedback" wx:if="{{showResult}}">
+        <text class="feedback-text">{{feedback}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view class="completion-screen" wx:if="{{quizCompleted}}">
+    <view class="completion-message">
+      <text class="completion-title">问答完成！</text>
+      <text class="final-score">最终得分: {{score}}/{{questions.length}}</text>
+      <text class="performance">
+        {{score / questions.length >= 0.8 ? '太棒了！你对鸟类知识很了解！' :
+          score / questions.length >= 0.6 ? '不错！继续学习鸟类知识！' :
+          '加油！多学习鸟类知识可以帮助提高成绩'}}
+      </text>
+    </view>
+
+    <view class="buttons-container">
+      <button class="action-button restart" bindtap="restartQuiz">重新开始</button>
+      <button class="action-button exit" bindtap="exitQuiz">返回首页</button>
+    </view>
+  </view>
+</view>

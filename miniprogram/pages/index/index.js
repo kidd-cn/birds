@@ -15,7 +15,13 @@ Page({
     currentBird: {},
     birdData: [],
     featuredSpots: [],
-    showActivityPanel: false
+    showActivityPanel: false,
+    activityType: null,
+    gameDifficulty: 'medium',
+    gameBirds: [],
+    currentGameQuestion: 0,
+    score: 0,
+    gameStarted: false
   },
 
   /**
@@ -431,6 +437,146 @@ Page({
   hideActivityPanel() {
     this.setData({
       showActivityPanel: false
+    });
+  },
+
+  /**
+   * 选择活动类型
+   */
+  selectActivity(e) {
+    const activityType = e.currentTarget.dataset.activity;
+    if (!activityType) {
+      console.error('No activity type provided');
+      return;
+    }
+
+    // Validate activity type
+    const validActivities = ['identification-game', 'knowledge-quiz', 'check-in'];
+    if (!validActivities.includes(activityType)) {
+      console.error(`Invalid activity type: ${activityType}`);
+      return;
+    }
+
+    this.setData({
+      activityType: activityType,
+      showActivityPanel: false // Close panel after selection
+    });
+  },
+
+  /**
+   * 设置游戏难度
+   */
+  setGameDifficulty(e) {
+    const difficulty = e.currentTarget.dataset.difficulty;
+    if (!difficulty) {
+      console.error('No difficulty level provided');
+      return;
+    }
+
+    // Validate difficulty level
+    const validDifficulties = ['easy', 'medium', 'hard'];
+    if (!validDifficulties.includes(difficulty)) {
+      console.error(`Invalid difficulty level: ${difficulty}`);
+      return;
+    }
+
+    this.setData({
+      gameDifficulty: difficulty
+    });
+  },
+
+  /**
+   * 开始识别游戏
+   */
+  startIdentificationGame() {
+    if (!this.data.birdData || this.data.birdData.length === 0) {
+      wx.showToast({
+        title: '暂无鸟类数据',
+        icon: 'none'
+      });
+      return;
+    }
+
+    // Prepare game data based on difficulty
+    let availableBirds = [...this.data.birdData];
+
+    // Apply difficulty filters
+    switch(this.data.gameDifficulty) {
+      case 'easy':
+        // Easy mode: use common birds with good images
+        availableBirds = availableBirds.filter(bird =>
+          bird.confidence && bird.confidence > 0.7
+        );
+        break;
+      case 'hard':
+        // Hard mode: use birds that are harder to identify
+        availableBirds = availableBirds.filter(bird =>
+          bird.similarSpecies && bird.similarSpecies.length > 0
+        );
+        break;
+      case 'medium':
+      default:
+        // Medium mode: use all available birds
+        break;
+    }
+
+    // Ensure we have at least 3 birds for the game
+    if (availableBirds.length < 3) {
+      availableBirds = [...this.data.birdData];
+    }
+
+    // Limit to 10 birds maximum for performance
+    if (availableBirds.length > 10) {
+      availableBirds = availableBirds.slice(0, 10);
+    }
+
+    this.setData({
+      activityType: 'identification-game',
+      gameBirds: availableBirds,
+      currentGameQuestion: 0,
+      score: 0,
+      gameStarted: true,
+      showActivityPanel: false
+    });
+
+    wx.navigateTo({
+      url: `/pages/activities/identification-game?difficulty=${this.data.gameDifficulty}`
+    });
+  },
+
+  /**
+   * 开始知识问答
+   */
+  startKnowledgeQuiz() {
+    if (!this.data.birdData || this.data.birdData.length === 0) {
+      wx.showToast({
+        title: '暂无鸟类数据',
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.setData({
+      activityType: 'knowledge-quiz',
+      showActivityPanel: false
+    });
+
+    wx.navigateTo({
+      url: `/pages/activities/knowledge-quiz?difficulty=${this.data.gameDifficulty}`
+    });
+  },
+
+  /**
+   * 开始打卡活动
+   */
+  startCheckInActivity() {
+    this.setData({
+      activityType: 'check-in',
+      showActivityPanel: false
+    });
+
+    wx.navigateTo({
+      url: '/pages/activities/check-in'
     });
   },
 
