@@ -23,7 +23,7 @@ Component({
         description: 'Coastal wetland with diverse waterbirds',
         birdSpecies: ['Black-faced Spoonbill', 'Great Egret', 'Little Egret'],
         difficulty: 'Easy',
-        icon: 'haitang.png'
+        icon: 'bird-marker.svg'
       },
       {
         id: 'spot2',
@@ -32,7 +32,7 @@ Component({
         description: 'Freshwater habitat with forest edges',
         birdSpecies: ['White-throated Kingfisher', 'Common Moorhen', 'Purple Swamphen'],
         difficulty: 'Moderate',
-        icon: 'haitang.png'
+        icon: 'bird-marker.svg'
       },
       {
         id: 'spot3',
@@ -41,7 +41,7 @@ Component({
         description: 'Coastal area with rocky shores',
         birdSpecies: ['Whimbrel', 'Pacific Golden Plover', 'Red Knot'],
         difficulty: 'Easy',
-        icon: 'haitang.png'
+        icon: 'bird-marker.svg'
       },
       {
         id: 'spot4',
@@ -50,7 +50,7 @@ Component({
         description: 'Urban forest with native species',
         birdSpecies: ['Greater Racket-tailed Drongo', 'Red-billed Leiothrix', 'Yellow-bellied Warbler'],
         difficulty: 'Hard',
-        icon: 'haitang.png'
+        icon: 'bird-marker.svg'
       },
       {
         id: 'spot5',
@@ -59,7 +59,7 @@ Component({
         description: 'Urban lake with migratory birds',
         birdSpecies: ['Chinese Pond Heron', 'Purple Heron', 'White-breasted Waterhen'],
         difficulty: 'Easy',
-        icon: 'haitang.png'
+        icon: 'bird-marker.svg'
       }
     ],
     badges: [
@@ -68,7 +68,7 @@ Component({
         name: 'Shenzhen Bay Explorer',
         spotId: 'spot1',
         description: 'Checked in at Shenzhen Bay Park',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false
       },
       {
@@ -76,7 +76,7 @@ Component({
         name: 'Xili Lake Adventurer',
         spotId: 'spot2',
         description: 'Checked in at Xili Lake Reservoir',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false
       },
       {
@@ -84,7 +84,7 @@ Component({
         name: 'Dameisha Coastal Walker',
         spotId: 'spot3',
         description: 'Checked in at Dameisha Beach',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false
       },
       {
@@ -92,7 +92,7 @@ Component({
         name: 'Huangbeiling Hiker',
         spotId: 'spot4',
         description: 'Checked in at Huangbeiling Forest Park',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false
       },
       {
@@ -100,14 +100,14 @@ Component({
         name: 'Honghu Park Visitor',
         spotId: 'spot5',
         description: 'Checked in at Honghu Park',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge_all_spots',
         name: 'Birding Master',
         description: 'Visited all 5 birding spots',
-        icon: 'haitang.png',
+        icon: 'bird-marker.svg',
         earned: false,
         requirement: 'all_spots'
       }
@@ -115,7 +115,8 @@ Component({
     checkIns: {},
     progressPercentage: 0,
     showBadgeAwarded: false,
-    awardedBadgeName: ''
+    awardedBadgeName: '',
+    checkedInSpotsCount: 0  // Add this to track checked-in spots count
   },
 
   /**
@@ -192,7 +193,8 @@ Component({
         this.setData({
           checkIns: updatedCheckIns,
           badges: finalBadges,
-          progressPercentage
+          progressPercentage,
+          checkedInSpotsCount: checkedInCount  // Update the checked-in spots count
         });
 
         // Trigger an event for parent components to listen to
@@ -220,9 +222,13 @@ Component({
       try {
         const savedData = wx.getStorageSync('birdingCheckIns');
         if (savedData) {
+          const updatedCheckIns = savedData.checkIns || {};
+          const checkedInCount = Object.values(updatedCheckIns).filter(checked => checked).length;
+
           this.setData({
-            checkIns: savedData.checkIns || {},
-            progressPercentage: savedData.progressPercentage || 0
+            checkIns: updatedCheckIns,
+            progressPercentage: savedData.progressPercentage || 0,
+            checkedInSpotsCount: checkedInCount
           });
 
           // Update badge statuses based on saved check-ins

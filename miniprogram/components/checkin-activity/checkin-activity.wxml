@@ -6,7 +6,7 @@
     <view class="progress-bar-container">
       <view class="progress-bar-fill" style="width: {{progressPercentage}}%"></view>
     </view>
-    <text class="progress-text">{{progressPercentage}}% ({{Object.keys(checkIns).filter(function(key) {return checkIns[key];}).length}}/{{spots.length}} spots visited)</text>
+    <text class="progress-text">{{progressPercentage}}% ({{checkedInSpotsCount}}/{{spots.length}} spots visited)</text>
   </view>
 
   <!-- Badge Awarded Notification -->
