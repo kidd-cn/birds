@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "Bird Identification Game",
   "usingComponents": {
-    "bird-identification-game": "../components/bird-game/bird-identification-game"
+    "bird-identification-game": "/components/bird-game/bird-identification-game"
   }
 }
