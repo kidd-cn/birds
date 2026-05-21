@@ -9,18 +9,98 @@ page {
   top: 40rpx;
   right: 40rpx;
   z-index: 999;
-  background-color: #4CAF50;
+  background-color: var(--primary-green);
   color: white;
   border-radius: 50rpx;
   padding: 20rpx 30rpx;
   font-size: 28rpx;
   font-weight: bold;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  box-shadow: 0 4rpx 12rpx rgba(46, 139, 87, 0.2); /* Match theme color */
   border: none;
+  min-width: 180rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-entry-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(46, 139, 87, 0.3);
+  background-color: var(--secondary-green);
 }
 
 .activity-entry-button::after {
   border: none;
+}
+
+/* Focus styles for accessibility */
+.activity-entry-button:focus {
+  outline: 4rpx solid var(--accent-green);
+  outline-offset: 2rpx;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 375px) {
+  .activity-entry-button {
+    top: 20rpx;
+    right: 20rpx;
+    min-width: 160rpx;
+    padding: 16rpx 20rpx;
+    font-size: 26rpx;
+  }
+}
+
+/* Additional activity-related styles */
+.activity-section {
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.activity-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: var(--bg-card-alt);
+  border-radius: var(--radius-card);
+  border-left: 6rpx solid var(--primary-green);
+}
+
+.activity-item-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.activity-item-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text-primary);
 }
 
 .container {

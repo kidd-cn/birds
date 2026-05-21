@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <!-- Activity Entry Button -->
-  <button class="activity-entry-button" bindtap="showActivityPanel">
+  <button class="activity-entry-button" bindtap="showActivityPanel" aria-label="打开活动中心">
     <text>活动中心</text>
   </button>
 
