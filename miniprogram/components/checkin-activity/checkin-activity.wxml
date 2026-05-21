@@ -1,0 +1,67 @@
+<!-- miniprogram/components/checkin-activity/checkin-activity.wxml -->
+<view class="checkin-container">
+  <!-- Progress bar section -->
+  <view class="progress-section">
+    <text class="progress-title">Birding Badge Collection Progress</text>
+    <view class="progress-bar-container">
+      <view class="progress-bar-fill" style="width: {{progressPercentage}}%"></view>
+    </view>
+    <text class="progress-text">{{progressPercentage}}% ({{Object.keys(checkIns).filter(function(key) {return checkIns[key];}).length}}/{{spots.length}} spots visited)</text>
+  </view>
+
+  <!-- Badge Awarded Notification -->
+  <view class="badge-awarded-notification" wx:if="{{showBadgeAwarded}}">
+    <text class="notification-text">🎉 Badge Earned: {{awardedBadgeName}} 🎉</text>
+  </view>
+
+  <!-- Birding Spots List -->
+  <view class="spots-list">
+    <text class="section-title">Birding Spots</text>
+
+    <view class="spot-card" wx:for="{{spots}}" wx:key="id">
+      <view class="spot-header">
+        <image class="spot-icon" src="/images/{{item.icon}}" mode="aspectFit"></image>
+        <view class="spot-info">
+          <text class="spot-name">{{item.name}}</text>
+          <text class="spot-location">{{item.location}}</text>
+        </view>
+      </view>
+
+      <view class="spot-details">
+        <text class="spot-description">{{item.description}}</text>
+        <text class="spot-difficulty difficulty-{{item.difficulty.toLowerCase()}}">{{item.difficulty}}</text>
+      </view>
+
+      <view class="bird-species">
+        <text class="species-label">Birds you might see:</text>
+        <view class="species-list">
+          <text class="species-item" wx:for="{{item.birdSpecies}}" wx:key="*this">{{item}}</text>
+        </view>
+      </view>
+
+      <button
+        class="checkin-btn {{isSpotCheckedIn(item.id) ? 'checked-in' : 'not-checked'}}"
+        bindtap="checkInSpot"
+        data-spotid="{{item.id}}"
+        disabled="{{isSpotCheckedIn(item.id)}}"
+      >
+        {{isSpotCheckedIn(item.id) ? 'Checked In!' : 'Check In'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- Badges Section -->
+  <view class="badges-section">
+    <text class="section-title">Your Badges</text>
+    <view class="badges-grid">
+      <view class="badge-item" wx:for="{{badges}}" wx:for-item="badge" wx:key="id">
+        <view class="badge-inner {{badge.earned ? 'earned-badge' : 'unearned-badge'}}">
+          <image class="badge-icon" src="/images/{{badge.icon}}" mode="aspectFit"></image>
+          <text class="badge-name">{{badge.name}}</text>
+          <text class="badge-status">{{badge.earned ? 'Earned' : 'Not Earned'}}</text>
+          <text class="badge-desc">{{badge.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

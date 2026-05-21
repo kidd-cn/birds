@@ -14,7 +14,8 @@ Page({
     showDetail: false,
     currentBird: {},
     birdData: [],
-    featuredSpots: []
+    featuredSpots: [],
+    showActivityPanel: false
   },
 
   /**
@@ -413,6 +414,24 @@ Page({
       title: '深圳鸟类分布图',
       path: '/pages/index/index'
     };
+  },
+
+  /**
+   * 显示活动面板
+   */
+  showActivityPanel() {
+    this.setData({
+      showActivityPanel: true
+    });
+  },
+
+  /**
+   * 隐藏活动面板
+   */
+  hideActivityPanel() {
+    this.setData({
+      showActivityPanel: false
+    });
   },
 
   /**

@@ -1,5 +1,10 @@
 <!--index.wxml-->
 <view class="container">
+  <!-- Activity Entry Button -->
+  <button class="activity-entry-button" bindtap="showActivityPanel">
+    <text>活动中心</text>
+  </button>
+
   <map
     id="birdMap"
     class="map-container"
@@ -62,4 +67,11 @@
       </view>
     </view>
   </view>
+
+  <!-- Activity Panel Component -->
+  <activity-panel wx:if="{{showActivityPanel}}" bind:close="hideActivityPanel">
+    <bird-identification-game />
+    <bird-knowledge-quiz />
+    <checkin-activity />
+  </activity-panel>
 </view>

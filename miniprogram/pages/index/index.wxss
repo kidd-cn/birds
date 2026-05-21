@@ -4,6 +4,25 @@ page {
   background-color: var(--bg-page);
 }
 
+.activity-entry-button {
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+  z-index: 999;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  border: none;
+}
+
+.activity-entry-button::after {
+  border: none;
+}
+
 .container {
   height: 100vh;
   display: flex;
