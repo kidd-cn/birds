@@ -1,0 +1,68 @@
+<!-- Bird Knowledge Quiz Component -->
+<view class="bird-quiz-container">
+  <!-- Quiz Welcome Screen -->
+  <block wx:if="{{!quizStarted && !quizCompleted}}">
+    <view class="welcome-screen">
+      <text class="title">Bird Knowledge Quiz</text>
+      <text class="subtitle">Test your knowledge of bird appearance features!</text>
+      <text class="instructions">Answer 5 questions about bird identification based on their appearance. Each question is worth 20 points.</text>
+
+      <button class="start-button" bindtap="startQuiz">Start Quiz</button>
+    </view>
+  </block>
+
+  <!-- Question Screen -->
+  <block wx:if="{{quizStarted && !quizCompleted}}">
+    <view class="quiz-content">
+      <view class="progress-bar">
+        <text class="progress-text">Question {{currentQuestionIndex + 1}} of {{questions.length}}</text>
+        <text class="score-text">Score: {{score}}/{{questions.length * 20}}</text>
+      </view>
+
+      <view class="question-section">
+        <text class="question-number">Question {{currentQuestionIndex + 1}}</text>
+        <text class="question-text">{{questions[currentQuestionIndex].question}}</text>
+
+        <!-- Options -->
+        <view class="options-container">
+          <block wx:for="{{questions[currentQuestionIndex].options}}" wx:key="index">
+            <view
+              class="option-item {{selectedOption === index ? 'selected' : ''}} {{showFeedback ? (index === questions[currentQuestionIndex].correctAnswer ? 'correct' : selectedOption === index ? 'incorrect' : '') : ''}}"
+              data-index="{{index}}"
+              bindtap="onOptionSelect"
+              disabled="{{showFeedback}}"
+            >
+              <text class="option-letter">{{String.fromCharCode(65 + index)}}. </text>
+              <text class="option-text">{{item}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <!-- Feedback Area -->
+      <block wx:if="{{showFeedback}}">
+        <view class="feedback-area">
+          <text class="feedback-text">{{feedbackText}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+
+  <!-- Results Screen -->
+  <block wx:if="{{quizCompleted}}">
+    <view class="results-screen">
+      <text class="results-title">Quiz Completed!</text>
+      <text class="final-score">Your Score: {{quizResults.score}}/{{questions.length * 20}} ({{quizResults.percentage}}%)</text>
+
+      <view class="performance-rating" style="color: {{quizResults.performanceRating.color}}">
+        <text>{{quizResults.performanceRating.label}}</text>
+      </view>
+
+      <view class="performance-details">
+        <text class="detail-text">You've demonstrated great knowledge of bird appearance features!</text>
+      </view>
+
+      <button class="restart-button" bindtap="restartQuiz">Take Quiz Again</button>
+    </view>
+  </block>
+</view>

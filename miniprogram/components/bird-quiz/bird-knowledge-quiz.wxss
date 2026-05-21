@@ -1,0 +1,221 @@
+/* Bird Knowledge Quiz Component Styles */
+
+.bird-quiz-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.subtitle {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #7f8c8d;
+}
+
+.instructions {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #95a5a6;
+  line-height: 1.5;
+}
+
+.welcome-screen {
+  text-align: center;
+}
+
+.start-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quiz-content {
+  /* Container styles handled above */
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+}
+
+.progress-text {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.score-text {
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.question-section {
+  margin-bottom: 20px;
+}
+
+.question-number {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.question-text {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #34495e;
+}
+
+.options-container {
+  margin-top: 10px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-item:hover {
+  background-color: #f8f9fa;
+}
+
+.option-item.selected {
+  border-color: #3498db;
+  background-color: #e1f0fa;
+}
+
+.option-item.correct {
+  border-color: #27ae60;
+  background-color: #e8f6ef;
+}
+
+.option-item.incorrect {
+  border-color: #e74c3c;
+  background-color: #fadbd8;
+}
+
+.option-letter {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #7f8c8d;
+}
+
+.option-text {
+  flex: 1;
+  color: #2c3e50;
+}
+
+.feedback-area {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border-left: 4px solid #3498db;
+}
+
+.feedback-text {
+  display: block;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+.results-screen {
+  text-align: center;
+}
+
+.results-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.final-score {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.performance-rating {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.performance-details {
+  margin-bottom: 30px;
+}
+
+.detail-text {
+  display: block;
+  font-size: 16px;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+.restart-button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bird-quiz-container {
+    padding: 10px;
+  }
+
+  .progress-bar {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .question-text {
+    font-size: 15px;
+  }
+}

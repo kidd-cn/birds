@@ -5,7 +5,8 @@
   "main": "miniprogram/app.js",
   "scripts": {
     "dev": "echo \"请在微信开发者工具中打开此项目\"",
-    "build": "echo \"构建需在微信开发者工具中进行\""
+    "build": "echo \"构建需在微信开发者工具中进行\"",
+    "test": "jest tests/"
   },
   "keywords": [
     "wechat",
@@ -15,5 +16,10 @@
     "map"
   ],
   "author": "Mini Program Developer",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "chai": "^4.3.4",
+    "sinon": "^15.0.0"
+  }
 }
