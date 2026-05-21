@@ -51,6 +51,7 @@ Page({
               resolve(true);
             } else {
               // 如果云端获取失败，使用本地数据
+              console.log('云端数据加载失败，使用本地数据');
               this.loadLocalBirdData();
               resolve(false);
             }
@@ -68,6 +69,7 @@ Page({
               resolve(true);
             } else {
               // 如果云端获取失败，使用本地数据
+              console.log('云端数据加载失败，使用本地数据');
               this.loadLocalBirdData();
               resolve(false);
             }
@@ -164,7 +166,61 @@ Page({
       this.applyMapCenterFromSpot(selectedSpot);
     }
 
+    // 处理图片路径，确保使用正确的本地图片资源
+    birdData = birdData.map(bird => {
+      // 定义一个默认图片
+      const defaultImageUrl = '/images/Black_faced_spoonbill.jpeg';
+
+      // 检查图片路径并进行标准化处理
+      let correctedImageUrl = bird.imageUrl;
+
+      // 确保图片路径正确
+      if (!correctedImageUrl || correctedImageUrl.trim() === '') {
+        correctedImageUrl = defaultImageUrl;
+      } else if (!correctedImageUrl.startsWith('/')) {
+        // 如果不是绝对路径，添加绝对路径前缀
+        correctedImageUrl = '/' + correctedImageUrl.replace('//', '/');
+      }
+
+      // 验证图片路径是否指向存在的文件
+      if (!this.isValidImagePath(correctedImageUrl)) {
+        correctedImageUrl = defaultImageUrl;
+      }
+
+      return {
+        ...bird,
+        imageUrl: correctedImageUrl
+      };
+    });
+
     this.updateMapMarkers(birdData);
+  },
+
+  /**
+   * 验证图片路径是否有效
+   */
+  isValidImagePath(imagePath) {
+    // 检查是否为网络图片
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+      return true;
+    }
+
+    // 检查是否为本地路径
+    if (imagePath.startsWith('/')) {
+      // 移除开头的斜杠以匹配实际文件路径
+      const relativePath = '.' + imagePath;
+      try {
+        // 尝试检查文件是否存在
+        const fs = wx.getFileSystemManager();
+        const stat = fs.statSync(relativePath, true);
+        return stat.isDirectory === false;
+      } catch (e) {
+        // 如果无法访问文件，返回false
+        return false;
+      }
+    }
+
+    return false;
   },
 
   /**
@@ -357,5 +413,17 @@ Page({
       title: '深圳鸟类分布图',
       path: '/pages/index/index'
     };
+  },
+
+  /**
+   * 预览鸟类图片
+   */
+  previewBirdImage() {
+    if (this.data.currentBird && this.data.currentBird.imageUrl) {
+      wx.previewImage({
+        urls: [this.data.currentBird.imageUrl],
+        current: this.data.currentBird.imageUrl
+      });
+    }
   }
 });

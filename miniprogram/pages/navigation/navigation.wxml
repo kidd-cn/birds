@@ -1,7 +1,7 @@
 <!--pages/navigation/navigation.wxml-->
 <view class="container">
   <view class="header">
-    <image class="logo" src="/images/bird-logo.png" mode="aspectFit"></image>
+    <image class="logo" src="/images/bird-marker.svg" mode="aspectFit"></image>
     <text class="title">深圳观鸟助手</text>
     <text class="subtitle">发现深圳丰富的鸟类多样性</text>
   </view>

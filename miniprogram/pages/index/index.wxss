@@ -21,13 +21,26 @@ page {
   min-height: 0;
 }
 
+.bird-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20rpx 0;
+}
+
 .bird-image {
   width: 100%;
   max-height: 50vh; /* Allow image to take up to 50% of screen height */
   min-height: 200rpx; /* Ensure minimum visibility */
   object-fit: cover; /* Crop image to fill space while maintaining aspect ratio */
   display: block;
-  margin: 20rpx auto;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}
+
+/* 添加点击态效果 */
+.bird-image-container:active {
+  opacity: 0.8;
 }
 
 .bird-detail-modal {

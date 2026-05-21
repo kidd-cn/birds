@@ -20,7 +20,9 @@
       <text></text> <!-- 占位符，保持居中 -->
     </view>
 
-    <image class="bird-image" src="{{currentBird.imageUrl}}" mode="aspectFit"></image>
+    <view class="bird-image-container" bindtap="previewBirdImage">
+      <image class="bird-image" src="{{currentBird.imageUrl}}" mode="aspectFit"></image>
+    </view>
 
     <view class="bird-info">
       <view class="bird-name">{{currentBird.species}}</view>
