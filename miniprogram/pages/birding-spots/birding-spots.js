@@ -59,7 +59,14 @@ Page({
     ],
     selectedSpot: null,
     showDetailModal: false,
-    currentSpotDetail: null
+    currentSpotDetail: null,
+    activeTab: 'overview',  // 添加活动标签页状态
+    parkDetails: {
+      overview: {},
+      birds: {},
+      ecology: {}
+    },
+    showParkDetails: false  // 控制详情面板显示
   },
 
   /**
