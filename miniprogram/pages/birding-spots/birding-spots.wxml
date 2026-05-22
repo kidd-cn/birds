@@ -9,20 +9,20 @@
     <view class="spot-card {{selectedSpot && selectedSpot.name == item.name ? 'selected' : ''}}" wx:for="{{birdingSpots}}" wx:for-index="spotIndex" wx:key="name" bindtap="selectSpot" data-index="{{spotIndex}}">
       <view class="spot-header">
         <text class="spot-name">{{item.name}}</text>
-        <text class="spot-status">{{item.special_species.length}}种明星鸟</text>
+        <text class="spot-status">查看详情</text>
       </view>
       <view class="spot-details">
         <view class="detail-item">
           <text class="label">生态环境：</text>
-          <text class="value">{{item.habitat}}</text>
+          <text class="value">{{item.features}}</text>
         </view>
         <view class="detail-item">
-          <text class="label">明星鸟种：</text>
-          <text class="value">{{item.special_species.join(', ')}}</text>
+          <text class="label">最佳观鸟：</text>
+          <text class="value">{{item.bestBirdingTime}}</text>
         </view>
         <view class="detail-item">
-          <text class="label">最新观察：</text>
-          <text class="value">{{item.latest_observation_date}}</text>
+          <text class="label">交通指南：</text>
+          <text class="value">{{item.transportation}}</text>
         </view>
       </view>
       <view class="spot-action">
@@ -51,25 +51,23 @@
         </view>
         <view class="modal-section">
           <text class="section-title">最佳观鸟时间</text>
-          <view class="section-content">{{currentSpotDetail.best_time}}</view>
+          <view class="section-content">{{currentSpotDetail.bestBirdingTime}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">交通指南</text>
-          <view class="section-content">{{currentSpotDetail.transport}}</view>
+          <view class="section-content">{{currentSpotDetail.transportation}}</view>
         </view>
         <view class="modal-section">
           <text class="section-title">生态环境</text>
-          <view class="section-content">{{currentSpotDetail.habitat}}</view>
+          <view class="section-content">{{currentSpotDetail.features}}</view>
         </view>
         <view class="modal-section">
-          <text class="section-title">最新观察日期</text>
-          <view class="section-content">{{currentSpotDetail.latest_observation_date}}</view>
+          <text class="section-title">观鸟热点</text>
+          <view class="section-content">{{currentSpotDetail.hotspots}}</view>
         </view>
         <view class="modal-section">
-          <text class="section-title">明星鸟种</text>
-          <view class="species-list">
-            <text class="species-item" wx:for="{{currentSpotDetail.special_species}}" wx:key="index">{{item}}</text>
-          </view>
+          <text class="section-title">观察提示</text>
+          <view class="section-content">{{currentSpotDetail.observationTips}}</view>
         </view>
       </scroll-view>
     </view>
@@ -124,6 +122,10 @@
             <text class="info-label">特色：</text>
             <text class="info-value">{{selectedSpot.features || '未提供'}}</text>
           </view>
+          <view class="info-item">
+            <text class="info-label">观察提示：</text>
+            <text class="info-value">{{selectedSpot.observationTips || '未提供'}}</text>
+          </view>
         </view>
       </view>
 
@@ -145,6 +147,10 @@
             <text class="info-label">观鸟热点：</text>
             <text class="info-value">{{selectedSpot.hotspots || '未提供'}}</text>
           </view>
+          <view class="info-item">
+            <text class="info-label">观察提示：</text>
+            <text class="info-value">{{selectedSpot.observationTips || '未提供'}}</text>
+          </view>
         </view>
       </view>
 
@@ -158,15 +164,15 @@
           </view>
           <view class="info-item">
             <text class="info-label">植被类型：</text>
-            <text class="info-value">{{selectedSpot.ecology.vegetation || '未提供'}}</text>
+            <text class="info-value">{{selectedSpot.ecology.vegetation || '未 provided'}}</text>
           </view>
           <view class="info-item">
             <text class="info-label">季节特征：</text>
-            <text class="info-value">{{selectedSpot.ecology.seasonalFeatures || '未提供'}}</text>
+            <text class="info-value">{{selectedSpot.ecology.seasonalFeatures || '未 provide'}}</text>
           </view>
           <view class="info-item">
             <text class="info-label">保护状况：</text>
-            <text class="info-value">{{selectedSpot.ecology.conservationStatus || '未提供'}}</text>
+            <text class="info-value">{{selectedSpot.ecology.conservationStatus || '未 provided'}}</text>
           </view>
         </view>
       </view>
