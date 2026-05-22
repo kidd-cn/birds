@@ -80,6 +80,7 @@ Page({
           id: 1,
           name: "深圳湾公园",
           location: "深圳市南山区望海路1408号",
+          coordinates: { latitude: 22.490000, longitude: 113.940000 }, // 深圳湾公园坐标
           description: "深圳湾公园是观鸟胜地，每年冬季都有大量候鸟在此栖息，包括黑脸琵鹭、白鹭等多种珍稀鸟类。",
           area: "120公顷",
           openingHours: "6:00-23:00",
@@ -98,6 +99,7 @@ Page({
           id: 2,
           name: "华侨城国家湿地公园",
           location: "深圳市南山区白石路东8号",
+          coordinates: { latitude: 22.478000, longitude: 113.935000 }, // 华侨城湿地公园坐标
           description: "华侨城湿地公园是深圳首个国家级湿地公园，拥有丰富的鸟类资源和优美的自然景观。",
           area: "68.5公顷",
           openingHours: "9:00-17:00（周一闭馆）",
@@ -116,6 +118,7 @@ Page({
           id: 3,
           name: "福田红树林自然保护区",
           location: "深圳市福田区红树林路1号",
+          coordinates: { latitude: 22.483333, longitude: 113.950000 }, // 福田红树林坐标
           description: "福田红树林自然保护区是全国唯一位于市区的国家级自然保护区，鸟类资源极为丰富。",
           area: "367.64公顷",
           openingHours: "9:00-17:00",
@@ -134,6 +137,7 @@ Page({
           id: 4,
           name: "仙湖植物园",
           location: "深圳市罗湖区莲塘仙湖路160号",
+          coordinates: { latitude: 22.546000, longitude: 114.135000 }, // 仙湖植物园坐标
           description: "仙湖植物园不仅植物种类丰富，也是观鸟的好去处，尤其在迁徙季节能看到多种林鸟。",
           area: "668公顷",
           openingHours: "8:00-18:00",
@@ -152,6 +156,7 @@ Page({
           id: 5,
           name: "东湖公园",
           location: "深圳市罗湖区爱国路4006号",
+          coordinates: { latitude: 22.539000, longitude: 114.103000 }, // 东湖公园坐标
           description: "东湖公园是深圳市最早的市政公园之一，水域面积较大，是城市中的鸟类栖息地。",
           area: "151公顷",
           openingHours: "6:00-22:00",
