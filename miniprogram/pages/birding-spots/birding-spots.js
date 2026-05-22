@@ -100,15 +100,95 @@ Page({
     const spot = this.getSpotFromEvent(e);
     if (!spot) return;
 
-    this.setData({
-      currentSpotDetail: spot,
-      showDetailModal: true
-    });
+    // 使用新方法显示带标签页的公园详情
+    const index = e.currentTarget.dataset.index;
+    this.showParkDetails(e);
   },
 
+  /**
+   * 获取事件中的观鸟点
+   */
   getSpotFromEvent(e) {
     const index = e.currentTarget.dataset.index;
     return this.data.birdingSpots[index] || null;
+  },
+
+  /**
+   * 切换标签页
+   */
+  switchTab(e) {
+    const tab = e.currentTarget.dataset.tab;
+    this.setData({
+      activeTab: tab
+    });
+  },
+
+  /**
+   * 显示公园详情
+   */
+  showParkDetails(e) {
+    const index = e.currentTarget.dataset.index;
+    const spot = this.data.birdingSpots[index];
+
+    // 从现有数据构建公园详情
+    const parkDetails = this.buildParkDetails(spot);
+
+    this.setData({
+      selectedSpot: parkDetails,
+      activeTab: 'overview',  // 默认显示概览
+      showDetailModal: false, // 关闭旧的详情模态框
+      showParkDetails: true
+    });
+  },
+
+  /**
+   * 隐藏公园详情
+   */
+  hideParkDetails() {
+    this.setData({
+      showParkDetails: false,
+      selectedSpot: null
+    });
+  },
+
+  /**
+   * 从现有鸟类数据构建公园详情
+   */
+  buildParkDetails(spot) {
+    // 从birdData中提取与此公园相关的鸟类
+    const { realBirdObservations } = require('../../utils/birdData');
+    const parkBirds = realBirdObservations.filter(bird =>
+      bird.locationName.includes(spot.name) ||
+      spot.name.includes(bird.locationName)
+    );
+
+    // 提取唯一鸟类品种
+    const uniqueBirds = [];
+    const speciesSet = new Set();
+    parkBirds.forEach(bird => {
+      if (!speciesSet.has(bird.species)) {
+        uniqueBirds.push(bird);
+        speciesSet.add(bird.species);
+      }
+    });
+
+    // 构建公园详情对象
+    return {
+      ...spot,
+      birds: uniqueBirds,
+      area: spot.area || '未知',
+      openingHours: spot.openingHours || '详见公园公告',
+      transportation: spot.transportation || '未提供',
+      features: spot.features || '未提供',
+      bestBirdingTime: spot.bestBirdingTime || '春秋季最佳',
+      hotspots: spot.hotspots || '未提供',
+      ecology: {
+        habitat: spot.ecology?.habitat || '未提供',
+        vegetation: spot.ecology?.vegetation || '未提供',
+        seasonalFeatures: spot.ecology?.seasonalFeatures || '未提供',
+        conservationStatus: spot.ecology?.conservationStatus || '未提供'
+      }
+    };
   },
 
   /**
