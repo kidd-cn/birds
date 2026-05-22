@@ -27,10 +27,10 @@ Component({
 
     // Performance rating thresholds
     performanceRatings: [
-      { minScore: 90, label: 'Expert Birder!', color: '#4CAF50' },
-      { minScore: 70, label: 'Skilled Observer', color: '#8BC34A' },
-      { minScore: 50, label: 'Learning Birder', color: '#FFC107' },
-      { minScore: 0, label: 'Beginner Birder', color: '#FF9800' }
+      { minScore: 90, label: '观鸟专家!', color: '#4CAF50' },
+      { minScore: 70, label: '熟练观察者', color: '#8BC34A' },
+      { minScore: 50, label: '学习型观鸟者', color: '#FFC107' },
+      { minScore: 0, label: '初学者', color: '#FF9800' }
     ]
   },
 
@@ -57,63 +57,63 @@ Component({
       const questions = [
         {
           id: 1,
-          question: "Which distinctive feature helps identify a Great Blue Heron?",
+          question: "哪种独特的特征有助于识别大蓝鹭？",
           options: [
-            "Bright red crest",
-            "Long yellow bill and neck",
-            "Blue-gray plumage and S-shaped neck",
-            "Orange wing patches"
+            "鲜红色的羽冠",
+            "长而黄色的喙和脖子",
+            "蓝灰色羽毛和S形脖子",
+            "橙色翅膀斑块"
           ],
           correctAnswer: 2, // Index of correct option
-          explanation: "Great Blue Herons have distinctive blue-gray plumage and a characteristic S-shaped neck when in flight."
+          explanation: "大蓝鹭具有独特的蓝灰色羽毛，在飞行时有典型的S形脖子。"
         },
         {
           id: 2,
-          question: "What is the most recognizable feature of a Northern Cardinal?",
+          question: "北美红雀最易识别的特征是什么？",
           options: [
-            "Long tail feathers",
-            "Bright red plumage (male)",
-            "Yellow beak",
-            "White wing bars"
+            "长尾巴",
+            "鲜红色羽毛（雄性）",
+            "黄色喙",
+            "白色翼条纹"
           ],
           correctAnswer: 1,
-          explanation: "Male Northern Cardinals are bright red with a distinctive orange-red beak, making them easily recognizable."
+          explanation: "雄性北美红雀呈鲜红色，有独特的橙红色喙，很容易辨认。"
         },
         {
           id: 3,
-          question: "How can you identify a Pileated Woodpecker?",
+          question: "如何识别北美黑啄木鸟？",
           options: [
-            "Small size with green wings",
-            "Large size with red crest",
-            "Black and white striped pattern",
-            "Bright yellow belly"
+            "小型身体带绿色翅膀",
+            "大型身体带红色羽冠",
+            "黑白条纹图案",
+            "亮黄色腹部"
           ],
           correctAnswer: 1,
-          explanation: "Pileated Woodpeckers are large woodpeckers with a distinctive red crest and black body with white stripes."
+          explanation: "北美黑啄木鸟是一种大型啄木鸟，具有独特的红色羽冠和黑色身体配白色条纹。"
         },
         {
           id: 4,
-          question: "Which feature distinguishes a Mallard duck?",
+          question: "绿头鸭的特征是什么？",
           options: [
-            "Green head (male) and mottled brown (female)",
-            "Bright blue wings",
-            "Long curved beak",
-            "Red breast"
+            "绿色头部（雄性）和斑驳棕色（雌性）",
+            "亮蓝色翅膀",
+            "长弯曲的喙",
+            "红色胸部"
           ],
           correctAnswer: 0,
-          explanation: "Male Mallards have a distinctive iridescent green head, while females are mottled brown."
+          explanation: "雄性绿头鸭有独特的彩虹绿色头部，而雌性是斑驳棕色的。"
         },
         {
           id: 5,
-          question: "What is the key identifying feature of an American Goldfinch?",
+          question: "金翅雀的关键识别特征是什么？",
           options: [
-            "Black wings with white stripes",
-            "Bright yellow body and black cap (male)",
-            "Long thin beak",
-            "White tail feathers"
+            "黑色翅膀配白色条纹",
+            "亮黄色身体和黑色帽子（雄性）",
+            "细长的喙",
+            "白色尾羽"
           ],
           correctAnswer: 1,
-          explanation: "Male American Goldfinches are bright yellow with a distinctive black cap, making them easy to identify."
+          explanation: "雄性金翅雀呈亮黄色，有独特的黑色帽子，很容易辨认。"
         }
       ];
 
@@ -156,13 +156,13 @@ Component({
 
       let feedbackText = '';
       if (isCorrect) {
-        feedbackText = `Correct! ${currentQuestion.explanation}`;
+        feedbackText = `正确! ${currentQuestion.explanation}`;
         // Add points (20 points per question)
         this.setData({
           score: this.data.score + 20
         });
       } else {
-        feedbackText = `Incorrect. ${currentQuestion.explanation}`;
+        feedbackText = `错误。${currentQuestion.explanation}`;
       }
 
       this.setData({

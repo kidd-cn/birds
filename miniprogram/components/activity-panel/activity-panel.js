@@ -6,7 +6,7 @@ Component({
    * Component properties
    */
   properties: {
-    // Controls visibility of the panel
+    // 控制面板可见性
     visible: {
       type: Boolean,
       value: false
@@ -20,20 +20,20 @@ Component({
     activities: [
       {
         id: 'identification-game',
-        title: 'Identification Game',
-        description: 'Test your bird recognition skills',
+        title: '识别挑战',
+        description: '测试你的鸟类识别技能',
         icon: '🎯'
       },
       {
         id: 'knowledge-quiz',
-        title: 'Knowledge Quiz',
-        description: 'Learn interesting facts about birds',
+        title: '知识问答',
+        description: '学习有趣的鸟类知识',
         icon: '🧠'
       },
       {
         id: 'check-in',
-        title: 'Check-In',
-        description: 'Record your bird watching sessions',
+        title: '打卡记录',
+        description: '记录你的观鸟活动',
         icon: '✅'
       }
     ]

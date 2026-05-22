@@ -1,26 +1,26 @@
 <!-- Bird Identification Game Component -->
 <view class="bird-game-container">
   <view class="game-header">
-    <text class="score-text">Score: {{score}}</text>
-    <text class="question-num">Question: {{questionNumber}}/{{totalQuestions}}</text>
+    <text class="score-text">得分: {{score}}</text>
+    <text class="question-num">题目: {{questionNumber}}/{{totalQuestions}}</text>
   </view>
 
   <view class="difficulty-selector" wx:if="{{!gameStarted}}">
-    <text class="difficulty-title">Select Difficulty:</text>
+    <text class="difficulty-title">选择难度:</text>
     <view class="difficulty-buttons">
-      <button class="difficulty-btn {{difficulty === 1 ? 'selected' : ''}}" data-difficulty="1" bindtap="selectDifficulty">Easy</button>
-      <button class="difficulty-btn {{difficulty === 2 ? 'selected' : ''}}" data-difficulty="2" bindtap="selectDifficulty">Medium</button>
-      <button class="difficulty-btn {{difficulty === 3 ? 'selected' : ''}}" data-difficulty="3" bindtap="selectDifficulty">Hard</button>
-      <button class="difficulty-btn {{difficulty === 4 ? 'selected' : ''}}" data-difficulty="4" bindtap="selectDifficulty">Expert</button>
-      <button class="difficulty-btn {{difficulty === 5 ? 'selected' : ''}}" data-difficulty="5" bindtap="selectDifficulty">Master</button>
+      <button class="difficulty-btn {{difficulty === 1 ? 'selected' : ''}}" data-difficulty="1" bindtap="selectDifficulty">简单</button>
+      <button class="difficulty-btn {{difficulty === 2 ? 'selected' : ''}}" data-difficulty="2" bindtap="selectDifficulty">中等</button>
+      <button class="difficulty-btn {{difficulty === 3 ? 'selected' : ''}}" data-difficulty="3" bindtap="selectDifficulty">困难</button>
+      <button class="difficulty-btn {{difficulty === 4 ? 'selected' : ''}}" data-difficulty="4" bindtap="selectDifficulty">专家</button>
+      <button class="difficulty-btn {{difficulty === 5 ? 'selected' : ''}}" data-difficulty="5" bindtap="selectDifficulty">大师</button>
     </view>
-    <button class="start-btn" bindtap="startGame" disabled="{{difficulty === 0}}">Start Game</button>
+    <button class="start-btn" bindtap="startGame" disabled="{{difficulty === 0}}">开始游戏</button>
   </view>
 
   <view class="game-content" wx:if="{{gameStarted && !gameCompleted}}">
     <view class="bird-image-container">
       <image
-        src="{{currentQuestion.imageUrl}}"
+        src="{{currentQuestion.imageUrl || '/images/default-bird.jpg'}}"
         class="bird-image"
         mode="aspectFit"
         style="{{getImageStyle()}}"
@@ -45,19 +45,19 @@
 
     <view class="feedback-container" wx:if="{{showResult}}">
       <text class="feedback-text {{isCorrect ? 'correct-text' : 'incorrect-text'}}">
-        {{isCorrect ? 'Correct!' : 'Incorrect!'}}
+        {{isCorrect ? '正确!' : '错误!'}}
       </text>
-      <text class="bird-info">The bird is: {{currentQuestion.correctAnswer}}</text>
-      <button class="next-btn" bindtap="nextQuestion">{{questionNumber >= totalQuestions ? 'Finish Game' : 'Next Question'}}</button>
+      <text class="bird-info">这只鸟是: {{currentQuestion.correctAnswer}}</text>
+      <button class="next-btn" bindtap="nextQuestion">{{questionNumber >= totalQuestions ? '完成游戏' : '下一题'}}</button>
     </view>
   </view>
 
   <view class="game-result" wx:if="{{gameCompleted}}">
     <view class="final-score-container">
-      <text class="final-score-title">Game Completed!</text>
-      <text class="final-score">Final Score: {{score}}</text>
-      <text class="performance">Performance: {{getPerformanceMessage()}}</text>
+      <text class="final-score-title">游戏完成!</text>
+      <text class="final-score">最终得分: {{score}}</text>
+      <text class="performance">表现: {{getPerformanceMessage()}}</text>
     </view>
-    <button class="restart-btn" bindtap="restartGame">Play Again</button>
+    <button class="restart-btn" bindtap="restartGame">再玩一次</button>
   </view>
 </view>

@@ -2,21 +2,21 @@
 <view class="checkin-container">
   <!-- Progress bar section -->
   <view class="progress-section">
-    <text class="progress-title">Birding Badge Collection Progress</text>
+    <text class="progress-title">观鸟徽章收集进度</text>
     <view class="progress-bar-container">
       <view class="progress-bar-fill" style="width: {{progressPercentage}}%"></view>
     </view>
-    <text class="progress-text">{{progressPercentage}}% ({{checkedInSpotsCount}}/{{spots.length}} spots visited)</text>
+    <text class="progress-text">{{progressPercentage}}% (已访问 {{checkedInSpotsCount}}/{{spots.length}} 个观鸟点)</text>
   </view>
 
   <!-- Badge Awarded Notification -->
   <view class="badge-awarded-notification" wx:if="{{showBadgeAwarded}}">
-    <text class="notification-text">🎉 Badge Earned: {{awardedBadgeName}} 🎉</text>
+    <text class="notification-text">🎉 徽章获得: {{awardedBadgeName}} 🎉</text>
   </view>
 
   <!-- Birding Spots List -->
   <view class="spots-list">
-    <text class="section-title">Birding Spots</text>
+    <text class="section-title">观鸟点</text>
 
     <view class="spot-card" wx:for="{{spots}}" wx:key="id">
       <view class="spot-header">
@@ -33,7 +33,7 @@
       </view>
 
       <view class="bird-species">
-        <text class="species-label">Birds you might see:</text>
+        <text class="species-label">可能看到的鸟类:</text>
         <view class="species-list">
           <text class="species-item" wx:for="{{item.birdSpecies}}" wx:key="*this">{{item}}</text>
         </view>
@@ -45,20 +45,20 @@
         data-spotid="{{item.id}}"
         disabled="{{isSpotCheckedIn(item.id)}}"
       >
-        {{isSpotCheckedIn(item.id) ? 'Checked In!' : 'Check In'}}
+        {{isSpotCheckedIn(item.id) ? '已签到!' : '签到'}}
       </button>
     </view>
   </view>
 
   <!-- Badges Section -->
   <view class="badges-section">
-    <text class="section-title">Your Badges</text>
+    <text class="section-title">你的徽章</text>
     <view class="badges-grid">
       <view class="badge-item" wx:for="{{badges}}" wx:for-item="badge" wx:key="id">
         <view class="badge-inner {{badge.earned ? 'earned-badge' : 'unearned-badge'}}">
           <image class="badge-icon" src="/images/{{badge.icon}}" mode="aspectFit"></image>
           <text class="badge-name">{{badge.name}}</text>
-          <text class="badge-status">{{badge.earned ? 'Earned' : 'Not Earned'}}</text>
+          <text class="badge-status">{{badge.earned ? '已获得' : '未获得'}}</text>
           <text class="badge-desc">{{badge.description}}</text>
         </view>
       </view>

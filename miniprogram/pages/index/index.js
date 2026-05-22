@@ -441,6 +441,40 @@ Page({
   },
 
   /**
+   * 处理活动选择事件
+   */
+  onActivitySelected(e) {
+    const { activityId } = e.detail;
+
+    // 根据活动ID导航到对应的页面
+    switch(activityId) {
+      case 'identification-game':
+        wx.navigateTo({
+          url: '/pages/activities/identification-game'
+        });
+        break;
+      case 'knowledge-quiz':
+        wx.navigateTo({
+          url: '/pages/activities/knowledge-quiz'
+        });
+        break;
+      case 'check-in':
+        wx.navigateTo({
+          url: '/pages/activities/check-in'
+        });
+        break;
+      default:
+        console.error('Unknown activity ID:', activityId);
+        break;
+    }
+
+    // 关闭活动面板
+    this.setData({
+      showActivityPanel: false
+    });
+  },
+
+  /**
    * 选择活动类型
    */
   selectActivity(e) {
@@ -590,5 +624,13 @@ Page({
         current: this.data.currentBird.imageUrl
       });
     }
+  },
+
+  /**
+   * 图片加载错误处理
+   */
+  onImageError(e) {
+    console.error('图片加载失败:', e);
+    // 这里可以设置一个默认图片，但因为我们已经在WXML中使用了默认图片，所以这里主要是记录错误
   }
 });

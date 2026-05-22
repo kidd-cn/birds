@@ -244,10 +244,10 @@ Component({
     getPerformanceMessage() {
       const percentage = (this.data.score / (this.data.totalQuestions * this.calculateScore(this.data.difficulty))) * 100;
 
-      if (percentage >= 90) return 'Excellent!';
-      else if (percentage >= 70) return 'Good Job!';
-      else if (percentage >= 50) return 'Not Bad!';
-      else return 'Keep Learning!';
+      if (percentage >= 90) return '太棒了!';
+      else if (percentage >= 70) return '做得好!';
+      else if (percentage >= 50) return '还不错!';
+      else return '继续努力!';
     },
 
     onImageError(e) {

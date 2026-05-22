@@ -3,11 +3,11 @@
   <!-- Quiz Welcome Screen -->
   <block wx:if="{{!quizStarted && !quizCompleted}}">
     <view class="welcome-screen">
-      <text class="title">Bird Knowledge Quiz</text>
-      <text class="subtitle">Test your knowledge of bird appearance features!</text>
-      <text class="instructions">Answer 5 questions about bird identification based on their appearance. Each question is worth 20 points.</text>
+      <text class="title">鸟类知识问答</text>
+      <text class="subtitle">测试你对鸟类外貌特征的了解!</text>
+      <text class="instructions">回答5个关于鸟类辨识外观特征的问题。每题20分。</text>
 
-      <button class="start-button" bindtap="startQuiz">Start Quiz</button>
+      <button class="start-button" bindtap="startQuiz">开始答题</button>
     </view>
   </block>
 
@@ -15,12 +15,12 @@
   <block wx:if="{{quizStarted && !quizCompleted}}">
     <view class="quiz-content">
       <view class="progress-bar">
-        <text class="progress-text">Question {{currentQuestionIndex + 1}} of {{questions.length}}</text>
-        <text class="score-text">Score: {{score}}/{{questions.length * 20}}</text>
+        <text class="progress-text">第 {{currentQuestionIndex + 1}} 题，共 {{questions.length}} 题</text>
+        <text class="score-text">得分: {{score}}/{{questions.length * 20}}</text>
       </view>
 
       <view class="question-section">
-        <text class="question-number">Question {{currentQuestionIndex + 1}}</text>
+        <text class="question-number">第 {{currentQuestionIndex + 1}} 题</text>
         <text class="question-text">{{questions[currentQuestionIndex].question}}</text>
 
         <!-- Options -->
@@ -51,18 +51,18 @@
   <!-- Results Screen -->
   <block wx:if="{{quizCompleted}}">
     <view class="results-screen">
-      <text class="results-title">Quiz Completed!</text>
-      <text class="final-score">Your Score: {{quizResults.score}}/{{questions.length * 20}} ({{quizResults.percentage}}%)</text>
+      <text class="results-title">答题完成!</text>
+      <text class="final-score">你的得分: {{quizResults.score}}/{{questions.length * 20}} ({{quizResults.percentage}}%)</text>
 
       <view class="performance-rating" style="color: {{quizResults.performanceRating.color}}">
         <text>{{quizResults.performanceRating.label}}</text>
       </view>
 
       <view class="performance-details">
-        <text class="detail-text">You've demonstrated great knowledge of bird appearance features!</text>
+        <text class="detail-text">你展示了对鸟类外貌特征的丰富知识!</text>
       </view>
 
-      <button class="restart-button" bindtap="restartQuiz">Take Quiz Again</button>
+      <button class="restart-button" bindtap="restartQuiz">再次答题</button>
     </view>
   </block>
 </view>

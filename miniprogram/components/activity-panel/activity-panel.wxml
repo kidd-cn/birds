@@ -7,7 +7,7 @@
   <view class="panel-content">
     <!-- Header -->
     <view class="header">
-      <text class="title">Activities</text>
+      <text class="title">活动中心</text>
       <button class="close-btn" bindtap="handleClose">
         <text class="close-icon">✕</text>
       </button>

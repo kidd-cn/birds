@@ -18,95 +18,95 @@ Component({
     spots: [
       {
         id: 'spot1',
-        name: 'Shenzhen Bay Park',
-        location: 'Nanshan District',
-        description: 'Coastal wetland with diverse waterbirds',
-        birdSpecies: ['Black-faced Spoonbill', 'Great Egret', 'Little Egret'],
-        difficulty: 'Easy',
+        name: '深圳湾公园',
+        location: '南山区',
+        description: '沿海湿地，拥有丰富的水鸟种类',
+        birdSpecies: ['黑脸琵鹭', '大白鹭', '小白鹭'],
+        difficulty: '简单',
         icon: 'bird-marker.svg'
       },
       {
         id: 'spot2',
-        name: 'Xili Lake Reservoir',
-        location: 'Nanshan District',
-        description: 'Freshwater habitat with forest edges',
-        birdSpecies: ['White-throated Kingfisher', 'Common Moorhen', 'Purple Swamphen'],
-        difficulty: 'Moderate',
+        name: '西丽湖水库',
+        location: '南山区',
+        description: '淡水栖息地，周边有森林边缘',
+        birdSpecies: ['白喉针尾雨燕', '普通秧鸡', '紫水鸡'],
+        difficulty: '中等',
         icon: 'bird-marker.svg'
       },
       {
         id: 'spot3',
-        name: 'Dameisha Beach',
-        location: 'Dapeng New District',
-        description: 'Coastal area with rocky shores',
-        birdSpecies: ['Whimbrel', 'Pacific Golden Plover', 'Red Knot'],
-        difficulty: 'Easy',
+        name: '大梅沙海滩',
+        location: '大鹏新区',
+        description: '海岸区域，岩石海岸线',
+        birdSpecies: ['鹬鸻', '太平洋金斑鸻', '红腹滨鹬'],
+        difficulty: '简单',
         icon: 'bird-marker.svg'
       },
       {
         id: 'spot4',
-        name: 'Huangbeiling Forest Park',
-        location: 'Futian District',
-        description: 'Urban forest with native species',
-        birdSpecies: ['Greater Racket-tailed Drongo', 'Red-billed Leiothrix', 'Yellow-bellied Warbler'],
-        difficulty: 'Hard',
+        name: '黄贝岭森林公园',
+        location: '福田区',
+        description: '城市森林，拥有本土物种',
+        birdSpecies: ['大盘尾', '红嘴相思鸟', '黄腹柳莺'],
+        difficulty: '困难',
         icon: 'bird-marker.svg'
       },
       {
         id: 'spot5',
-        name: 'Honghu Park',
-        location: 'Futian District',
-        description: 'Urban lake with migratory birds',
-        birdSpecies: ['Chinese Pond Heron', 'Purple Heron', 'White-breasted Waterhen'],
-        difficulty: 'Easy',
+        name: '洪湖公园',
+        location: '福田区',
+        description: '城市湖泊，栖息着候鸟',
+        birdSpecies: ['中国池鹭', '紫鹭', '白胸苦恶鸟'],
+        difficulty: '简单',
         icon: 'bird-marker.svg'
       }
     ],
     badges: [
       {
         id: 'badge1',
-        name: 'Shenzhen Bay Explorer',
+        name: '深圳湾探索者',
         spotId: 'spot1',
-        description: 'Checked in at Shenzhen Bay Park',
+        description: '已签到深圳湾公园',
         icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge2',
-        name: 'Xili Lake Adventurer',
+        name: '西丽湖探险家',
         spotId: 'spot2',
-        description: 'Checked in at Xili Lake Reservoir',
+        description: '已签到西丽湖水库',
         icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge3',
-        name: 'Dameisha Coastal Walker',
+        name: '大梅沙海岸行者',
         spotId: 'spot3',
-        description: 'Checked in at Dameisha Beach',
+        description: '已签到大梅沙海滩',
         icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge4',
-        name: 'Huangbeiling Hiker',
+        name: '黄贝岭登山客',
         spotId: 'spot4',
-        description: 'Checked in at Huangbeiling Forest Park',
+        description: '已签到黄贝岭森林公园',
         icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge5',
-        name: 'Honghu Park Visitor',
+        name: '洪湖公园访客',
         spotId: 'spot5',
-        description: 'Checked in at Honghu Park',
+        description: '已签到洪湖公园',
         icon: 'bird-marker.svg',
         earned: false
       },
       {
         id: 'badge_all_spots',
-        name: 'Birding Master',
-        description: 'Visited all 5 birding spots',
+        name: '观鸟大师',
+        description: '已访问全部5个观鸟点',
         icon: 'bird-marker.svg',
         earned: false,
         requirement: 'all_spots'

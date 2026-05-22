@@ -91,6 +91,13 @@
   border-radius: 5px;
 }
 
+.correct-answer-text {
+  display: block;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-top: 8px;
+}
+
 .completion-screen {
   text-align: center;
   padding: 40px 20px;
@@ -124,6 +131,78 @@
   font-size: 16px;
   color: #666;
   line-height: 1.5;
+}
+
+.detailed-results {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.results-subtitle {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.result-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.question-number {
+  font-weight: bold;
+  color: #555;
+}
+
+.result-status {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.result-status.correct {
+  color: #4CAF50;
+}
+
+.result-status.incorrect {
+  color: #f44336;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.your-answer, .correct-answer {
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+.your-answer {
+  color: #666;
+}
+
+.correct-answer {
+  color: #4CAF50;
+  font-weight: 500;
 }
 
 .buttons-container {

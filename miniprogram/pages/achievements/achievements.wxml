@@ -1,0 +1,25 @@
+<!-- pages/achievements/achievements.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">我的成就</text>
+  </view>
+
+  <view class="achievements-list">
+    <view class="achievement-card" wx:for="{{achievements}}" wx:key="id">
+      <view class="achievement-icon">
+        <text class="icon">{{item.icon}}</text>
+      </view>
+      <view class="achievement-content">
+        <text class="achievement-title">{{item.title}}</text>
+        <text class="achievement-description">{{item.description}}</text>
+        <view class="achievement-status {{item.unlocked ? 'unlocked' : 'locked'}}">
+          <text>{{item.unlocked ? '已解锁' : '未解锁'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="no-achievements" wx:if="{{achievements.length === 0}}">
+    <text>还没有获得任何成就，继续努力观鸟吧！</text>
+  </view>
+</view>

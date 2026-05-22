@@ -6,22 +6,22 @@
   </view>
 
   <view class="progress-container">
-    <progress percent="{{(currentQuestion / gameBirds.length) * 100}}" stroke-width="6" activeColor="#4CAF50"/>
-    <text class="progress-text">{{currentQuestion}} / {{gameBirds.length}}</text>
+    <progress percent="{{completedProgress}}" stroke-width="6" activeColor="#4CAF50"/>
+    <text class="progress-text">{{currentQuestion + 1}} / {{gameBirds.length}}</text>
   </view>
 
   <block wx:if="{{gameStarted && !gameCompleted}}">
     <view class="question-container" wx:if="{{currentBird}}">
       <view class="bird-image-container">
-        <image src="{{currentBird.imageUrl || '/images/default-bird.png'}}" mode="aspectFit" class="bird-image"/>
+        <image src="{{currentBird.imageUrl || '/images/default-bird.jpg'}}" mode="aspectFit" class="bird-image" binderror="onImageError" bindload="onImageLoad"/>
       </view>
 
       <view class="options-container">
         <button
           wx:for="{{options}}"
-          wx:key="id"
-          class="option-button {{showResult && item.commonName === correctAnswer ? 'correct' : ''}} {{showResult && item.id === userAnswer && item.commonName !== correctAnswer ? 'incorrect' : ''}}"
-          data-id="{{item.id}}"
+          wx:key="optionId"
+          class="option-button {{showResult && item.commonName === correctAnswer ? 'correct' : ''}} {{showResult && item.optionId === selectedAnswerId && item.commonName !== correctAnswer ? 'incorrect' : ''}}"
+          data-id="{{item.optionId}}"
           bindtap="selectAnswer"
           disabled="{{showResult}}"
         >
@@ -31,6 +31,7 @@
 
       <view class="feedback" wx:if="{{showResult}}">
         <text>{{feedback}}</text>
+        <text class="correct-answer-text" wx:if="{{!gameCompleted}}">正确答案: {{correctAnswer}}</text>
       </view>
     </view>
   </block>
@@ -44,6 +45,21 @@
           score / gameBirds.length >= 0.6 ? '不错！继续学习鸟类知识！' :
           '加油！多观察鸟类可以帮助提高识别能力'}}
       </text>
+    </view>
+
+    <!-- 显示每题的详细结果 -->
+    <view class="detailed-results">
+      <text class="results-subtitle">答题详情:</text>
+      <view class="result-item" wx:for="{{questionResults}}" wx:key="questionNum">
+        <view class="result-header">
+          <text class="question-number">第{{item.questionNum}}题:</text>
+          <text class="result-status {{item.isCorrect ? 'correct' : 'incorrect'}}">{{item.isCorrect ? '✓' : '✗'}}</text>
+        </view>
+        <view class="result-content">
+          <text class="your-answer">您的答案: {{item.selectedBird}}</text>
+          <text class="correct-answer">正确答案: {{item.correctBird}}</text>
+        </view>
+      </view>
     </view>
 
     <view class="buttons-container">

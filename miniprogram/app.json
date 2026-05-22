@@ -6,7 +6,8 @@
     "pages/bird-game-demo/bird-game-demo",
     "pages/activities/identification-game",
     "pages/activities/knowledge-quiz",
-    "pages/activities/check-in"
+    "pages/activities/check-in",
+    "pages/achievements/achievements"
   ],
   "window": {
     "backgroundTextStyle": "dark",
