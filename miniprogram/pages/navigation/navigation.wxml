@@ -24,6 +24,15 @@
       </view>
       <view class="card-arrow">›</view>
     </view>
+
+    <view class="feature-card" bindtap="goToActivityCenter">
+      <view class="card-icon">🎯</view>
+      <view class="card-content">
+        <text class="card-title">活动中心</text>
+        <text class="card-desc">参与鸟类识别挑战，知识问答，每日打卡等活动</text>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
   </view>
 
   <view class="intro">

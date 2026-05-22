@@ -35,6 +35,15 @@ Page({
   },
 
   /**
+   * 前往活动中心页面
+   */
+  goToActivityCenter() {
+    wx.navigateTo({
+      url: '../activities/activity-center'  // 导航到统一的活动中心页面
+    });
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
