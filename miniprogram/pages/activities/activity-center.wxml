@@ -1,0 +1,35 @@
+<!-- pages/activities/activity-center.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">活动中心</text>
+  </view>
+
+  <view class="activities-list">
+    <view class="activity-item" bindtap="goToIdentificationGame">
+      <view class="activity-icon">🎯</view>
+      <view class="activity-content">
+        <text class="activity-title">识别挑战</text>
+        <text class="activity-desc">测试你的鸟类识别技能</text>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+
+    <view class="activity-item" bindtap="goToKnowledgeQuiz">
+      <view class="activity-icon">🧠</view>
+      <view class="activity-content">
+        <text class="activity-title">知识问答</text>
+        <text class="activity-desc">学习有趣的鸟类知识</text>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+
+    <view class="activity-item" bindtap="goToCheckIn">
+      <view class="activity-icon">✅</view>
+      <view class="activity-content">
+        <text class="activity-title">每日签到</text>
+        <text class="activity-desc">记录你的观鸟活动</text>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+  </view>
+</view>
