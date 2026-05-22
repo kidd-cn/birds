@@ -2,8 +2,8 @@
 .container {
   padding: 20px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
-  color: white;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 .header {
