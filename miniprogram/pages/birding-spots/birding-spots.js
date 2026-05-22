@@ -80,95 +80,95 @@ Page({
           id: 1,
           name: "深圳湾公园",
           location: "深圳市南山区望海路1408号",
-          coordinates: { latitude: 22.490000, longitude: 113.940000 }, // 深圳湾公园坐标
-          description: "深圳湾公园是观鸟胜地，每年冬季都有大量候鸟在此栖息，包括黑脸琵鹭、白鹭等多种珍稀鸟类。",
-          area: "120公顷",
+          coordinates: { latitude: 22.490000, longitude: 113.940000 },
+          description: "深圳湾公园位于深圳市南山区，沿深圳湾海岸线而建，总面积约128.74公顷，是深圳最著名的滨海生态公园。拥有独特的红树林湿地生态系统，与福田红树林自然保护区连成一体，面向碧波荡漾的深圳湾。这里记录鸟类超过200种，是全球极度濒危鸟类黑脸琵鹭的重要越冬地，每年约有375只黑脸琵鹭在此过冬，占全球总数的近1/10。",
+          area: "128.74公顷",
           openingHours: "6:00-23:00",
           transportation: "地铁2号线海上世界站A出口，步行约15分钟",
-          features: "沿海湿地，红树林生态系统",
-          bestBirdingTime: "秋冬季最佳，特别是11月至次年3月",
-          hotspots: "北湾、中湾及南湾沿线，以及红树林区域",
+          features: "沿海湿地，红树林生态系统，全球黑脸琵鹭重要越冬地",
+          bestBirdingTime: "每年11月至次年3月最佳，低潮位时（潮汐1.2米以下）是观察水鸟的最佳时机",
+          hotspots: "红树林海滨生态公园南侧滩涂、深圳湾地铁站南侧滩涂、沙河入海口滩涂",
           ecology: {
-            habitat: "滨海湿地生态系统",
-            vegetation: "红树林、芦苇、海草床",
-            seasonalFeatures: "冬季候鸟天堂，夏秋两季也有留鸟和繁殖鸟",
-            conservationStatus: "国家级重要生态区域"
+            habitat: "滨海红树林湿地生态系统",
+            vegetation: "红树林群落、沿海滩涂植被",
+            seasonalFeatures: "冬季候鸟天堂，11月至次年3月鸟类最为丰富",
+            conservationStatus: "全球黑脸琵鹭重要越冬地，占全球总数近1/10"
           }
         },
         {
           id: 2,
           name: "华侨城国家湿地公园",
           location: "深圳市南山区白石路东8号",
-          coordinates: { latitude: 22.478000, longitude: 113.935000 }, // 华侨城湿地公园坐标
-          description: "华侨城湿地公园是深圳首个国家级湿地公园，拥有丰富的鸟类资源和优美的自然景观。",
-          area: "68.5公顷",
+          coordinates: { latitude: 22.478000, longitude: 113.935000 },
+          description: "华侨城湿地公园位于深圳市南山区，是中国唯一地处现代化大都市腹地的滨海红树林湿地。公园保留了原始海岸线的原貌及原生红树林群落，践行'还自然一个自然的状态'的创新管理理念。公园共记录鸟类171种、植被320种，平均每年记录鸟类超1万只次，2018年底还记录到豹猫种群的繁育，印证了湿地生态系统已日趋稳定。",
+          area: "现有面积（修复后相比2007年提升超一倍）",
           openingHours: "9:00-17:00（周一闭馆）",
           transportation: "地铁1号线侨城东站B出口，步行约10分钟",
-          features: "淡水湿地，人工修复生态系统",
-          bestBirdingTime: "全年适宜，春秋迁徙季节最佳",
-          hotspots: "观鸟屋、水禽湖及周边芦苇荡",
+          features: "城市腹地红树林湿地，创新生态管理理念，预约限流参观",
+          bestBirdingTime: "全年皆宜，候鸟季（10月至次年4月）鸟类种类和数量最为丰富，非候鸟季以留鸟为主",
+          hotspots: "湿地生境维护区、生态浮岛周边、公园内多处观鸟点",
           ecology: {
-            habitat: "淡水湿地生态系统",
-            vegetation: "芦苇、香蒲、荷花等水生植物",
-            seasonalFeatures: "四季分明，春秋季候鸟迁徙高峰期",
-            conservationStatus: "国家重要湿地，生态修复示范区"
+            habitat: "城市滨海红树林湿地生态系统",
+            vegetation: "原生红树林群落、多样化生态植被",
+            seasonalFeatures: "全年适宜观鸟，候鸟季与留鸟季节各具特色",
+            conservationStatus: "践行'无痕湿地'理念，生态系统日趋稳定"
           }
         },
         {
           id: 3,
           name: "福田红树林自然保护区",
           location: "深圳市福田区红树林路1号",
-          coordinates: { latitude: 22.483333, longitude: 113.950000 }, // 福田红树林坐标
-          description: "福田红树林自然保护区是全国唯一位于市区的国家级自然保护区，鸟类资源极为丰富。",
-          area: "367.64公顷",
+          coordinates: { latitude: 22.483333, longitude: 113.950000 },
+          description: "福田红树林自然保护区与深圳湾公园、福田红树林湿地公园连成一体，是国家级自然保护区。拥有完整的红树林生态系统，是深圳湾湿地的重要组成部分。这里是东亚-澳大利西亚候鸟迁徙通道上的重要驿站，记录鸟类约200种，其中23种为国家重点保护鸟类。每年有超过10万只的候鸟在深圳湾歇脚或过冬。",
+          area: "国家级自然保护区核心区域",
           openingHours: "9:00-17:00",
           transportation: "地铁9号线侨城东站B出口，步行约15分钟",
-          features: "天然红树林，生物多样性极高的保护区",
-          bestBirdingTime: "10月至次年4月最佳",
-          hotspots: "基围、高潮位栖息地、核心区域",
+          features: "国家级自然保护区，东亚-澳大利西亚候鸟迁徙重要驿站，全球黑脸琵鹭重要栖息地",
+          bestBirdingTime: "每年11月至次年3月为最佳观鸟期，此时候鸟数量达到峰值",
+          hotspots: "红树林海滨生态公园南侧、深圳湾地铁站南侧滩涂、沙河入海口滩涂",
           ecology: {
-            habitat: "天然红树林生态系统",
-            vegetation: "秋茄、桐花树、海桑等红树植物",
-            seasonalFeatures: "冬季候鸟高峰，春秋季迁徙期",
-            conservationStatus: "国际重要湿地，拉姆萨尔公约名录"
+            habitat: "国家级红树林湿地生态系统",
+            vegetation: "完整红树林群落，近海与海岸湿地植被",
+            seasonalFeatures: "冬季候鸟高峰，11月至次年3月鸟类最为密集",
+            conservationStatus: "国家重要湿地，全球黑脸琵鹭重要栖息地（占全球总量8.6%）"
           }
         },
         {
           id: 4,
           name: "仙湖植物园",
           location: "深圳市罗湖区莲塘仙湖路160号",
-          coordinates: { latitude: 22.546000, longitude: 114.135000 }, // 仙湖植物园坐标
-          description: "仙湖植物园不仅植物种类丰富，也是观鸟的好去处，尤其在迁徙季节能看到多种林鸟。",
+          coordinates: { latitude: 22.546000, longitude: 114.135000 },
+          description: "仙湖植物园位于深圳市罗湖区梧桐山脚下，是梧桐山风景区的重要组成部分。植物园依山傍水，拥有丰富的亚热带常绿阔叶林植被，生态环境优越。根据梧桐山风景区的调查，共记录鸟类3目14科19种，其中鹰形目1种，蜀形目2种，雀形目16种，以林鸟为主。",
           area: "668公顷",
           openingHours: "8:00-18:00",
           transportation: "梧桐山假日专线1号、M445路公交车仙湖植物园站",
-          features: "山地森林生态系统，植物多样性丰富",
-          bestBirdingTime: "春秋迁徙季节，早晨和傍晚最佳",
-          hotspots: "苏铁园、竹园及森林步道",
+          features: "山地森林生态系统，亚热带常绿阔叶林，林鸟栖息地",
+          bestBirdingTime: "春季（3-5月）候鸟迁徙经过，林鸟繁殖期活跃；秋季（9-11月）候鸟南迁过境；全年留鸟可见",
+          hotspots: "湖区周边（水鸟和林鸟交汇地带）、山林步道（观察林鸟和猛禽）、棕榈园和苏铁园等专类园",
           ecology: {
             habitat: "亚热带山地森林生态系统",
-            vegetation: "苏铁、竹类、蕨类及多种乔灌木",
-            seasonalFeatures: "迁徙鸟类中转站，四季鸟种不同",
-            conservationStatus: "保护珍稀植物与鸟类栖息地"
+            vegetation: "亚热带常绿阔叶林，苏铁、竹类、蕨类及多种乔灌木",
+            seasonalFeatures: "春秋季候鸟迁徙，全年留鸟栖息，四季鸟种不同",
+            conservationStatus: "梧桐山风景区鸟类栖息地重要组成部分"
           }
         },
         {
           id: 5,
           name: "东湖公园",
           location: "深圳市罗湖区爱国路4006号",
-          coordinates: { latitude: 22.539000, longitude: 114.103000 }, // 东湖公园坐标
-          description: "东湖公园是深圳市最早的市政公园之一，水域面积较大，是城市中的鸟类栖息地。",
-          area: "151公顷",
+          coordinates: { latitude: 22.539000, longitude: 114.103000 },
+          description: "深圳东湖公园位于深圳市罗湖区，始建于1961年，是深圳市最早建立的市政公园之一。公园属于深圳东湖地方级湿地自然公园，是梧桐山风景区的组成部分。公园以湖泊湿地为主，水生生物丰富，拥有广阔的湿地面积，湖中成片生长的芦苇群落，是水鸟觅食与栖息的理想场所。根据区域评价报告，东湖公园共记录鸟类7目16科24种。",
+          area: "深圳市最早建立的市政公园之一",
           openingHours: "6:00-22:00",
           transportation: "地铁14号线黄木岗站A出口，步行约10分钟",
-          features: "城市综合性公园，水系发达",
-          bestBirdingTime: "全年适宜，清晨最佳",
-          hotspots: "湖心岛、亲水平台及湖岸区域",
+          features: "城市湖泊湿地，淡水咸水交汇，芦苇群落，梧桐山风景区组成部分",
+          bestBirdingTime: "冬季（11月-次年3月）候鸟越冬期水鸟数量增加；春季（3-5月）留鸟繁殖期鸣声活跃；清晨和傍晚为鸟类觅食活动高峰期",
+          hotspots: "湖区沿岸（观察鹭类、黑水鸡等水鸟）、芦苇湿地（观察鹬类、秧鸡等）、竹林和树林（观察林鸟和猛禽）、东湖绿道（沿湖观鸟步道）",
           ecology: {
-            habitat: "城市淡水湖泊生态系统",
-            vegetation: "湖滨植物、绿化带树木",
-            seasonalFeatures: "留鸟为主，春秋有少量迁徙鸟",
-            conservationStatus: "城市生态绿肺，鸟类栖息地"
+            habitat: "城市淡水湖泊湿地生态系统",
+            vegetation: "芦苇群落、麻竹群落、湖滨植物、绿化带树木",
+            seasonalFeatures: "冬季候鸟越冬，春季留鸟繁殖，留鸟为主，春秋有少量迁徙鸟",
+            conservationStatus: "深圳市早期建立的鸟类栖息地，城市生态绿肺"
           }
         }
       ]
