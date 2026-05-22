@@ -168,7 +168,7 @@ const realBirdObservations = [
     habitat: "山林",
     season: "春季",
     description: "深圳西部重要的山林鸟类栖息地，宝安区标志性自然景区，素有'凤山福水福盈地'美誉。以林鸟和猛禽为主，常见画眉、白头鹎、红耳鹎、珠颈斑鸠、八哥、乌鸫等留鸟；迁徙季可见凤头蜂鹰、赤腹鹰、松雀鹰等猛禽过境。海拔376米，植被覆盖率高，拥有凤凰古庙人文景观与自然生态结合，山涧溪流和荔枝林为鸟类提供多样生境。",
-    imageUrl: "/images/Chinese_Bubul.jpeg",
+    imageUrl: "/images/Hua_Mei.jpeg",
     observer: "凤凰山森林公园管理员",
     confidence: 0.93
   }
