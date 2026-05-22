@@ -219,8 +219,8 @@ Page({
       try {
         // 尝试检查文件是否存在
         const fs = wx.getFileSystemManager();
-        const stat = fs.statSync(relativePath, true);
-        return stat.isDirectory === false;
+        const stats = fs.statSync(relativePath);
+        return stats.isFile(); // 返回是否为文件
       } catch (e) {
         // 如果无法访问文件，返回false
         return false;
