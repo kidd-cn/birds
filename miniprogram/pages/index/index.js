@@ -214,15 +214,22 @@ Page({
 
     // 检查是否为本地路径
     if (imagePath && imagePath.startsWith('/')) {
-      // 移除开头的斜杠以匹配实际文件路径
+      // 对于应用内置的本地图片，直接假设它们存在
+      // 通常在微信小程序中，静态资源路径是可靠的
+      // 只有当路径以 /images/ 开头时才认为有效
+      if (imagePath.startsWith('/images/') || imagePath.startsWith('/assets/')) {
+        // 验证路径是否包含有效的图片扩展名
+        const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
+        return validExtensions.some(ext => imagePath.toLowerCase().endsWith(ext));
+      }
+
+      // 对于其他路径仍进行文件系统检查
       const relativePath = '.' + imagePath;
       try {
-        // 尝试检查文件是否存在
         const fs = wx.getFileSystemManager();
-        const stats = fs.accessSync(relativePath); // 使用accessSync检测文件是否存在
-        return true; // 如果没有抛出异常，说明文件存在
+        fs.accessSync(relativePath);
+        return true;
       } catch (e) {
-        // 如果无法访问文件，返回false
         return false;
       }
     }
