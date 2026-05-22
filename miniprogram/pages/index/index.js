@@ -213,14 +213,14 @@ Page({
     }
 
     // 检查是否为本地路径
-    if (imagePath.startsWith('/')) {
+    if (imagePath && imagePath.startsWith('/')) {
       // 移除开头的斜杠以匹配实际文件路径
       const relativePath = '.' + imagePath;
       try {
         // 尝试检查文件是否存在
         const fs = wx.getFileSystemManager();
-        const stats = fs.statSync(relativePath);
-        return stats.isFile(); // 返回是否为文件
+        const stats = fs.accessSync(relativePath); // 使用accessSync检测文件是否存在
+        return true; // 如果没有抛出异常，说明文件存在
       } catch (e) {
         // 如果无法访问文件，返回false
         return false;
