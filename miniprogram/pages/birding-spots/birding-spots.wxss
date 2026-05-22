@@ -230,6 +230,65 @@ page {
   margin: 5rpx;
 }
 
+/* 评级星星样式 */
+.rating-stars {
+  display: flex;
+  flex-direction: row;
+}
+
+.star {
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.rating-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.rating-text {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.rating-display-large {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30rpx 0;
+}
+
+.large-star {
+  font-size: 36rpx;
+  margin-right: 5rpx;
+}
+
+.large-star.filled {
+  color: gold;
+}
+
+.large-star.empty {
+  color: #ddd;
+}
+
+.rating-text-large {
+  font-size: 28rpx;
+  color: #666;
+  margin-left: 10rpx;
+  font-weight: bold;
+}
+
 /* 公园详情面板样式 */
 .park-details {
   position: fixed;

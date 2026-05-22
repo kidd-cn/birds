@@ -9,7 +9,9 @@
     <view class="spot-card {{selectedSpot && selectedSpot.name == item.name ? 'selected' : ''}}" wx:for="{{birdingSpots}}" wx:for-index="spotIndex" wx:key="name" bindtap="selectSpot" data-index="{{spotIndex}}">
       <view class="spot-header">
         <text class="spot-name">{{item.name}}</text>
-        <text class="spot-status">查看详情</text>
+        <view class="rating-stars">
+          <text wx:for="{{[1,2,3,4,5]}}" wx:key="index" class="star {{index < item.rating ? 'filled' : 'empty'}}">🌟</text>
+        </view>
       </view>
       <view class="spot-details">
         <view class="detail-item">
@@ -69,6 +71,13 @@
           <text class="section-title">观察提示</text>
           <view class="section-content">{{currentSpotDetail.observationTips}}</view>
         </view>
+        <view class="modal-section">
+          <text class="section-title">评分</text>
+          <view class="rating-display">
+            <text wx:for="{{[1,2,3,4,5]}}" wx:key="index" class="star {{index < currentSpotDetail.rating ? 'filled' : 'empty'}}">🌟</text>
+            <text class="rating-text"> {{currentSpotDetail.rating}}星</text>
+          </view>
+        </view>
       </scroll-view>
     </view>
   </view>
@@ -102,6 +111,10 @@
       <view class="tab-pane" wx:if="{{activeTab === 'overview'}}">
         <view class="overview-section">
           <text class="section-title">{{selectedSpot.name}}</text>
+          <view class="rating-display-large">
+            <text wx:for="{{[1,2,3,4,5]}}" wx:key="index" class="large-star {{index < selectedSpot.rating ? 'filled' : 'empty'}}">🌟</text>
+            <text class="rating-text-large"> {{selectedSpot.rating}}星好评</text>
+          </view>
           <view class="info-item">
             <text class="info-label">位置：</text>
             <text class="info-value">{{selectedSpot.location}}</text>
@@ -160,7 +173,7 @@
           <text class="section-title">生态环境</text>
           <view class="info-item">
             <text class="info-label">栖息环境：</text>
-            <text class="info-value">{{selectedSpot.ecology.habitat || '未提供'}}</text>
+            <text class="info-value">{{selectedSpot.ecology.habitat || '未 provide'}}</text>
           </view>
           <view class="info-item">
             <text class="info-label">植被类型：</text>
