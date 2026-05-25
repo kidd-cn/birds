@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "深圳观鸟点",
-  "backgroundColor": "#f5f5f5"
+  "backgroundColor": "#f5f5f5",
+  "usingComponents": {
+    "star-rating": "../../components/star-rating/star-rating"
+  }
 }

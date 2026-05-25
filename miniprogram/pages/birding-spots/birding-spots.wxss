@@ -7,8 +7,9 @@ page {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20rpx;
+  padding-bottom: 140rpx; /* 为底部固定按钮预留空间 */
   box-sizing: border-box;
   background-color: var(--bg-page);
 }
@@ -36,6 +37,7 @@ page {
 .spots-list {
   flex: 1;
   margin: 20rpx 0;
+  overflow-y: auto;
 }
 
 .spot-card {
@@ -109,7 +111,17 @@ page {
 }
 
 .bottom-section {
-  padding: 30rpx 0;
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .primary-btn {
@@ -117,9 +129,13 @@ page {
   color: white;
   border: none;
   border-radius: 50rpx;
-  padding: 30rpx;
+  padding: 12rpx 100rpx; /* 进一步减小高度，保持宽度 */
   font-size: 32rpx;
   font-weight: bold;
+  box-shadow: 0 8rpx 20rpx rgba(46, 139, 87, 0.3);
+  width: auto;
+  max-width: 85%;
+  text-align: center;
 }
 
 /* 详情模态框样式 */
@@ -246,7 +262,8 @@ page {
 }
 
 .star.empty {
-  color: #ddd;
+  color: #ccc;
+  opacity: 0.3;
 }
 
 .rating-display {

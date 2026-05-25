@@ -1,0 +1,36 @@
+/* miniprogram/components/star-rating/star-rating.wxss */
+.star-rating-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.star-wrapper {
+  display: inline-block;
+}
+
+.star {
+  transition: all 0.2s ease;
+}
+
+.star.filled {
+  color: #FFD700; /* 金色，已点亮 */
+}
+
+.star.empty {
+  color: #E0E0E0; /* 灰色，未点亮 */
+  opacity: 0.6;
+}
+
+.star.interactive {
+  cursor: pointer;
+}
+
+.star.interactive:hover {
+  transform: scale(1.1);
+}
+
+.rating-text {
+  margin-left: 10rpx;
+  vertical-align: middle;
+}

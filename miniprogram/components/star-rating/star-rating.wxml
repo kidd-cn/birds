@@ -1,0 +1,11 @@
+<!-- miniprogram/components/star-rating/star-rating.wxml -->
+<view class="star-rating-container">
+  <view class="star-wrapper" wx:for="{{starArray}}" wx:key="index" catch:tap="onStarTap" data-index="{{index}}">
+    <text class="star {{index < currentRating ? 'filled' : 'empty'}} {{interactive ? 'interactive' : ''}}" style="font-size: {{size}}rpx; margin-right: {{spacing}}rpx;">
+      {{starIcon}}
+    </text>
+  </view>
+  <text wx:if="{{showText && !hideRatingText}}" class="rating-text" style="font-size: {{textSize}}rpx; color: {{textColor}};">
+    {{currentRating}}{{displayTextSuffix}}
+  </text>
+</view>
