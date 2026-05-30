@@ -96,5 +96,11 @@ Page({
     wx.redirectTo({
       url: `/pages/birding-school/topic-detail/topic-detail?topicId=${this.data.level.topicId}`
     });
+  },
+
+  goToAchievements() {
+    wx.navigateTo({
+      url: '/pages/achievements/achievements'
+    });
   }
 });

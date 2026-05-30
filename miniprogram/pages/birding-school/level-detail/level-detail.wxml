@@ -65,6 +65,7 @@
           继续下一关
         </button>
         <button class="action-btn secondary" bindtap="goToTopic">查看主题进度</button>
+        <button class="action-btn achievements" bindtap="goToAchievements">🏅 查看徽章</button>
       </view>
     </view>
   </view>

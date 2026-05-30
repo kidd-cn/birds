@@ -165,3 +165,9 @@
   background: #f5f5f5;
   color: #666;
 }
+
+.action-btn.achievements {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  color: #fff;
+  font-weight: bold;
+}
