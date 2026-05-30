@@ -113,7 +113,7 @@ page {
 }
 
 .feature-card.primary {
-  background: linear-gradient(135deg, #2e8b57, #3d9d6b);
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
 }
 
 .feature-card.primary .feature-title,
