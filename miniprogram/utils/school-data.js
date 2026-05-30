@@ -739,18 +739,21 @@ function getProgress() {
   try {
     const stored = wx.getStorageSync(STORAGE_KEY);
     if (stored) {
+      const scores = stored.scores || {};
+      const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
       return {
         ...DEFAULT_PROGRESS,
         ...stored,
         completedLevels: stored.completedLevels || [],
         unlockedLevels: stored.unlockedLevels || [],
-        scores: stored.scores || {}
+        scores: scores,
+        totalScore: totalScore
       };
     }
   } catch (e) {
     console.error('Error reading school progress:', e);
   }
-  return { ...DEFAULT_PROGRESS };
+  return { ...DEFAULT_PROGRESS, totalScore: 0 };
 }
 
 /**
