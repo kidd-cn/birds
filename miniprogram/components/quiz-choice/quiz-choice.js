@@ -36,16 +36,21 @@ Component({
     },
 
     getCorrectAnswerText() {
+      console.log('getCorrectAnswerText called, options:', this.data.question.options);
       if (!this.data.question.options) return '';
       const correctOption = this.data.question.options.find(o => o.isCorrect);
+      console.log('correctOption:', correctOption);
       return correctOption ? correctOption.text : '';
     },
 
     onOptionTap(e) {
       if (this.data.answered) return;
       const { option } = e.currentTarget.dataset;
+      console.log('onOptionTap:', option, 'options:', this.data.question.options);
       const correctOption = this.data.question.options.find(o => o.isCorrect);
+      console.log('correctOption:', correctOption);
       const isCorrect = correctOption && correctOption.id === option;
+      console.log('isCorrect:', isCorrect);
 
       this.setData({
         selectedOption: option,
