@@ -77,9 +77,9 @@ Page({
     wx.showLoading({ title: '生成海报中...' });
 
     // 获取屏幕尺寸
-    const systemInfo = wx.getSystemInfoSync();
-    const width = systemInfo.windowWidth;
-    const height = systemInfo.windowHeight;
+    const windowInfo = wx.getWindowInfo();
+    const width = windowInfo.windowWidth;
+    const height = windowInfo.windowHeight;
 
     // 创建离屏 canvas
     const ctx = wx.createCanvasContext('poster-canvas');

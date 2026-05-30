@@ -11,8 +11,10 @@ Component({
       type: Number,
       value: 0,
       observer: function(newVal) {
+        // Convert to number and handle non-numeric values
+        const numericValue = typeof newVal === 'number' ? newVal : parseFloat(newVal) || 0;
         this.setData({
-          currentRating: Math.max(0, Math.min(this.data.maxStars, newVal))
+          currentRating: Math.max(0, Math.min(this.data.maxStars, numericValue))
         });
       }
     },
@@ -75,8 +77,10 @@ Component({
 
   lifetimes: {
     attached() {
+      // Convert the rating to a number in case it's not already one
+      const numericRating = typeof this.properties.rating === 'number' ? this.properties.rating : parseFloat(this.properties.rating) || 0;
       this.setData({
-        currentRating: Math.max(0, Math.min(this.properties.maxStars, this.properties.rating)),
+        currentRating: Math.max(0, Math.min(this.properties.maxStars, numericRating)),
         starArray: this.generateStarArray(this.properties.maxStars)
       });
     }
@@ -84,16 +88,20 @@ Component({
 
   observers: {
     'maxStars': function(newMaxStars) {
+      // Convert to number in case it's not already one
+      const numericMaxStars = typeof newMaxStars === 'number' ? newMaxStars : parseFloat(newMaxStars) || 5;
       this.setData({
-        starArray: this.generateStarArray(newMaxStars)
+        starArray: this.generateStarArray(numericMaxStars)
       });
     }
   },
 
   methods: {
     generateStarArray(maxStars) {
+      // Convert to number in case it's not already one
+      const numericMaxStars = typeof maxStars === 'number' ? maxStars : parseFloat(maxStars) || 5;
       const arr = [];
-      for (let i = 0; i < maxStars; i++) {
+      for (let i = 0; i < numericMaxStars; i++) {
         arr.push(i);
       }
       return arr;

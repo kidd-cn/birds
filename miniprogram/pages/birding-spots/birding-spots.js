@@ -192,8 +192,14 @@ Page({
     const spot = this.getSpotFromEvent(e);
     if (!spot) return;
 
+    // Ensure rating is a number when setting selectedSpot
+    const spotWithNumericRating = {
+      ...spot,
+      rating: typeof spot.rating === 'number' ? spot.rating : parseInt(spot.rating) || 0
+    };
+
     this.setData({
-      selectedSpot: spot
+      selectedSpot: spotWithNumericRating
     });
 
     wx.showToast({
@@ -284,6 +290,7 @@ Page({
     // 构建公园详情对象
     return {
       ...spot,
+      rating: typeof spot.rating === 'number' ? spot.rating : parseInt(spot.rating) || 0,  // 确保rating是数字
       birds: uniqueBirds,
       area: spot.area || '未知',
       openingHours: spot.openingHours || '详见公园公告',
