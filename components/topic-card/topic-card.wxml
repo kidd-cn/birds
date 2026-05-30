@@ -1,0 +1,13 @@
+<view class="card" bindtap="onTap">
+  <image class="topic-image" src="{{topic.image}}" mode="aspectFill" />
+  <view class="topic-info">
+    <text class="topic-name">{{topic.name}}</text>
+    <text class="topic-levels">{{topic.levelCount}}个关卡</text>
+    <view class="topic-progress">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{topic.progress || 0}}%"></view>
+      </view>
+      <text class="progress-text">{{topic.completedCount || 0}}/{{topic.levelCount}}</text>
+    </view>
+  </view>
+</view>

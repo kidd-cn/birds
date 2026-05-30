@@ -1,0 +1,61 @@
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.topic-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+}
+
+.topic-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.topic-levels {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.topic-progress {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background: #e0e0e0;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 4rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #666;
+}

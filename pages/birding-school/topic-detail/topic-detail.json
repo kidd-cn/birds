@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "level-card": "/components/level-card/level-card"
+  },
+  "navigationBarTitleText": "主题详情"
+}

@@ -1,0 +1,16 @@
+<view class="container">
+  <map
+    id="progressMap"
+    class="map"
+    latitude="{{mapCenter.latitude}}"
+    longitude="{{mapCenter.longitude}}"
+    scale="14"
+    markers="{{mapMarkers}}"
+    bindmarkertap="onMarkerTap"
+    show-location
+  ></map>
+
+  <view class="topics-overlay" wx:if="{{currentTopic}}">
+    <topic-card topic="{{currentTopic}}" bindtap="onTopicTap" />
+  </view>
+</view>

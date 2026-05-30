@@ -1,0 +1,11 @@
+<view class="card {{completed ? 'completed' : ''}}" bindtap="onTap">
+  <view class="level-number">{{level.order}}</view>
+  <view class="level-info">
+    <text class="level-name">{{level.name}}</text>
+    <text class="level-type">{{level.typeLabel}}</text>
+  </view>
+  <view class="level-status">
+    <text class="status-text" wx:if="{{completed}}">已完成</text>
+    <text class="status-text pending" wx:else>未完成</text>
+  </view>
+</view>

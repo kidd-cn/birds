@@ -1,0 +1,12 @@
+<map
+  id="map"
+  class="map"
+  latitude="{{mapCenter.latitude}}"
+  longitude="{{mapCenter.longitude}}"
+  scale="{{scale}}"
+  markers="{{markers}}"
+  bindmarkertap="onMarkerTap"
+  show-location
+  enable-rotate
+  enable-poi
+></map>

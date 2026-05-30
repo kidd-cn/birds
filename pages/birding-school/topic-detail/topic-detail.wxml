@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="topic-header">
+    <image class="topic-image" src="{{topic.image}}" mode="aspectFill" />
+    <view class="topic-info">
+      <text class="topic-name">{{topic.name}}</text>
+      <text class="topic-desc">{{topic.description}}</text>
+    </view>
+  </view>
+
+  <view class="levels-section">
+    <text class="section-title">关卡列表</text>
+    <view class="levels-list">
+      <block wx:for="{{levels}}" wx:key="id">
+        <level-card level="{{item}}" completed="{{completedLevels.includes(item.id)}}" bindtap="onLevelTap" data-level-id="{{item.id}}" />
+      </block>
+    </view>
+  </view>
+</view>

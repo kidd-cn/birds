@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="level-header">
+    <text class="level-name">{{level.name}}</text>
+    <text class="level-progress">{{currentQuestionIndex + 1}}/{{questions.length}}</text>
+  </view>
+
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
+  </view>
+
+  <view class="question-card">
+    <text class="question-text">{{questions[currentQuestionIndex].text}}</text>
+
+    <view class="question-content">
+      <block wx:if="{{questions[currentQuestionIndex].type === 'choice'}}">
+        <quiz-choice question="{{questions[currentQuestionIndex]}}" bindanswer="onAnswerSelect" />
+      </block>
+      <block wx:elif="{{questions[currentQuestionIndex].type === 'sort'}}">
+        <quiz-sort question="{{questions[currentQuestionIndex]}}" bindanswer="onAnswerSelect" />
+      </block>
+      <block wx:elif="{{questions[currentQuestionIndex].type === 'fill'}}">
+        <quiz-fill question="{{questions[currentQuestionIndex]}}" bindanswer="onAnswerSelect" />
+      </block>
+    </view>
+  </view>
+
+  <view class="action-bar">
+    <button class="btn-next" bindtap="onNextQuestion" wx:if="{{currentQuestionIndex < questions.length - 1}}">下一题</button>
+    <button class="btn-submit" bindtap="onSubmit" wx:else>提交答案</button>
+  </view>
+</view>

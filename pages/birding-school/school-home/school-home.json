@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "progress-map": "/components/progress-map/progress-map",
+    "topic-card": "/components/topic-card/topic-card"
+  },
+  "navigationBarTitleText": "观鸟学堂"
+}
