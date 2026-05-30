@@ -1,0 +1,40 @@
+<!-- Quiz Fill Component -->
+<view class="quiz-fill-container">
+  <!-- Question Text -->
+  <view class="question-section">
+    <text class="question-text">{{question.question}}</text>
+  </view>
+
+  <!-- Fill in the Blank Section -->
+  <view class="fill-area">
+    <view class="input-wrapper {{answered ? (isCorrect ? 'correct' : 'incorrect') : ''}}">
+      <input
+        class="fill-input"
+        type="text"
+        placeholder="请输入答案"
+        value="{{inputValue}}"
+        bindinput="onInput"
+        disabled="{{answered}}"
+      />
+    </view>
+
+    <!-- Result Feedback -->
+    <block wx:if="{{answered}}">
+      <view class="result-area {{isCorrect ? 'correct' : 'incorrect'}}">
+        <text class="result-icon">{{isCorrect ? '✓' : '✗'}}</text>
+        <text class="result-text">{{isCorrect ? '回答正确!' : '回答错误'}}</text>
+        <text class="correct-answer" wx:if="{{!isCorrect}}">正确答案: {{question.correctAnswer}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- Action Buttons -->
+  <view class="action-area">
+    <block wx:if="{{!answered}}">
+      <button class="confirm-button" bindtap="onConfirm">确认</button>
+    </block>
+    <block wx:if="{{answered}}">
+      <button class="next-button" bindtap="onNext">下一题</button>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!-- Quiz Sort Component -->
+<view class="quiz-sort-container">
+  <!-- Instruction -->
+  <view class="instruction-area">
+    <text class="instruction-text">点击项目调整顺序，确认后点击锁定</text>
+  </view>
+
+  <!-- Sort List -->
+  <view class="sort-list">
+    <block wx:for="{{options}}" wx:key="id">
+      <view
+        class="sort-item {{locked ? 'locked' : ''}}"
+        data-index="{{index}}"
+        bindtap="onItemTap"
+      >
+        <view class="item-index">{{index + 1}}</view>
+        <text class="item-text">{{item.text}}</text>
+        <view class="drag-hint" wx:if="{{!locked}}">
+          <text class="hint-icon">↕</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- Action Buttons -->
+  <view class="action-area">
+    <block wx:if="{{!locked}}">
+      <button class="confirm-button" bindtap="onConfirm">确认顺序</button>
+    </block>
+    <block wx:if="{{locked}}">
+      <button class="next-button" bindtap="onNext">下一题</button>
+    </block>
+  </view>
+</view>

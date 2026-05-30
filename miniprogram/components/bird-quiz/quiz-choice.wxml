@@ -1,0 +1,34 @@
+<!-- Quiz Choice Component -->
+<view class="quiz-choice-container">
+  <!-- Question Text -->
+  <view class="question-section">
+    <text class="question-text">{{question.question}}</text>
+  </view>
+
+  <!-- Options List -->
+  <view class="options-container">
+    <block wx:for="{{question.options}}" wx:key="id">
+      <view
+        class="option-item {{selectedOption === item.id ? (answered ? (item.id === question.correctAnswer ? 'correct' : 'incorrect') : 'selected') : ''}}"
+        data-option="{{item.id}}"
+        bindtap="onOptionTap"
+      >
+        <view class="option-id">{{item.id + 1}}</view>
+        <text class="option-text">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- Explanation -->
+  <block wx:if="{{showExplanation}}">
+    <view class="explanation-area">
+      <text class="explanation-title">解释:</text>
+      <text class="explanation-text">{{question.explanation}}</text>
+    </view>
+  </block>
+
+  <!-- Next Button -->
+  <block wx:if="{{answered}}">
+    <button class="next-button" bindtap="onNext">下一题</button>
+  </block>
+</view>
