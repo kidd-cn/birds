@@ -1,0 +1,41 @@
+.topic-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.topic-card.status-locked {
+  opacity: 0.6;
+}
+
+.topic-card.status-unlocked {
+  border-color: #ffc107;
+}
+
+.topic-card.status-completed {
+  border-color: #4caf50;
+}
+
+.topic-icon {
+  font-size: 60rpx;
+  margin-right: 30rpx;
+}
+
+.topic-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.topic-progress {
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 8rpx;
+}
+
+.topic-status-icon {
+  font-size: 40rpx;
+}

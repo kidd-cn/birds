@@ -1,0 +1,47 @@
+.level-card {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.level-card.locked {
+  opacity: 0.5;
+}
+
+.level-card.unlocked {
+  border-color: #2e8b57;
+}
+
+.level-number {
+  width: 60rpx;
+  height: 60rpx;
+  background: #2e8b57;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-right: 24rpx;
+}
+
+.level-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.level-count {
+  font-size: 22rpx;
+  color: #888;
+  margin-top: 6rpx;
+}
+
+.level-status-icon {
+  font-size: 32rpx;
+  color: #2e8b57;
+}

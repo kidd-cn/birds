@@ -1,0 +1,12 @@
+<view class="topic-card status-{{topic.status}}" bindtap="onTap">
+  <view class="topic-icon">{{topic.icon}}</view>
+  <view class="topic-info">
+    <text class="topic-name">{{topic.name}}</text>
+    <text class="topic-progress">{{topic.completedLevels}}/{{topic.totalLevels}} 关卡</text>
+  </view>
+  <view class="topic-status-icon">
+    <text wx:if="{{topic.status === 'locked'}}">🔒</text>
+    <text wx:if="{{topic.status === 'unlocked'}}">⭐</text>
+    <text wx:if="{{topic.status === 'completed'}}">✓</text>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<view class="level-card {{level.unlocked ? 'unlocked' : 'locked'}}">
+  <view class="level-number">{{level.order}}</view>
+  <view class="level-info">
+    <text class="level-name">{{level.name}}</text>
+    <text class="level-count">{{level.questions.length}} 题</text>
+  </view>
+  <view class="level-status-icon">
+    <text wx:if="{{!level.unlocked}}">🔒</text>
+    <text wx:if="{{level.unlocked && !level.completed}}">▶</text>
+    <text wx:if="{{level.completed}}">✓</text>
+  </view>
+</view>
