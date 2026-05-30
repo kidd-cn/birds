@@ -296,3 +296,12 @@
   font-size: 36rpx;
   margin-right: 12rpx;
 }
+
+/* 海报 Canvas */
+.poster-canvas {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  width: 600rpx;
+  height: 800rpx;
+}

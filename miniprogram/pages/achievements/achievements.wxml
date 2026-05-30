@@ -93,4 +93,7 @@
     <text class="btn-icon">📤</text>
     <text>生成成就海报</text>
   </button>
+
+  <!-- 隐藏的 Canvas 用于生成海报 -->
+  <canvas canvas-id="poster-canvas" class="poster-canvas"></canvas>
 </view>
