@@ -73,7 +73,8 @@ Page({
       completed: true,
       correctCount,
       showBadge,
-      totalScore: progress.totalScore
+      totalScore: progress.totalScore,
+      accuracy: questions.length > 0 ? Math.round(correctCount / questions.length * 100) : 0
     });
   },
 

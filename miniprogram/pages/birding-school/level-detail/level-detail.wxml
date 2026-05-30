@@ -74,7 +74,7 @@
         </view>
         <view class="score-divider"></view>
         <view class="score-item">
-          <text class="score-number percentage">{{correctCount > 0 ? Math.round(correctCount / questions.length * 100) : 0}}%</text>
+          <text class="score-number percentage">{{accuracy}}%</text>
           <text class="score-label">正确率</text>
         </view>
       </view>
