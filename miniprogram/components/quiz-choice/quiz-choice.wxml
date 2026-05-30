@@ -15,20 +15,33 @@
       >
         <view class="option-id">{{item.id + 1}}</view>
         <text class="option-text">{{item.text}}</text>
+        <text class="result-icon" wx:if="{{answered && item.isCorrect}}">✓ 正确答案</text>
+        <text class="result-icon-wrong" wx:if="{{answered && selectedOption === item.id && !item.isCorrect}}">✗ 你的选择</text>
       </view>
     </block>
   </view>
 
-  <!-- Explanation -->
-  <block wx:if="{{showExplanation && question.explanation}}">
-    <view class="explanation-area">
-      <text class="explanation-title">解释:</text>
-      <text class="explanation-text">{{question.explanation}}</text>
+  <!-- User's Answer Feedback -->
+  <view class="feedback-area" wx:if="{{answered}}">
+    <view class="feedback-item your-answer">
+      <text class="feedback-label">你的答案：</text>
+      <text class="feedback-value">{{getAnswerText(selectedOption)}}</text>
+      <text class="feedback-status {{isSelectedCorrect ? 'correct-text' : 'wrong-text'}}">
+        {{isSelectedCorrect ? '✓ 正确' : '✗ 错误'}}
+      </text>
     </view>
-  </block>
+    <view class="feedback-item correct-answer" wx:if="{{!isSelectedCorrect}}">
+      <text class="feedback-label">正确答案：</text>
+      <text class="feedback-value correct-text">{{getCorrectAnswerText()}}</text>
+    </view>
+  </view>
+
+  <!-- Explanation -->
+  <view class="explanation-area" wx:if="{{showExplanation && question.explanation}}">
+    <text class="explanation-title">💡 解释：</text>
+    <text class="explanation-text">{{question.explanation}}</text>
+  </view>
 
   <!-- Next Button -->
-  <block wx:if="{{answered}}">
-    <button class="next-button" bindtap="onNext">下一题</button>
-  </block>
+  <button class="next-button" wx:if="{{answered}}" bindtap="onNext">下一题</button>
 </view>

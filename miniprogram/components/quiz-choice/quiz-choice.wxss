@@ -60,6 +60,7 @@
   font-size: 24rpx;
   font-weight: bold;
   margin-right: 16rpx;
+  flex-shrink: 0;
 }
 
 .option-item.correct .option-id {
@@ -79,35 +80,98 @@
   line-height: 1.4;
 }
 
-.explanation-area {
-  margin-top: 32rpx;
+.result-icon {
+  font-size: 24rpx;
+  color: #4caf50;
+  margin-left: 16rpx;
+  font-weight: bold;
+}
+
+.result-icon-wrong {
+  font-size: 24rpx;
+  color: #f44336;
+  margin-left: 16rpx;
+  font-weight: bold;
+}
+
+/* Feedback Area */
+.feedback-area {
+  margin-top: 24rpx;
   padding: 24rpx;
   background: #f8f9fa;
   border-radius: 16rpx;
-  border-left: 8rpx solid #2196f3;
+}
+
+.feedback-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.feedback-item:last-child {
+  margin-bottom: 0;
+}
+
+.feedback-label {
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 12rpx;
+}
+
+.feedback-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.feedback-status {
+  margin-left: 16rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.correct-text {
+  color: #4caf50;
+}
+
+.wrong-text {
+  color: #f44336;
+}
+
+.correct-answer .feedback-value {
+  color: #4caf50;
+}
+
+/* Explanation Area */
+.explanation-area {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: #fff8e1;
+  border-radius: 16rpx;
+  border-left: 8rpx solid #ffc107;
 }
 
 .explanation-title {
   display: block;
   font-size: 28rpx;
   font-weight: bold;
-  color: #1976d2;
+  color: #f57c00;
   margin-bottom: 8rpx;
 }
 
 .explanation-text {
   display: block;
   font-size: 26rpx;
-  color: #616161;
+  color: #666;
   line-height: 1.5;
 }
 
 .next-button {
   margin-top: 32rpx;
   padding: 24rpx 48rpx;
-  background: #2196f3;
+  background: #2e8b57;
   color: #fff;
-  border-radius: 16rpx;
+  border-radius: 40rpx;
   font-size: 28rpx;
   font-weight: bold;
   border: none;
