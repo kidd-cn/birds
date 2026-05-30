@@ -2,8 +2,10 @@
   padding: 20rpx;
   background: #f0f8f4;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
+/* 关卡头部 */
 .level-header {
   display: flex;
   justify-content: space-between;
@@ -43,6 +45,7 @@
   font-weight: 500;
 }
 
+/* 题目区域 */
 .question-area {
   animation: fadeIn 0.3s ease;
 }
@@ -78,87 +81,182 @@
   margin-bottom: 24rpx;
 }
 
+/* 完成页面 */
 .complete-area {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 70vh;
+  padding-top: 40rpx;
+}
+
+.confetti {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.confetti-icon {
+  font-size: 80rpx;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20rpx); }
 }
 
 .complete-card {
   background: #fff;
-  border-radius: 24rpx;
-  padding: 60rpx 40rpx;
+  border-radius: 32rpx;
+  padding: 50rpx 40rpx;
   text-align: center;
   width: 100%;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
 }
 
-.complete-icon {
-  font-size: 100rpx;
-  display: block;
-  margin-bottom: 20rpx;
+.success-icon-wrapper {
+  width: 120rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.3);
+}
+
+.success-icon {
+  font-size: 64rpx;
+  color: #fff;
+  font-weight: bold;
 }
 
 .complete-title {
-  font-size: 40rpx;
+  font-size: 44rpx;
   font-weight: bold;
   color: #2e8b57;
   display: block;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
 }
 
-.score-display {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  margin-bottom: 30rpx;
-}
-
-.score-label {
+.complete-subtitle {
   font-size: 28rpx;
   color: #888;
+  display: block;
+  margin-bottom: 40rpx;
+}
+
+/* 分数卡片 */
+.score-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 }
 
 .score-number {
-  font-size: 60rpx;
+  font-size: 48rpx;
   font-weight: bold;
-  color: #2e8b57;
-  margin: 0 10rpx;
+  color: #333;
+  line-height: 1.2;
 }
 
-.score-total {
-  font-size: 28rpx;
+.score-number.correct {
+  color: #4caf50;
+}
+
+.score-number.total {
+  color: #666;
+}
+
+.score-number.percentage {
+  color: #2196f3;
+}
+
+.score-label {
+  font-size: 22rpx;
   color: #888;
+  margin-top: 8rpx;
 }
 
+.score-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #e0e0e0;
+}
+
+/* 徽章解锁 */
 .badge-unlock {
   background: linear-gradient(135deg, #fff8e1, #ffecb3);
-  padding: 20rpx;
-  border-radius: 16rpx;
+  border-radius: 20rpx;
+  padding: 24rpx;
   margin-bottom: 30rpx;
 }
 
-.badge-text {
-  font-size: 28rpx;
-  color: #f57c00;
-  font-weight: bold;
+.badge-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.badge-icon {
+  font-size: 64rpx;
+  margin-right: 20rpx;
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.badge-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f57c00;
+}
+
+.badge-desc {
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 4rpx;
+}
+
+/* 操作按钮 */
 .complete-actions {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 16rpx;
 }
 
 .action-btn {
-  border-radius: 40rpx;
-  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50rpx;
+  padding: 28rpx 40rpx;
   font-size: 30rpx;
+  border: none;
 }
 
 .action-btn.primary {
-  background: #2e8b57;
+  background: linear-gradient(135deg, #2e8b57, #4caf50);
   color: #fff;
+  box-shadow: 0 4rpx 16rpx rgba(46, 139, 87, 0.3);
+}
+
+.action-btn.primary .btn-icon {
+  margin-right: 10rpx;
 }
 
 .action-btn.secondary {
@@ -166,8 +264,21 @@
   color: #666;
 }
 
+.action-btn.secondary .btn-icon {
+  margin-right: 10rpx;
+}
+
 .action-btn.achievements {
   background: linear-gradient(135deg, #ffc107, #ff9800);
   color: #fff;
-  font-weight: bold;
+  box-shadow: 0 4rpx 16rpx rgba(255, 152, 0, 0.3);
+}
+
+.action-btn.achievements .btn-icon {
+  margin-right: 10rpx;
+}
+
+.action-btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
 }

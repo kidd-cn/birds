@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 关卡头部 -->
-  <view class="level-header">
+  <view class="level-header" wx:if="{{!completed}}">
     <view class="level-info">
       <text class="level-name">{{level.name}}</text>
       <text class="topic-tag">{{topic.icon}} {{topic.name}}</text>
@@ -47,25 +47,63 @@
 
   <!-- 完成页面 -->
   <view class="complete-area" wx:if="{{completed}}">
+    <!-- 顶部装饰 -->
+    <view class="confetti">
+      <text class="confetti-icon">🎊</text>
+    </view>
+
     <view class="complete-card">
-      <text class="complete-icon">🎉</text>
-      <text class="complete-title">关卡完成！</text>
-      <view class="score-display">
-        <text class="score-label">答对</text>
-        <text class="score-number">{{correctCount}}</text>
-        <text class="score-total">/ {{questions.length}} 题</text>
+      <!-- 成功图标 -->
+      <view class="success-icon-wrapper">
+        <text class="success-icon">✓</text>
       </view>
 
+      <text class="complete-title">恭喜过关！</text>
+      <text class="complete-subtitle">{{level.name}}</text>
+
+      <!-- 分数展示 -->
+      <view class="score-card">
+        <view class="score-item">
+          <text class="score-number correct">{{correctCount}}</text>
+          <text class="score-label">答对</text>
+        </view>
+        <view class="score-divider"></view>
+        <view class="score-item">
+          <text class="score-number total">{{questions.length}}</text>
+          <text class="score-label">总题数</text>
+        </view>
+        <view class="score-divider"></view>
+        <view class="score-item">
+          <text class="score-number percentage">{{correctCount > 0 ? Math.round(correctCount / questions.length * 100) : 0}}%</text>
+          <text class="score-label">正确率</text>
+        </view>
+      </view>
+
+      <!-- 徽章解锁提示 -->
       <view class="badge-unlock" wx:if="{{showBadge}}">
-        <text class="badge-text">🏅 获得主题徽章！</text>
+        <view class="badge-content">
+          <text class="badge-icon">🏅</text>
+          <view class="badge-info">
+            <text class="badge-title">主题徽章解锁！</text>
+            <text class="badge-desc">{{topic.name}}达人</text>
+          </view>
+        </view>
       </view>
 
+      <!-- 操作按钮 -->
       <view class="complete-actions">
         <button class="action-btn primary" bindtap="goToNextLevel">
-          继续下一关
+          <text class="btn-icon">▶</text>
+          <text>继续下一关</text>
         </button>
-        <button class="action-btn secondary" bindtap="goToTopic">查看主题进度</button>
-        <button class="action-btn achievements" bindtap="goToAchievements">🏅 查看徽章</button>
+        <button class="action-btn secondary" bindtap="goToTopic">
+          <text class="btn-icon">📋</text>
+          <text>查看主题进度</text>
+        </button>
+        <button class="action-btn achievements" bindtap="goToAchievements">
+          <text class="btn-icon">🏅</text>
+          <text>查看徽章墙</text>
+        </button>
       </view>
     </view>
   </view>
