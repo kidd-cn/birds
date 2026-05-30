@@ -519,11 +519,19 @@ function getTopics() {
       progress.completedLevels.includes(l.id)
     ).length;
 
+    // Determine status
+    let status = 'locked';
+    if (completedCount === topicLevels.length) {
+      status = 'completed';
+    } else if (completedCount > 0 || progress.unlockedLevels.includes(topicLevels[0]?.id)) {
+      status = 'unlocked';
+    }
+
     return {
       ...topic,
       totalLevels: topicLevels.length,
       completedLevels: completedCount,
-      isAllCompleted: completedCount === topicLevels.length
+      status: status
     };
   });
 }
