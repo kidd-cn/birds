@@ -59,7 +59,7 @@ Page({
   },
 
   completeLevel() {
-    const { levelId, answers } = this.data;
+    const { levelId, answers, questions } = this.data;
     console.log('completeLevel called:', { levelId, answers });
     const correctCount = schoolData.calculateScore(levelId, answers);
     console.log('correctCount:', correctCount);
