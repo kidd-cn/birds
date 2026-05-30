@@ -1,73 +1,60 @@
-// pages/achievements/achievements.js
+const schoolData = require('../../utils/school-data');
+
 Page({
   data: {
-    achievements: [
-      {
-        id: 1,
-        title: '首次签到',
-        description: '完成第一次签到',
-        icon: '🎯',
-        unlocked: true // 假设这个成就可以获得
-      },
-      {
-        id: 2,
-        title: '连续签到达人',
-        description: '连续签到7天',
-        icon: '🔥',
-        unlocked: false
-      },
-      {
-        id: 3,
-        title: '鸟类专家',
-        description: '识别10种不同的鸟类',
-        icon: '🦉',
-        unlocked: false
-      },
-      {
-        id: 4,
-        title: '观鸟新手',
-        description: '访问第一个观鸟点',
-        icon: '🦆',
-        unlocked: true // 假设这个成就可以获得
-      },
-      {
-        id: 5,
-        title: '探索家',
-        description: '访问所有观鸟点',
-        icon: '🦅',
-        unlocked: false
-      },
-      {
-        id: 6,
-        title: '摄影师',
-        description: '拍摄5张鸟类照片',
-        icon: '📸',
-        unlocked: false
-      }
-    ]
+    badges: [],
+    titles: [],
+    totalScore: 0,
+    level: 1
   },
 
   onLoad() {
-    // 从本地存储加载成就状态
+    this.loadAchievements();
+  },
+
+  onShow() {
     this.loadAchievements();
   },
 
   loadAchievements() {
-    try {
-      // 尝试从存储中加载成就数据
-      const savedAchievements = wx.getStorageSync('userAchievements');
-      if (savedAchievements) {
-        this.setData({
-          achievements: savedAchievements
-        });
-      }
-    } catch (e) {
-      console.error('加载成就数据失败:', e);
+    const progress = schoolData.getProgress();
+
+    // 徽章映射
+    const badgeMap = {
+      'equipment-master': { name: '装备达人', icon: '🔭', desc: '完成装备篇' },
+      'safety-master': { name: '安全卫士', icon: '🛡️', desc: '完成安全篇' },
+      'behavior-master': { name: '观鸟使者', icon: '🍃', desc: '完成行为篇' },
+      'advanced-master': { name: '进阶专家', icon: '✈️', desc: '完成进阶篇' }
+    };
+
+    const badges = progress.badges.map(bid => badgeMap[bid] || { name: bid, icon: '🏅' });
+
+    // 称号计算
+    let title = '观鸟学徒';
+    let level = 1;
+    if (progress.completedLevels.length >= 12) {
+      title = '观鸟大师';
+      level = 4;
+    } else if (progress.completedLevels.length >= 8) {
+      title = '观鸟专家';
+      level = 3;
+    } else if (progress.completedLevels.length >= 4) {
+      title = '观鸟学者';
+      level = 2;
     }
+
+    this.setData({
+      badges,
+      titles: [title],
+      totalScore: progress.totalScore,
+      level
+    });
   },
 
-  onShow() {
-    // 页面显示时重新加载成就状态
-    this.loadAchievements();
+  generatePoster() {
+    wx.showToast({
+      title: '海报生成中...',
+      icon: 'loading'
+    });
   }
 });

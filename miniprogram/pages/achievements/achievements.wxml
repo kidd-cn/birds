@@ -1,25 +1,25 @@
-<!-- pages/achievements/achievements.wxml -->
 <view class="container">
   <view class="header">
     <text class="title">我的成就</text>
   </view>
 
-  <view class="achievements-list">
-    <view class="achievement-card" wx:for="{{achievements}}" wx:key="id">
-      <view class="achievement-icon">
-        <text class="icon">{{item.icon}}</text>
+  <view class="title-section">
+    <text class="user-title">{{titles[0]}}</text>
+    <text class="score">积分: {{totalScore}}</text>
+  </view>
+
+  <view class="badge-section">
+    <text class="section-title">徽章墙</text>
+    <view class="badge-grid">
+      <view wx:for="{{badges}}" wx:key="name" class="badge-item">
+        <text class="badge-icon">{{item.icon}}</text>
+        <text class="badge-name">{{item.name}}</text>
       </view>
-      <view class="achievement-content">
-        <text class="achievement-title">{{item.title}}</text>
-        <text class="achievement-description">{{item.description}}</text>
-        <view class="achievement-status {{item.unlocked ? 'unlocked' : 'locked'}}">
-          <text>{{item.unlocked ? '已解锁' : '未解锁'}}</text>
-        </view>
+      <view wx:if="{{badges.length === 0}}" class="empty-badges">
+        <text>完成关卡解锁徽章</text>
       </view>
     </view>
   </view>
 
-  <view class="no-achievements" wx:if="{{achievements.length === 0}}">
-    <text>还没有获得任何成就，继续努力观鸟吧！</text>
-  </view>
+  <button class="poster-btn" bindtap="generatePoster">生成成就海报</button>
 </view>
