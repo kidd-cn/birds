@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "progress-map": "/components/progress-map/progress-map"
+  },
+  "navigationBarTitleText": "观鸟学堂",
+  "navigationBarBackgroundColor": "#2e8b57",
+  "navigationBarTextStyle": "white"
+}

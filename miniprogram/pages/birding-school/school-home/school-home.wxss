@@ -1,0 +1,49 @@
+.container {
+  padding: 20rpx;
+  background: #f0f8f4;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #2e8b57;
+  display: block;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.progress-badge {
+  margin-top: 20rpx;
+  display: inline-block;
+  background: #fff;
+  padding: 12rpx 30rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #2e8b57;
+  font-weight: 500;
+}
+
+.tip-section {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #888;
+}

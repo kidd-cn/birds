@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="header">
+    <text class="title">观鸟学堂</text>
+    <text class="subtitle">与自然相处的正确价值观</text>
+    <view class="progress-badge">
+      <text class="progress-text">{{totalCompleted}}/{{totalTopics}} 主题已完成</text>
+    </view>
+  </view>
+
+  <progress-map topics="{{topics}}" bind:topicTap="onTopicTap" />
+
+  <view class="tip-section">
+    <text class="tip-text">💡 完成所有主题可解锁"观鸟学者"称号</text>
+  </view>
+</view>
