@@ -32,6 +32,19 @@
       <view class="feature-arrow">›</view>
     </view>
 
+    <view class="feature-card spots" bindtap="goToBirdingSpots">
+      <view class="feature-left">
+        <view class="feature-icon-bg">
+          <text class="feature-icon">🔍</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">推荐观鸟点</text>
+          <text class="feature-desc">5大代表性观鸟地点</text>
+        </view>
+      </view>
+      <view class="feature-arrow">›</view>
+    </view>
+
     <view class="feature-card school" bindtap="goToSchool">
       <view class="feature-left">
         <view class="feature-icon-bg">
@@ -53,19 +66,6 @@
         <view class="feature-info">
           <text class="feature-title">活动中心</text>
           <text class="feature-desc">识别挑战·知识问答·每日打卡</text>
-        </view>
-      </view>
-      <view class="feature-arrow">›</view>
-    </view>
-
-    <view class="feature-card spots" bindtap="goToBirdingSpots">
-      <view class="feature-left">
-        <view class="feature-icon-bg">
-          <text class="feature-icon">🔍</text>
-        </view>
-        <view class="feature-info">
-          <text class="feature-title">推荐观鸟点</text>
-          <text class="feature-desc">5大代表性观鸟地点</text>
         </view>
       </view>
       <view class="feature-arrow">›</view>

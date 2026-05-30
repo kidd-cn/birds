@@ -112,6 +112,12 @@ page {
   box-shadow: 0 4rpx 16px rgba(46, 139, 87, 0.3);
 }
 
+/* 推荐观鸟点 - 湖水蓝 */
+.feature-card.spots {
+  background: linear-gradient(135deg, #0288d1, #03a9f4);
+  box-shadow: 0 4rpx 16px rgba(2, 136, 209, 0.3);
+}
+
 /* 观鸟学堂 - 知识紫 */
 .feature-card.school {
   background: linear-gradient(135deg, #7b1fa2, #9c27b0);
@@ -122,12 +128,6 @@ page {
 .feature-card.activity {
   background: linear-gradient(135deg, #ff7043, #ff8a65);
   box-shadow: 0 4rpx 16px rgba(255, 112, 67, 0.3);
-}
-
-/* 推荐观鸟点 - 湖水蓝 */
-.feature-card.spots {
-  background: linear-gradient(135deg, #0288d1, #03a9f4);
-  box-shadow: 0 4rpx 16px rgba(2, 136, 209, 0.3);
 }
 
 .feature-card:active {
