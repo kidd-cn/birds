@@ -1,54 +1,101 @@
-<!--pages/navigation/navigation.wxml-->
-<view class="container">
-  <view class="header">
-    <image class="logo" src="/images/bird-marker.svg" mode="aspectFit"></image>
-    <text class="title">深圳观鸟助手</text>
-    <text class="subtitle">发现深圳丰富的鸟类多样性</text>
+<view class="page-wrapper">
+  <!-- 顶部装饰 -->
+  <view class="top-decoration">
+    <view class="decoration-circle circle-1"></view>
+    <view class="decoration-circle circle-2"></view>
+    <view class="decoration-circle circle-3"></view>
   </view>
 
+  <!-- 头部 -->
+  <view class="header">
+    <view class="logo-wrapper">
+      <image class="logo" src="/images/bird-marker.svg" mode="aspectFit"></image>
+    </view>
+    <view class="title-group">
+      <text class="title">深圳观鸟助手</text>
+      <text class="subtitle">发现深圳丰富的鸟类多样性</text>
+    </view>
+  </view>
+
+  <!-- 功能卡片区 -->
   <view class="features">
-    <view class="feature-card" bindtap="goToMap">
-      <view class="card-icon">🗺️</view>
-      <view class="card-content">
-        <text class="card-title">观鸟地图</text>
-        <text class="card-desc">查看深圳各区域鸟类分布，探索真实观察记录</text>
+    <view class="feature-card primary" bindtap="goToMap">
+      <view class="feature-left">
+        <view class="feature-icon-bg">
+          <text class="feature-icon">🗺️</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">观鸟地图</text>
+          <text class="feature-desc">查看深圳各区域鸟类分布</text>
+        </view>
       </view>
-      <view class="card-arrow">›</view>
+      <view class="feature-arrow">›</view>
     </view>
 
     <view class="feature-card" bindtap="goToBirdingSpots">
-      <view class="card-icon">🔍</view>
-      <view class="card-content">
-        <text class="card-title">推荐观鸟点</text>
-        <text class="card-desc">深圳5大代表性观鸟地点，了解最佳观测时机</text>
+      <view class="feature-left">
+        <view class="feature-icon-bg">
+          <text class="feature-icon">🔍</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">推荐观鸟点</text>
+          <text class="feature-desc">5大代表性观鸟地点</text>
+        </view>
       </view>
-      <view class="card-arrow">›</view>
+      <view class="feature-arrow">›</view>
     </view>
 
     <view class="feature-card" bindtap="goToActivityCenter">
-      <view class="card-icon">🎯</view>
-      <view class="card-content">
-        <text class="card-title">活动中心</text>
-        <text class="card-desc">参与鸟类识别挑战，知识问答，每日打卡等活动</text>
+      <view class="feature-left">
+        <view class="feature-icon-bg">
+          <text class="feature-icon">🎯</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">活动中心</text>
+          <text class="feature-desc">识别挑战·知识问答·每日打卡</text>
+        </view>
       </view>
-      <view class="card-arrow">›</view>
+      <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card" bindtap="goToSchool">
-      <view class="card-icon">📚</view>
-      <view class="card-content">
-        <text class="card-title">观鸟学堂</text>
-        <text class="card-desc">学习与自然相处的正确价值观，培养负责任的观鸟者</text>
+    <view class="feature-card accent" bindtap="goToSchool">
+      <view class="feature-left">
+        <view class="feature-icon-bg">
+          <text class="feature-icon">📚</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">观鸟学堂</text>
+          <text class="feature-desc">学习与自然相处的正确价值观</text>
+        </view>
       </view>
-      <view class="card-arrow">›</view>
+      <view class="feature-arrow">›</view>
     </view>
   </view>
 
-  <view class="intro">
-    <text class="intro-title">关于深圳鸟类</text>
+  <!-- 底部介绍 -->
+  <view class="intro-card">
+    <view class="intro-header">
+      <text class="intro-icon">🦅</text>
+      <text class="intro-title">关于深圳鸟类</text>
+    </view>
     <text class="intro-text">
-      深圳地处东亚-澳大利西亚候鸟迁飞通道，拥有丰富的鸟类多样性。
-      深圳湾、红树林等湿地是重要的候鸟驿站，每年吸引数十万只候鸟在此停歇。
+      深圳地处东亚-澳大利西亚候鸟迁飞通道，拥有丰富的鸟类多样性。深圳湾、红树林等湿地是重要的候鸟驿站，每年吸引数十万只候鸟在此停歇。
     </text>
+    <view class="intro-stats">
+      <view class="stat-item">
+        <text class="stat-value">180+</text>
+        <text class="stat-label">观测鸟种</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-value">5</text>
+        <text class="stat-label">重点区域</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-value">50万+</text>
+        <text class="stat-label">年停留候鸟</text>
+      </view>
+    </view>
   </view>
 </view>
