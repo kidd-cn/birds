@@ -503,7 +503,8 @@ const LEVELS = [
 const DEFAULT_PROGRESS = {
   unlockedLevels: ['eq-1'],
   completedLevels: [],
-  scores: {}
+  scores: {},
+  badges: []
 };
 
 /**
@@ -685,6 +686,17 @@ function completeLevel(levelId, score) {
           progress.unlockedLevels.push(nextTopic.levels[0]);
           nextLevelId = nextTopic.levels[0];
         }
+
+        // Check if all levels of current topic are completed to grant badge
+        const topicLevels = LEVELS.filter(l => l.topicId === level.topicId);
+        const allTopicCompleted = topicLevels.every(l => progress.completedLevels.includes(l.id));
+        if (allTopicCompleted) {
+          const badgeKey = `${level.topicId}-master`;
+          if (!progress.badges) progress.badges = [];
+          if (!progress.badges.includes(badgeKey)) {
+            progress.badges.push(badgeKey);
+          }
+        }
       }
     }
   }
@@ -697,7 +709,8 @@ function completeLevel(levelId, score) {
     isNewBest: score > currentBest,
     nextLevelId,
     completedLevels: progress.completedLevels,
-    totalScore: Object.values(progress.scores).reduce((a, b) => a + b, 0)
+    totalScore: Object.values(progress.scores).reduce((a, b) => a + b, 0),
+    badges: progress.badges
   };
 }
 
