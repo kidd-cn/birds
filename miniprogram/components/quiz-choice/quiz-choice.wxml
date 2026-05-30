@@ -9,7 +9,7 @@
   <view class="options-container">
     <block wx:for="{{question.options}}" wx:key="id">
       <view
-        class="option-item {{answered ? (item.isCorrect ? 'correct' : (selectedOption === item.id ? 'incorrect' : '')) : (selectedOption === item.id ? 'selected' : '')}}"
+        class="option-item {{getOptionClass(item, selectedOption, answered)}}"
         data-option="{{item.id}}"
         bindtap="onOptionTap"
       >

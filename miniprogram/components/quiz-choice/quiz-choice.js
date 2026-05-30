@@ -13,6 +13,21 @@ Component({
   },
 
   methods: {
+    getOptionClass(item, selectedOption, answered) {
+      if (!answered) {
+        return selectedOption === item.id ? 'selected' : '';
+      }
+      // Show correct answer always
+      if (item.isCorrect) {
+        return 'correct';
+      }
+      // Show user's wrong selection
+      if (selectedOption === item.id) {
+        return 'incorrect';
+      }
+      return '';
+    },
+
     onOptionTap(e) {
       if (this.data.answered) return;
       const { option } = e.currentTarget.dataset;
