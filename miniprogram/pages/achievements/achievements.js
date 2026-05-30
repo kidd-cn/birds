@@ -155,21 +155,34 @@ Page({
       wx.canvasToTempFilePath({
         canvasId: 'poster-canvas',
         success: (res) => {
-          wx.hideLoading();
-          // 保存到相册
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success: () => {
-              wx.showToast({
-                title: '海报已保存到相册',
-                icon: 'success'
-              });
-            },
-            fail: () => {
-              wx.showToast({
-                title: '保存失败，请授权',
-                icon: 'none'
-              });
+          // 先检查授权
+          wx.getSetting({
+            success: (settingRes) => {
+              if (settingRes.authSetting['scope.writePhotosAlbum']) {
+                // 已有授权，直接保存
+                this.saveToAlbum(res.tempFilePath);
+              } else {
+                // 未授权，引导用户授权
+                wx.authorize({
+                  scope: 'scope.writePhotosAlbum',
+                  success: () => {
+                    this.saveToAlbum(res.tempFilePath);
+                  },
+                  fail: () => {
+                    wx.hideLoading();
+                    wx.showModal({
+                      title: '需要授权',
+                      content: '保存海报到相册需要您的授权，是否前往设置开启？',
+                      confirmText: '去设置',
+                      success: (modalRes) => {
+                        if (modalRes.confirm) {
+                          wx.openSetting({});
+                        }
+                      }
+                    });
+                  }
+                });
+              }
             }
           });
         },
@@ -182,5 +195,24 @@ Page({
         }
       });
     }, 500);
-  }
+  },
+
+  saveToAlbum(tempFilePath) {
+    wx.saveImageToPhotosAlbum({
+      filePath: tempFilePath,
+      success: () => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '海报已保存到相册',
+          icon: 'success'
+        });
+      },
+      fail: () => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '保存失败，请重试',
+          icon: 'none'
+        });
+      }
+    });
 });
