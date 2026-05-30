@@ -33,6 +33,15 @@
       </view>
       <view class="card-arrow">›</view>
     </view>
+
+    <view class="feature-card" bindtap="goToSchool">
+      <view class="card-icon">📚</view>
+      <view class="card-content">
+        <text class="card-title">观鸟学堂</text>
+        <text class="card-desc">学习与自然相处的正确价值观，培养负责任的观鸟者</text>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
   </view>
 
   <view class="intro">

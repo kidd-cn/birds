@@ -44,6 +44,15 @@ Page({
   },
 
   /**
+   * 前往观鸟学堂
+   */
+  goToSchool() {
+    wx.navigateTo({
+      url: '../birding-school/school-home/school-home'
+    });
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
