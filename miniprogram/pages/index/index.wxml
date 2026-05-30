@@ -5,6 +5,12 @@
     <text>活动中心</text>
   </button>
 
+  <!-- 观鸟学堂入口 -->
+  <button class="school-entry-button" bindtap="goToSchool" aria-label="进入观鸟学堂">
+    <text class="school-btn-icon">📚</text>
+    <text class="school-btn-text">观鸟学堂</text>
+  </button>
+
   <map
     id="birdMap"
     class="map-container"
@@ -76,9 +82,4 @@
     bind:activitySelected="onActivitySelected">
   </activity-panel>
 
-  <!-- 观鸟学堂入口 -->
-  <view class="school-entry" bindtap="goToSchool">
-    <text class="school-icon">📚</text>
-    <text class="school-text">观鸟学堂</text>
   </view>
-</view>

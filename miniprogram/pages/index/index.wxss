@@ -242,19 +242,42 @@ page {
 }
 
 /* 观鸟学堂入口样式 */
-.school-entry {
+.school-entry-button {
+  position: absolute;
+  top: 120rpx;
+  right: 40rpx;
+  z-index: 999;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(46, 139, 87, 0.2);
+  border: none;
+  min-width: 180rpx;
+  text-align: center;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16rpx 24rpx;
 }
 
-.school-icon {
+.school-entry-button::after {
+  border: none;
+}
+
+.school-entry-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(46, 139, 87, 0.3);
+  background-color: var(--secondary-green);
+}
+
+.school-btn-icon {
   font-size: 48rpx;
 }
 
-.school-text {
+.school-btn-text {
   font-size: 22rpx;
   margin-top: 8rpx;
-  color: #666;
 }
