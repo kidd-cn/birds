@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="topic-header">
+    <text class="topic-icon">{{topic.icon}}</text>
+    <view class="topic-info">
+      <text class="topic-name">{{topic.name}}</text>
+      <text class="topic-desc">{{topic.description}}</text>
+    </view>
+  </view>
+
+  <view class="levels-section">
+    <text class="section-title">关卡列表</text>
+    <view class="levels-list">
+      <level-card
+        wx:for="{{levels}}"
+        wx:key="id"
+        level="{{item}}"
+        bind:levelTap="onLevelTap"
+      />
+    </view>
+  </view>
+
+  <view class="reward-section">
+    <text class="reward-title">🎁 主题奖励</text>
+    <text class="reward-desc">完成全部关卡解锁 "{{topic.name}}达人" 徽章</text>
+  </view>
+</view>

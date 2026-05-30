@@ -1,0 +1,78 @@
+.container {
+  padding: 20rpx;
+  background: #f0f8f4;
+  min-height: 100vh;
+}
+
+.topic-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.topic-icon {
+  font-size: 80rpx;
+  margin-right: 30rpx;
+}
+
+.topic-info {
+  flex: 1;
+}
+
+.topic-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2e8b57;
+  display: block;
+}
+
+.topic-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.levels-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.reward-section {
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  text-align: center;
+}
+
+.reward-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #f57c00;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.reward-desc {
+  font-size: 24rpx;
+  color: #666;
+}
