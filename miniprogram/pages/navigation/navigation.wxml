@@ -19,7 +19,7 @@
 
   <!-- 功能卡片区 -->
   <view class="features">
-    <view class="feature-card primary" bindtap="goToMap">
+    <view class="feature-card map" bindtap="goToMap">
       <view class="feature-left">
         <view class="feature-icon-bg">
           <text class="feature-icon">🗺️</text>
@@ -32,7 +32,7 @@
       <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card" bindtap="goToBirdingSpots">
+    <view class="feature-card spots" bindtap="goToBirdingSpots">
       <view class="feature-left">
         <view class="feature-icon-bg">
           <text class="feature-icon">🔍</text>
@@ -45,7 +45,7 @@
       <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card" bindtap="goToActivityCenter">
+    <view class="feature-card activity" bindtap="goToActivityCenter">
       <view class="feature-left">
         <view class="feature-icon-bg">
           <text class="feature-icon">🎯</text>
@@ -58,7 +58,7 @@
       <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card accent" bindtap="goToSchool">
+    <view class="feature-card school" bindtap="goToSchool">
       <view class="feature-left">
         <view class="feature-icon-bg">
           <text class="feature-icon">📚</text>

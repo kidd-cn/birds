@@ -97,34 +97,53 @@ page {
 }
 
 .feature-card {
-  background: #fff;
   border-radius: 24rpx;
   padding: 28rpx;
   margin-bottom: 20rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
+}
+
+/* 观鸟地图 - 森林绿 */
+.feature-card.map {
+  background: linear-gradient(135deg, #2e8b57, #43a047);
+  box-shadow: 0 4rpx 16px rgba(46, 139, 87, 0.3);
+}
+
+/* 推荐观鸟点 - 湖水蓝 */
+.feature-card.spots {
+  background: linear-gradient(135deg, #0288d1, #03a9f4);
+  box-shadow: 0 4rpx 16px rgba(2, 136, 209, 0.3);
+}
+
+/* 活动中心 - 活力橙 */
+.feature-card.activity {
+  background: linear-gradient(135deg, #ff7043, #ff8a65);
+  box-shadow: 0 4rpx 16px rgba(255, 112, 67, 0.3);
+}
+
+/* 观鸟学堂 - 知识紫 */
+.feature-card.school {
+  background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+  box-shadow: 0 4rpx 16px rgba(123, 31, 162, 0.3);
 }
 
 .feature-card:active {
   transform: scale(0.98);
 }
 
-.feature-card.primary {
-  background: linear-gradient(135deg, #4caf50, #66bb6a);
-}
-
-.feature-card.primary .feature-title,
-.feature-card.primary .feature-desc,
-.feature-card.primary .feature-icon {
+.feature-card .feature-title,
+.feature-card .feature-desc,
+.feature-card .feature-icon {
   color: #fff;
 }
 
-.feature-card.accent {
-  background: linear-gradient(135deg, #fff8e1, #fff3cd);
-  border: 2rpx solid #ffc107;
+.feature-card .feature-arrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 40rpx;
+  font-weight: 300;
 }
 
 .feature-left {
@@ -136,17 +155,12 @@ page {
 .feature-icon-bg {
   width: 80rpx;
   height: 80rpx;
-  background: #f0f8f4;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20rpx;
-}
-
-.feature-card.primary .feature-icon-bg,
-.feature-card.accent .feature-icon-bg {
-  background: rgba(255, 255, 255, 0.3);
 }
 
 .feature-icon {
@@ -160,29 +174,14 @@ page {
 .feature-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #1a1a1a;
   display: block;
   margin-bottom: 6rpx;
 }
 
 .feature-desc {
   font-size: 24rpx;
-  color: #666;
+  opacity: 0.9;
   display: block;
-}
-
-.feature-card.primary .feature-desc {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.feature-arrow {
-  font-size: 40rpx;
-  color: #ccc;
-  font-weight: 300;
-}
-
-.feature-card.primary .feature-arrow {
-  color: rgba(255, 255, 255, 0.6);
 }
 
 /* 底部介绍卡片 */
@@ -191,7 +190,7 @@ page {
   margin: 30rpx 24rpx;
   border-radius: 24rpx;
   padding: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4rpx 16px rgba(0, 0, 0, 0.06);
 }
 
 .intro-header {
