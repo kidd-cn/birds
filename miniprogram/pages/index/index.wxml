@@ -5,12 +5,6 @@
     <text>活动中心</text>
   </button>
 
-  <!-- 观鸟学堂入口 -->
-  <button class="school-entry-button" bindtap="goToSchool" aria-label="进入观鸟学堂">
-    <text class="school-btn-icon">📚</text>
-    <text class="school-btn-text">观鸟学堂</text>
-  </button>
-
   <map
     id="birdMap"
     class="map-container"
@@ -73,13 +67,5 @@
       </view>
     </view>
   </view>
-
-  <!-- Activity Panel Component -->
-  <activity-panel
-    wx:if="{{showActivityPanel}}"
-    visible="{{showActivityPanel}}"
-    bind:close="hideActivityPanel"
-    bind:activitySelected="onActivitySelected">
-  </activity-panel>
 
   </view>
