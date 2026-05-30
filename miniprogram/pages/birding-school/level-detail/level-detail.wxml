@@ -1,0 +1,71 @@
+<view class="container">
+  <!-- 关卡头部 -->
+  <view class="level-header">
+    <view class="level-info">
+      <text class="level-name">{{level.name}}</text>
+      <text class="topic-tag">{{topic.icon}} {{topic.name}}</text>
+    </view>
+    <view class="progress-indicator">
+      <text class="progress-text">{{currentQuestionIndex + 1}} / {{questions.length}}</text>
+    </view>
+  </view>
+
+  <!-- 题目区域 -->
+  <view class="question-area" wx:if="{{!completed}}">
+    <view class="question-card">
+      <view class="guide-box">
+        <text class="guide-text">📖 {{questions[currentQuestionIndex].text}}</text>
+      </view>
+
+      <image
+        wx:if="{{questions[currentQuestionIndex].image}}"
+        class="question-image"
+        src="{{questions[currentQuestionIndex].image}}"
+        mode="aspectFit"
+        binderror="onImageError"
+      />
+
+      <quiz-choice
+        wx:if="{{questions[currentQuestionIndex].type === 'choice'}}"
+        question="{{questions[currentQuestionIndex]}}"
+        bind:answer="onQuestionAnswer"
+      />
+
+      <quiz-sort
+        wx:if="{{questions[currentQuestionIndex].type === 'sort'}}"
+        question="{{questions[currentQuestionIndex]}}"
+        bind:answer="onQuestionAnswer"
+      />
+
+      <quiz-fill
+        wx:if="{{questions[currentQuestionIndex].type === 'fill'}}"
+        question="{{questions[currentQuestionIndex]}}"
+        bind:answer="onQuestionAnswer"
+      />
+    </view>
+  </view>
+
+  <!-- 完成页面 -->
+  <view class="complete-area" wx:if="{{completed}}">
+    <view class="complete-card">
+      <text class="complete-icon">🎉</text>
+      <text class="complete-title">关卡完成！</text>
+      <view class="score-display">
+        <text class="score-label">答对</text>
+        <text class="score-number">{{correctCount}}</text>
+        <text class="score-total">/ {{questions.length}} 题</text>
+      </view>
+
+      <view class="badge-unlock" wx:if="{{showBadge}}">
+        <text class="badge-text">🏅 获得主题徽章！</text>
+      </view>
+
+      <view class="complete-actions">
+        <button class="action-btn primary" bindtap="goToNextLevel">
+          继续下一关
+        </button>
+        <button class="action-btn secondary" bindtap="goToTopic">查看主题进度</button>
+      </view>
+    </view>
+  </view>
+</view>

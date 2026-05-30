@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "quiz-choice": "/components/quiz-choice/quiz-choice",
+    "quiz-sort": "/components/quiz-sort/quiz-sort",
+    "quiz-fill": "/components/quiz-fill/quiz-fill"
+  },
+  "navigationBarTitleText": "关卡"
+}
