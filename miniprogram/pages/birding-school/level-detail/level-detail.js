@@ -28,6 +28,7 @@ Page({
 
     this.setData({
       level,
+      levelId,  // Store levelId separately
       topic,
       questions,
       currentQuestionIndex: 0,
