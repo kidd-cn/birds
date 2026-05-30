@@ -20,23 +20,10 @@ Page({
     const completed = topics.filter(t => t.status === 'completed').length;
 
     this.setData({
-      topics: topics.map(t => ({
-        ...t,
-        position: this.getTopicPosition(t.order)
-      })),
+      topics,
       totalCompleted: completed,
       totalTopics: topics.length
     });
-  },
-
-  getTopicPosition(order) {
-    const positions = [
-      { top: 80, left: 60 },
-      { top: 280, left: 280 },
-      { top: 480, left: 60 },
-      { top: 680, left: 280 }
-    ];
-    return positions[order - 1] || { top: 80, left: 60 };
   },
 
   onTopicTap(e) {
