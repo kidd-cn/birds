@@ -47,13 +47,18 @@ Page({
       level = 2;
     }
 
+    // 计算进度百分比
+    const totalLevels = 12; // 4 topics * 3 levels
+    const progressPercent = Math.round((completedCount / totalLevels) * 100);
+
     this.setData({
       badges,
       titles: [title],
       totalScore: progress.totalScore,
       level,
       completedLevels: completedCount,
-      totalBadges: Object.keys(badgeMap).length
+      totalBadges: Object.keys(badgeMap).length,
+      progressPercent
     });
   },
 

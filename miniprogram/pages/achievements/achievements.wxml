@@ -1,67 +1,125 @@
 <view class="container">
-  <!-- 头部装饰 -->
-  <view class="header-decoration">
-    <text class="header-icon">🏆</text>
-  </view>
-
-  <view class="header">
-    <text class="title">我的成就</text>
+  <!-- 顶部Banner -->
+  <view class="top-banner">
+    <view class="banner-content">
+      <text class="banner-title">🏆 我的成就</text>
+      <text class="banner-subtitle">观鸟学堂学习成果</text>
+    </view>
+    <view class="banner-decoration">
+      <text class="banner-icon">🎓</text>
+    </view>
   </view>
 
   <!-- 称号卡片 -->
   <view class="title-card">
-    <view class="title-badge">
+    <view class="title-badge-large">
       <text class="title-icon">{{getTitleIcon()}}</text>
     </view>
-    <view class="title-info">
+    <view class="title-details">
       <text class="user-title">{{titles[0]}}</text>
-      <text class="title-level">等级 {{level}}</text>
+      <view class="title-badges">
+        <text class="title-badge-item">等级 {{level}}</text>
+        <text class="title-badge-item" wx:if="{{badges.length > 0}}">{{badges.length}} 枚徽章</text>
+      </view>
     </view>
-    <view class="score-display">
-      <text class="score-number">{{totalScore}}</text>
-      <text class="score-label">积分</text>
+    <view class="score-section">
+      <text class="score-number-large">{{totalScore}}</text>
+      <text class="score-unit">积分</text>
     </view>
   </view>
 
-  <!-- 进度概览 -->
-  <view class="progress-overview">
-    <view class="progress-item">
-      <text class="progress-value">{{completedLevels}}</text>
-      <text class="progress-label">已完成关卡</text>
+  <!-- 学习进度 -->
+  <view class="progress-card">
+    <view class="card-header">
+      <text class="card-title">📊 学习进度</text>
     </view>
-    <view class="progress-divider"></view>
-    <view class="progress-item">
-      <text class="progress-value">{{badges.length}}</text>
-      <text class="progress-label">获得徽章</text>
+    <view class="progress-stats">
+      <view class="stat-item">
+        <view class="stat-ring">
+          <text class="stat-value">{{completedLevels}}</text>
+          <text class="stat-max">/{{totalTopics * 3}}</text>
+        </view>
+        <text class="stat-label">已完成关卡</text>
+      </view>
+      <view class="stat-item">
+        <view class="stat-ring">
+          <text class="stat-value">{{badges.length}}</text>
+          <text class="stat-max">/{{totalBadges}}</text>
+        </view>
+        <text class="stat-label">获得徽章</text>
+      </view>
+      <view class="stat-item">
+        <view class="stat-ring">
+          <text class="stat-value">{{totalScore}}</text>
+          <text class="stat-max">+</text>
+        </view>
+        <text class="stat-label">累计积分</text>
+      </view>
     </view>
-    <view class="progress-divider"></view>
-    <view class="progress-item">
-      <text class="progress-value">{{totalTopics}}</text>
-      <text class="progress-label">主题总数</text>
+
+    <!-- 进度条 -->
+    <view class="progress-bar-section">
+      <view class="progress-bar-header">
+        <text class="progress-bar-title">整体进度</text>
+        <text class="progress-bar-percent">{{progressPercent}}%</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-bar-fill" style="width: {{progressPercent}}%"></view>
+      </view>
     </view>
   </view>
 
   <!-- 徽章墙 -->
-  <view class="badge-section">
-    <view class="section-header">
-      <text class="section-title">🎖️ 徽章墙</text>
-      <text class="section-count">{{badges.length}} / {{totalBadges}}</text>
+  <view class="badge-card">
+    <view class="card-header">
+      <text class="card-title">🎖️ 徽章墙</text>
+      <text class="card-count">{{badges.length}} / {{totalBadges}}</text>
     </view>
 
     <view class="badge-grid" wx:if="{{badges.length > 0}}">
       <view wx:for="{{badges}}" wx:key="name" class="badge-item">
-        <view class="badge-icon-wrapper">
+        <view class="badge-icon-box">
           <text class="badge-icon">{{item.icon}}</text>
         </view>
         <text class="badge-name">{{item.name}}</text>
         <text class="badge-desc">{{item.desc}}</text>
+        <view class="badge-glow"></view>
       </view>
     </view>
 
     <view class="empty-badges" wx:if="{{badges.length === 0}}">
-      <text class="empty-icon">🎯</text>
+      <view class="empty-icon-box">🎯</view>
       <text class="empty-text">还没有获得徽章</text>
       <text class="empty-hint">完成关卡来解锁专属徽章吧！</text>
+    </view>
+  </view>
+
+  <!-- 称号预览 -->
+  <view class="rank-card">
+    <view class="card-header">
+      <text class="card-title">🌟 称号进度</text>
+    </view>
+    <view class="rank-list">
+      <view class="rank-item {{completedLevels >= 1 ? 'active' : ''}}">
+        <text class="rank-icon">🎓</text>
+        <text class="rank-name">观鸟学徒</text>
+        <text class="rank-status">{{completedLevels >= 1 ? '✓' : ''}}</text>
+      </view>
+      <view class="rank-item {{completedLevels >= 4 ? 'active' : ''}}">
+        <text class="rank-icon">📚</text>
+        <text class="rank-name">观鸟学者</text>
+        <text class="rank-status">{{completedLevels >= 4 ? '✓' : ''}}</text>
+      </view>
+      <view class="rank-item {{completedLevels >= 8 ? 'active' : ''}}">
+        <text class="rank-icon">🎖️</text>
+        <text class="rank-name">观鸟专家</text>
+        <text class="rank-status">{{completedLevels >= 8 ? '✓' : ''}}</text>
+      </view>
+      <view class="rank-item {{completedLevels >= 12 ? 'active' : ''}}">
+        <text class="rank-icon">👑</text>
+        <text class="rank-name">观鸟大师</text>
+        <text class="rank-status">{{completedLevels >= 12 ? '✓' : ''}}</text>
+      </view>
     </view>
   </view>
 
