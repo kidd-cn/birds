@@ -601,7 +601,7 @@ function getNextLevel(topicId, currentOrder) {
 /**
  * Calculate score for a level based on answers
  * @param {string} levelId - Level ID
- * @param {Object} answers - User's answers { questionId: answer }
+ * @param {Array} answers - User's answers array (indexed by question order)
  * @returns {number} Score (0-100)
  */
 function calculateScore(levelId, answers) {
@@ -611,9 +611,10 @@ function calculateScore(levelId, answers) {
   let correctCount = 0;
   const totalQuestions = level.questions.length;
 
-  for (const question of level.questions) {
-    const userAnswer = answers[question.id];
-    if (!userAnswer) continue;
+  for (let i = 0; i < totalQuestions; i++) {
+    const question = level.questions[i];
+    const userAnswer = answers[i];
+    if (userAnswer === undefined || userAnswer === null) continue;
 
     let isCorrect = false;
 

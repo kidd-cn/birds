@@ -40,7 +40,8 @@ Page({
     const { answer } = e.detail;
     const { currentQuestionIndex, answers, questions } = this.data;
 
-    answers.push(answer);
+    // Store answer keyed by question index
+    answers[currentQuestionIndex] = answer;
     this.setData({ answers });
 
     if (currentQuestionIndex < questions.length - 1) {

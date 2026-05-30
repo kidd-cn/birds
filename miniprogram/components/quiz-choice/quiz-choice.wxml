@@ -2,14 +2,14 @@
 <view class="quiz-choice-container">
   <!-- Question Text -->
   <view class="question-section">
-    <text class="question-text">{{question.question}}</text>
+    <text class="question-text">{{question.text}}</text>
   </view>
 
   <!-- Options List -->
   <view class="options-container">
     <block wx:for="{{question.options}}" wx:key="id">
       <view
-        class="option-item {{selectedOption === item.id ? (answered ? (item.id === question.correctAnswer ? 'correct' : 'incorrect') : 'selected') : ''}}"
+        class="option-item {{answered ? (item.isCorrect ? 'correct' : (selectedOption === item.id ? 'incorrect' : '')) : (selectedOption === item.id ? 'selected' : '')}}"
         data-option="{{item.id}}"
         bindtap="onOptionTap"
       >
@@ -20,7 +20,7 @@
   </view>
 
   <!-- Explanation -->
-  <block wx:if="{{showExplanation}}">
+  <block wx:if="{{showExplanation && question.explanation}}">
     <view class="explanation-area">
       <text class="explanation-title">解释:</text>
       <text class="explanation-text">{{question.explanation}}</text>
