@@ -1,0 +1,32 @@
+<view class="progress-map">
+  <view class="map-background">
+    <view class="bg-path"></view>
+  </view>
+
+  <view class="topics-container">
+    <view
+      wx:for="{{topics}}"
+      wx:key="id"
+      class="topic-node status-{{item.status}}"
+      bindtap="onTopicTap"
+      data-topic-id="{{item.id}}"
+      style="top: {{item.position.top}}rpx; left: {{item.position.left}}rpx;"
+    >
+      <view class="node-icon">{{item.icon}}</view>
+      <view class="node-label">{{item.name}}</view>
+      <view class="node-badge" wx:if="{{item.status === 'locked'}}">🔒</view>
+      <view class="node-badge" wx:if="{{item.status === 'unlocked'}}">⭐</view>
+      <view class="node-badge" wx:if="{{item.status === 'completed'}}">✓</view>
+    </view>
+
+    <view class="connection-lines">
+      <view class="line line-1"></view>
+      <view class="line line-2"></view>
+      <view class="line line-3"></view>
+    </view>
+  </view>
+
+  <view class="progress-info">
+    <text class="total-progress">已完成 {{completedCount}} / {{totalCount}} 个主题</text>
+  </view>
+</view>
