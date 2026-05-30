@@ -8,7 +8,10 @@
     "pages/activities/knowledge-quiz",
     "pages/activities/check-in",
     "pages/achievements/achievements",
-    "pages/activities/activity-center"
+    "pages/activities/activity-center",
+    "pages/birding-school/school-home/school-home",
+    "pages/birding-school/topic-detail/topic-detail",
+    "pages/birding-school/level-detail/level-detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -75,4 +75,10 @@
     bind:close="hideActivityPanel"
     bind:activitySelected="onActivitySelected">
   </activity-panel>
+
+  <!-- 观鸟学堂入口 -->
+  <view class="school-entry" bindtap="goToSchool">
+    <text class="school-icon">📚</text>
+    <text class="school-text">观鸟学堂</text>
+  </view>
 </view>

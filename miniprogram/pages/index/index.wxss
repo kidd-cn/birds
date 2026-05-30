@@ -240,3 +240,21 @@ page {
   flex: 1;
   word-wrap: break-word;
 }
+
+/* 观鸟学堂入口样式 */
+.school-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 24rpx;
+}
+
+.school-icon {
+  font-size: 48rpx;
+}
+
+.school-text {
+  font-size: 22rpx;
+  margin-top: 8rpx;
+  color: #666;
+}

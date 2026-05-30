@@ -639,5 +639,14 @@ Page({
   onImageError(e) {
     console.error('图片加载失败:', e);
     // 这里可以设置一个默认图片，但因为我们已经在WXML中使用了默认图片，所以这里主要是记录错误
+  },
+
+  /**
+   * 跳转到观鸟学堂
+   */
+  goToSchool() {
+    wx.navigateTo({
+      url: '/pages/birding-school/school-home/school-home'
+    });
   }
 });
