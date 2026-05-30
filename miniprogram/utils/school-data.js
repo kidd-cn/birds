@@ -695,7 +695,9 @@ function completeLevel(levelId, score) {
     levelId,
     score,
     isNewBest: score > currentBest,
-    nextLevelId
+    nextLevelId,
+    completedLevels: progress.completedLevels,
+    totalScore: Object.values(progress.scores).reduce((a, b) => a + b, 0)
   };
 }
 
