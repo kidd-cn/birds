@@ -608,12 +608,16 @@ function calculateScore(levelId, answers) {
   const level = LEVELS.find(l => l.id === levelId);
   if (!level) return 0;
 
+  console.log('calculateScore:', { levelId, answers, questionsCount: level.questions.length });
+
   let correctCount = 0;
   const totalQuestions = level.questions.length;
 
   for (let i = 0; i < totalQuestions; i++) {
     const question = level.questions[i];
     const userAnswer = answers[i];
+    console.log('Question', i, ':', question.type, userAnswer);
+
     if (userAnswer === undefined || userAnswer === null) continue;
 
     let isCorrect = false;
@@ -622,6 +626,7 @@ function calculateScore(levelId, answers) {
       case 'choice':
         // For choice, userAnswer is the selected option ID (A, B, C)
         const correctOption = question.options.find(o => o.isCorrect);
+        console.log('Correct option:', correctOption);
         isCorrect = correctOption && correctOption.id === userAnswer;
         break;
 
@@ -636,10 +641,13 @@ function calculateScore(levelId, answers) {
         break;
     }
 
-    if (isCorrect) correctCount++;
+    if (isCorrect) {
+      correctCount++;
+    }
   }
 
-  return totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+  console.log('correctCount:', correctCount, 'total:', totalQuestions);
+  return correctCount;
 }
 
 /**

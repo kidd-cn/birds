@@ -59,7 +59,9 @@ Page({
 
   completeLevel() {
     const { levelId, answers } = this.data;
+    console.log('completeLevel called:', { levelId, answers });
     const correctCount = schoolData.calculateScore(levelId, answers);
+    console.log('correctCount:', correctCount);
     const progress = schoolData.completeLevel(levelId, correctCount);
 
     const topicLevels = schoolData.getLevelsByTopicId(this.data.level.topicId);
