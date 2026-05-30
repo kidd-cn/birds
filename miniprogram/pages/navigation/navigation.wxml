@@ -32,14 +32,14 @@
       <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card spots" bindtap="goToBirdingSpots">
+    <view class="feature-card school" bindtap="goToSchool">
       <view class="feature-left">
         <view class="feature-icon-bg">
-          <text class="feature-icon">🔍</text>
+          <text class="feature-icon">📚</text>
         </view>
         <view class="feature-info">
-          <text class="feature-title">推荐观鸟点</text>
-          <text class="feature-desc">5大代表性观鸟地点</text>
+          <text class="feature-title">观鸟学堂</text>
+          <text class="feature-desc">学习与自然相处的正确价值观</text>
         </view>
       </view>
       <view class="feature-arrow">›</view>
@@ -58,14 +58,14 @@
       <view class="feature-arrow">›</view>
     </view>
 
-    <view class="feature-card school" bindtap="goToSchool">
+    <view class="feature-card spots" bindtap="goToBirdingSpots">
       <view class="feature-left">
         <view class="feature-icon-bg">
-          <text class="feature-icon">📚</text>
+          <text class="feature-icon">🔍</text>
         </view>
         <view class="feature-info">
-          <text class="feature-title">观鸟学堂</text>
-          <text class="feature-desc">学习与自然相处的正确价值观</text>
+          <text class="feature-title">推荐观鸟点</text>
+          <text class="feature-desc">5大代表性观鸟地点</text>
         </view>
       </view>
       <view class="feature-arrow">›</view>
