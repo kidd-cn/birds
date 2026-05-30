@@ -5,7 +5,10 @@ Page({
     badges: [],
     titles: [],
     totalScore: 0,
-    level: 1
+    level: 1,
+    completedLevels: 0,
+    totalTopics: 4,
+    totalBadges: 4
   },
 
   onLoad() {
@@ -27,18 +30,19 @@ Page({
       'advanced-master': { name: '进阶专家', icon: '✈️', desc: '完成进阶篇' }
     };
 
-    const badges = progress.badges.map(bid => badgeMap[bid] || { name: bid, icon: '🏅' });
+    const badges = progress.badges.map(bid => badgeMap[bid] || { name: bid, icon: '🏅', desc: '' });
 
     // 称号计算
     let title = '观鸟学徒';
     let level = 1;
-    if (progress.completedLevels.length >= 12) {
+    const completedCount = progress.completedLevels.length;
+    if (completedCount >= 12) {
       title = '观鸟大师';
       level = 4;
-    } else if (progress.completedLevels.length >= 8) {
+    } else if (completedCount >= 8) {
       title = '观鸟专家';
       level = 3;
-    } else if (progress.completedLevels.length >= 4) {
+    } else if (completedCount >= 4) {
       title = '观鸟学者';
       level = 2;
     }
@@ -47,8 +51,20 @@ Page({
       badges,
       titles: [title],
       totalScore: progress.totalScore,
-      level
+      level,
+      completedLevels: completedCount,
+      totalBadges: Object.keys(badgeMap).length
     });
+  },
+
+  getTitleIcon() {
+    const iconMap = {
+      '观鸟学徒': '🎓',
+      '观鸟学者': '📚',
+      '观鸟专家': '🎖️',
+      '观鸟大师': '👑'
+    };
+    return iconMap[this.data.titles[0]] || '🎓';
   },
 
   generatePoster() {

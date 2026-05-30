@@ -1,25 +1,96 @@
 <view class="container">
+  <!-- 头部装饰 -->
+  <view class="header-decoration">
+    <text class="header-icon">🏆</text>
+  </view>
+
   <view class="header">
     <text class="title">我的成就</text>
   </view>
 
-  <view class="title-section">
-    <text class="user-title">{{titles[0]}}</text>
-    <text class="score">积分: {{totalScore}}</text>
+  <!-- 称号卡片 -->
+  <view class="title-card">
+    <view class="title-badge">
+      <text class="title-icon">{{getTitleIcon()}}</text>
+    </view>
+    <view class="title-info">
+      <text class="user-title">{{titles[0]}}</text>
+      <text class="title-level">等级 {{level}}</text>
+    </view>
+    <view class="score-display">
+      <text class="score-number">{{totalScore}}</text>
+      <text class="score-label">积分</text>
+    </view>
   </view>
 
+  <!-- 进度概览 -->
+  <view class="progress-overview">
+    <view class="progress-item">
+      <text class="progress-value">{{completedLevels}}</text>
+      <text class="progress-label">已完成关卡</text>
+    </view>
+    <view class="progress-divider"></view>
+    <view class="progress-item">
+      <text class="progress-value">{{badges.length}}</text>
+      <text class="progress-label">获得徽章</text>
+    </view>
+    <view class="progress-divider"></view>
+    <view class="progress-item">
+      <text class="progress-value">{{totalTopics}}</text>
+      <text class="progress-label">主题总数</text>
+    </view>
+  </view>
+
+  <!-- 徽章墙 -->
   <view class="badge-section">
-    <text class="section-title">徽章墙</text>
-    <view class="badge-grid">
+    <view class="section-header">
+      <text class="section-title">🎖️ 徽章墙</text>
+      <text class="section-count">{{badges.length}} / {{totalBadges}}</text>
+    </view>
+
+    <view class="badge-grid" wx:if="{{badges.length > 0}}">
       <view wx:for="{{badges}}" wx:key="name" class="badge-item">
-        <text class="badge-icon">{{item.icon}}</text>
+        <view class="badge-icon-wrapper">
+          <text class="badge-icon">{{item.icon}}</text>
+        </view>
         <text class="badge-name">{{item.name}}</text>
+        <text class="badge-desc">{{item.desc}}</text>
       </view>
-      <view wx:if="{{badges.length === 0}}" class="empty-badges">
-        <text>完成关卡解锁徽章</text>
+    </view>
+
+    <view class="empty-badges" wx:if="{{badges.length === 0}}">
+      <text class="empty-icon">🎯</text>
+      <text class="empty-text">还没有获得徽章</text>
+      <text class="empty-hint">完成关卡来解锁专属徽章吧！</text>
+    </view>
+  </view>
+
+  <!-- 徽章图例 -->
+  <view class="badge-legend">
+    <text class="legend-title">徽章图例</text>
+    <view class="legend-grid">
+      <view class="legend-item">
+        <text class="legend-icon">🔭</text>
+        <text class="legend-name">装备达人</text>
+      </view>
+      <view class="legend-item">
+        <text class="legend-icon">🛡️</text>
+        <text class="legend-name">安全卫士</text>
+      </view>
+      <view class="legend-item">
+        <text class="legend-icon">🍃</text>
+        <text class="legend-name">观鸟使者</text>
+      </view>
+      <view class="legend-item">
+        <text class="legend-icon">✈️</text>
+        <text class="legend-name">进阶专家</text>
       </view>
     </view>
   </view>
 
-  <button class="poster-btn" bindtap="generatePoster">生成成就海报</button>
+  <!-- 海报按钮 -->
+  <button class="poster-btn" bindtap="generatePoster">
+    <text class="btn-icon">📤</text>
+    <text>生成成就海报</text>
+  </button>
 </view>
