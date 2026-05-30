@@ -649,6 +649,11 @@ function calculateScore(levelId, answers) {
 function completeLevel(levelId, score) {
   const progress = getProgress();
 
+  // Ensure arrays exist
+  if (!progress.completedLevels) progress.completedLevels = [];
+  if (!progress.unlockedLevels) progress.unlockedLevels = [];
+  if (!progress.scores) progress.scores = {};
+
   // Add to completed levels if not already
   if (!progress.completedLevels.includes(levelId)) {
     progress.completedLevels.push(levelId);
@@ -704,7 +709,10 @@ function getProgress() {
     if (stored) {
       return {
         ...DEFAULT_PROGRESS,
-        ...stored
+        ...stored,
+        completedLevels: stored.completedLevels || [],
+        unlockedLevels: stored.unlockedLevels || [],
+        scores: stored.scores || {}
       };
     }
   } catch (e) {
