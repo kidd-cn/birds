@@ -65,29 +65,6 @@
     </view>
   </view>
 
-  <!-- 徽章图例 -->
-  <view class="badge-legend">
-    <text class="legend-title">徽章图例</text>
-    <view class="legend-grid">
-      <view class="legend-item">
-        <text class="legend-icon">🔭</text>
-        <text class="legend-name">装备达人</text>
-      </view>
-      <view class="legend-item">
-        <text class="legend-icon">🛡️</text>
-        <text class="legend-name">安全卫士</text>
-      </view>
-      <view class="legend-item">
-        <text class="legend-icon">🍃</text>
-        <text class="legend-name">观鸟使者</text>
-      </view>
-      <view class="legend-item">
-        <text class="legend-icon">✈️</text>
-        <text class="legend-name">进阶专家</text>
-      </view>
-    </view>
-  </view>
-
   <!-- 海报按钮 -->
   <button class="poster-btn" bindtap="generatePoster">
     <text class="btn-icon">📤</text>
