@@ -1,15 +1,17 @@
 // pages/activities/check-in.js
+const schoolData = require('../../utils/school-data');
+
 Page({
   data: {
     todayCheckedIn: false,
     consecutiveDays: 0,
     totalCheckIns: 0,
     streakMessage: '',
-    showSuccess: false
+    showSuccess: false,
+    checkInPoints: 0
   },
 
   onLoad() {
-    // Load check-in data from storage
     this.loadCheckInData();
   },
 
@@ -21,14 +23,17 @@ Page({
       checkInDates: []
     };
 
-    // Check if user has checked in today
     const today = new Date().toISOString().split('T')[0];
     const todayCheckedIn = checkInData.checkInDates.includes(today);
+
+    // 计算签到积分（每天签到得10积分）
+    const checkInPoints = checkInData.totalCheckIns * 10;
 
     this.setData({
       todayCheckedIn: todayCheckedIn,
       consecutiveDays: checkInData.consecutiveDays,
-      totalCheckIns: checkInData.totalCheckIns
+      totalCheckIns: checkInData.totalCheckIns,
+      checkInPoints: checkInPoints
     });
 
     this.updateStreakMessage();
@@ -51,20 +56,16 @@ Page({
       checkInDates: []
     };
 
-    // Calculate consecutive days
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().split('T')[0];
 
     if (checkInData.lastCheckInDate === yesterdayStr) {
-      // Continuing streak
       checkInData.consecutiveDays += 1;
     } else if (checkInData.lastCheckInDate !== today) {
-      // Breaking or starting a new streak
       checkInData.consecutiveDays = 1;
     }
 
-    // Update other stats
     checkInData.lastCheckInDate = today;
     checkInData.totalCheckIns += 1;
 
@@ -72,31 +73,30 @@ Page({
       checkInData.checkInDates.push(today);
     }
 
-    // Save to storage
     wx.setStorageSync('checkInData', checkInData);
 
-    // Update UI
+    // 累加积分（每次签到+10积分）
+    const schoolProgress = schoolData.getProgress();
+    const checkInScore = schoolProgress.scores['check-in'] || 0;
+    schoolProgress.scores['check-in'] = checkInScore + 10;
+    schoolData.saveProgress(schoolProgress);
+
     this.setData({
       todayCheckedIn: true,
       consecutiveDays: checkInData.consecutiveDays,
-      totalCheckIns: checkInData.totalCheckIns
+      totalCheckIns: checkInData.totalCheckIns,
+      checkInPoints: checkInData.totalCheckIns * 10
     });
 
     this.updateStreakMessage();
-
-    // Show success message
-    this.setData({
-      showSuccess: true
-    });
+    this.setData({ showSuccess: true });
 
     setTimeout(() => {
-      this.setData({
-        showSuccess: false
-      });
+      this.setData({ showSuccess: false });
     }, 2000);
 
     wx.showToast({
-      title: '签到成功！',
+      title: '签到成功！+10积分',
       icon: 'success'
     });
   },
@@ -115,13 +115,10 @@ Page({
       message = `厉害！连续签到 ${this.data.consecutiveDays} 天！`;
     }
 
-    this.setData({
-      streakMessage: message
-    });
+    this.setData({ streakMessage: message });
   },
 
   viewAchievements() {
-    // Navigate to achievements page
     wx.navigateTo({
       url: '/pages/achievements/achievements'
     });

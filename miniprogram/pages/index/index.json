@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "深圳观鸟地图",
   "usingComponents": {
     "activity-panel": "/components/activity-panel/activity-panel",
     "bird-identification-game": "/components/bird-game/bird-identification-game",

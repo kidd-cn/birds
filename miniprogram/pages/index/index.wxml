@@ -5,6 +5,14 @@
     <text>活动中心</text>
   </button>
 
+  <!-- Activity Panel Component -->
+  <activity-panel
+    wx:if="{{showActivityPanel}}"
+    visible="{{showActivityPanel}}"
+    bind:close="hideActivityPanel"
+    bind:activitySelected="onActivitySelected">
+  </activity-panel>
+
   <map
     id="birdMap"
     class="map-container"
