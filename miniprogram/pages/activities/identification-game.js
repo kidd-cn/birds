@@ -1,4 +1,6 @@
 // pages/activities/identification-game.js
+const pointsSystem = require('../../utils/points-system');
+
 Page({
   data: {
     gameBirds: [],
@@ -224,6 +226,8 @@ Page({
       this.setData({
         score: this.data.score + 1
       });
+      const questionId = correctBird.id;
+      pointsSystem.addPoints(`game-q:identification:${questionId}`, 5);
     }
 
     // 在显示答案结果时，更新进度到已完成当前题目
@@ -257,6 +261,8 @@ Page({
 
   endGame() {
     // 在游戏结束时不需要再递增currentQuestion，因为已经在selectAnswer中处理了
+    const today = new Date().toISOString().split('T')[0];
+    pointsSystem.addPoints(`game-finish:identification:${today}`, 15);
     this.setData({
       gameCompleted: true
     });
