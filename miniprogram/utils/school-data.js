@@ -5,6 +5,8 @@
 
 const STORAGE_KEY = 'birding-school-progress';
 
+const pointsSystem = require('./points-system');
+
 // ============================================================================
 // TOPICS - 4 themes
 // ============================================================================
@@ -651,6 +653,7 @@ function calculateScore(levelId, answers) {
 
     if (isCorrect) {
       correctCount++;
+      pointsSystem.addPoints(`question:${question.id}`, 5);
     }
   }
 
@@ -675,6 +678,7 @@ function completeLevel(levelId, score) {
   // Add to completed levels if not already
   if (!progress.completedLevels.includes(levelId)) {
     progress.completedLevels.push(levelId);
+    pointsSystem.addPoints(`level:${levelId}`, 20);
   }
 
   // Save score (keep best score)
@@ -712,6 +716,7 @@ function completeLevel(levelId, score) {
           if (!progress.badges) progress.badges = [];
           if (!progress.badges.includes(badgeKey)) {
             progress.badges.push(badgeKey);
+            pointsSystem.addPoints(`badge:${badgeKey}`, 30);
           }
         }
       }
