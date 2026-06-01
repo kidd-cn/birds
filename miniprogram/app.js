@@ -4,6 +4,11 @@ App({
     // 小程序启动时的初始化逻辑
     console.log('App launched');
 
+    const pointsSystem = require('./utils/points-system');
+    const avatarSystem = require('./utils/avatar-system');
+    pointsSystem.init();
+    avatarSystem.init();
+
     // 初始化云开发
     if (!wx.cloud) {
       console.error('小程序基础库版本过低，暂不支持云开发');
