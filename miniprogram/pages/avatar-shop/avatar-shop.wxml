@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="header">
+    <view class="points-display">
+      <text class="points-label">当前积分</text>
+      <text class="points-value">{{currentPoints}}</text>
+    </view>
+    <view class="points-display">
+      <text class="points-label">总获得</text>
+      <text class="points-value small">{{totalEarned}}</text>
+    </view>
+  </view>
+
+  <view class="equipped-section">
+    <avatar-display size="large" show-name="{{true}}" show-border="{{true}}"></avatar-display>
+    <text class="equipped-name">{{equippedAvatar.name}}</text>
+  </view>
+
+  <view class="tier-tabs">
+    <view wx:for="{{tiers}}" wx:key="key"
+          class="tier-tab {{currentTier === item.key ? 'active' : ''}}"
+          data-tier="{{item.key}}"
+          bindtap="onSelectTier">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="avatar-grid">
+    <view wx:for="{{avatars}}" wx:key="id"
+          wx:if="{{item.tier === currentTier}}"
+          class="avatar-card {{item.equipped ? 'equipped' : ''}} {{item.unlocked ? '' : 'locked'}} {{item.owned ? 'owned' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="onAvatarTap">
+      <image class="card-img" src="{{item.image}}" mode="aspectFit"></image>
+      <text class="card-name">{{item.name}}</text>
+      <view wx:if="{{item.equipped}}" class="badge using">使用中</view>
+      <view wx:elif="{{item.owned}}" class="badge owned">已拥有</view>
+      <view wx:elif="{{!item.unlocked}}" class="badge locked-badge">🔒 {{item.unlockAt}}分解锁</view>
+      <view wx:else class="badge price">{{item.price}}积分</view>
+    </view>
+  </view>
+</view>

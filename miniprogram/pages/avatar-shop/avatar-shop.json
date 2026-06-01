@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的头像",
+  "usingComponents": {
+    "avatar-display": "/components/avatar-display/avatar-display"
+  }
+}

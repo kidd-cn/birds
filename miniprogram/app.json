@@ -3,6 +3,7 @@
     "pages/navigation/navigation",
     "pages/index/index",
     "pages/birding-spots/birding-spots",
+    "pages/avatar-shop/avatar-shop",
     "pages/bird-game-demo/bird-game-demo",
     "pages/activities/identification-game",
     "pages/activities/knowledge-quiz",
