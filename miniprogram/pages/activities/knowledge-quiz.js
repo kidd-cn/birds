@@ -1,4 +1,6 @@
 // pages/activities/knowledge-quiz.js
+const pointsSystem = require('../../utils/points-system');
+
 Page({
   data: {
     questions: [],
@@ -119,6 +121,8 @@ Page({
       this.setData({
         score: this.data.score + 1
       });
+      const questionId = currentQ.id;
+      pointsSystem.addPoints(`game-q:quiz:${questionId}`, 5);
     }
 
     this.setData({
@@ -149,6 +153,8 @@ Page({
   },
 
   endQuiz() {
+    const today = new Date().toISOString().split('T')[0];
+    pointsSystem.addPoints(`game-finish:quiz:${today}`, 15);
     this.setData({
       quizCompleted: true
     });
