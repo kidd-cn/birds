@@ -1,5 +1,6 @@
 // pages/activities/check-in.js
 const schoolData = require('../../utils/school-data');
+const pointsSystem = require('../../utils/points-system');
 
 Page({
   data: {
@@ -75,11 +76,8 @@ Page({
 
     wx.setStorageSync('checkInData', checkInData);
 
-    // 累加积分（每次签到+10积分）
-    const schoolProgress = schoolData.getProgress();
-    const checkInScore = schoolProgress.scores['check-in'] || 0;
-    schoolProgress.scores['check-in'] = checkInScore + 10;
-    schoolData.saveProgress(schoolProgress);
+    // 累加积分（每次签到+10积分，去重 key 为日期）
+    pointsSystem.addPoints(`check-in:${today}`, 10);
 
     this.setData({
       todayCheckedIn: true,
