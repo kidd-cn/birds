@@ -39,5 +39,14 @@ Page({
     wx.navigateTo({
       url: './check-in'
     });
+  },
+
+  /**
+   * 跳转到头像商店页面
+   */
+  goToAvatarShop() {
+    wx.navigateTo({
+      url: '/pages/avatar-shop/avatar-shop'
+    });
   }
 });

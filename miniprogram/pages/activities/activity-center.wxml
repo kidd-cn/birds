@@ -31,5 +31,14 @@
       </view>
       <view class="arrow">›</view>
     </view>
+
+    <view class="activity-item" bindtap="goToAvatarShop">
+      <view class="activity-icon">🦜</view>
+      <view class="activity-content">
+        <text class="activity-title">头像商店</text>
+        <text class="activity-desc">用积分兑换专属头像</text>
+      </view>
+      <view class="arrow">›</view>
+    </view>
   </view>
 </view>
