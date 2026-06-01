@@ -1,0 +1,25 @@
+.avatar-display {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f0f0;
+  position: relative;
+}
+
+.avatar-display.with-border {
+  border: 4rpx solid #4CAF50;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar-name {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 8rpx;
+}
