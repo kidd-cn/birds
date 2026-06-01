@@ -1,10 +1,12 @@
 const schoolData = require('../../../utils/school-data');
+const pointsSystem = require('../../../utils/points-system');
 
 Page({
   data: {
     topics: [],
     totalCompleted: 0,
-    totalTopics: 0
+    totalTopics: 0,
+    currentPoints: 0
   },
 
   onLoad() {
@@ -25,7 +27,8 @@ Page({
         position: this.getTopicPosition(t.order)
       })),
       totalCompleted: completed,
-      totalTopics: topics.length
+      totalTopics: topics.length,
+      currentPoints: pointsSystem.getCurrentPoints()
     });
   },
 

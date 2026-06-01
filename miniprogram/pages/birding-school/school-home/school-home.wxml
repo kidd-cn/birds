@@ -1,4 +1,7 @@
 <view class="container">
+  <view class="points-badge">
+    <text>积分：{{currentPoints}}</text>
+  </view>
   <view class="header">
     <text class="title">观鸟学堂</text>
     <text class="subtitle">与自然相处的正确价值观</text>
