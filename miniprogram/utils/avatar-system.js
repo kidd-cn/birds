@@ -36,14 +36,19 @@ const DEFAULT_STATE = {
 let _state = null;
 const _listeners = [];
 
+/**
+ * Load state from storage, caching in memory.
+ * Performs defensive shape validation so corrupted storage falls back to defaults.
+ * @returns {{ownedAvatars: string[], equippedAvatar: string}} Current state
+ */
 function load() {
   if (_state) return _state;
   try {
     const stored = wx.getStorageSync(STORAGE_KEY);
     if (stored) {
       _state = {
-        ownedAvatars: stored.ownedAvatars || [DEFAULT_AVATAR],
-        equippedAvatar: stored.equippedAvatar || DEFAULT_AVATAR
+        ownedAvatars: Array.isArray(stored.ownedAvatars) ? stored.ownedAvatars : [DEFAULT_AVATAR],
+        equippedAvatar: typeof stored.equippedAvatar === 'string' ? stored.equippedAvatar : DEFAULT_AVATAR
       };
     } else {
       _state = { ...DEFAULT_STATE };
@@ -55,6 +60,9 @@ function load() {
   return _state;
 }
 
+/**
+ * Persist current state to storage.
+ */
 function save() {
   try {
     wx.setStorageSync(STORAGE_KEY, _state);
@@ -63,12 +71,20 @@ function save() {
   }
 }
 
+/**
+ * Notify all subscribed listeners of a state change.
+ */
 function notify() {
   _listeners.forEach(fn => {
     try { fn(_state); } catch (e) { console.error('listener error:', e); }
   });
 }
 
+/**
+ * Read total earned points from the points-system module.
+ * Returns 0 if the module cannot be loaded (should not happen at runtime).
+ * @returns {number} Total earned points
+ */
 function getTotalEarnedPoints() {
   try {
     const ps = require('./points-system');
@@ -78,11 +94,20 @@ function getTotalEarnedPoints() {
   }
 }
 
+/**
+ * Determine whether a given tier is unlocked based on total earned points.
+ * @param {'normal'|'rare'|'epic'} tier - Tier identifier
+ * @returns {boolean} True if the user's total earned meets the tier threshold
+ */
 function isTierUnlocked(tier) {
   const total = getTotalEarnedPoints();
   return total >= TIERS[tier].unlockAt;
 }
 
+/**
+ * Get all avatars annotated with the user's owned/equipped/unlocked status.
+ * @returns {Array<Object>} List of avatars with extra fields: owned, equipped, unlocked, tierColor, unlockAt
+ */
 function getAllAvatars() {
   const state = load();
   return AVATARS.map(a => ({
@@ -95,17 +120,38 @@ function getAllAvatars() {
   }));
 }
 
+/**
+ * Get the metadata of the currently equipped avatar.
+ * Falls back to the first avatar in AVATARS if the equipped id is unknown.
+ * @returns {Object} A shallow copy of the equipped avatar's metadata
+ */
 function getEquippedAvatar() {
   const state = load();
   const meta = AVATARS.find(a => a.id === state.equippedAvatar) || AVATARS[0];
   return { ...meta };
 }
 
+/**
+ * Look up the image path for an avatar id.
+ * @param {string} avatarId - Avatar identifier
+ * @returns {string} Image path, or '' if the avatar is not found
+ */
 function getAvatarImage(avatarId) {
   const meta = AVATARS.find(a => a.id === avatarId);
   return meta ? meta.image : '';
 }
 
+/**
+ * Attempt to purchase an avatar by spending points from points-system.
+ * On success the avatar is added to ownedAvatars and listeners are notified.
+ * @param {string} avatarId - Avatar identifier to purchase
+ * @returns {{success: boolean, reason?: string}} `{success:true}` on success;
+ *   otherwise `{success:false, reason}` where reason is one of:
+ *   `'invalid_avatar'` (unknown id),
+ *   `'already_owned'` (already in ownedAvatars),
+ *   `'tier_locked'` (tier threshold not reached),
+ *   `'insufficient_points'` (points-system rejected the spend).
+ */
 function purchaseAvatar(avatarId) {
   const state = load();
   const meta = AVATARS.find(a => a.id === avatarId);
@@ -129,6 +175,12 @@ function purchaseAvatar(avatarId) {
   return { success: true };
 }
 
+/**
+ * Equip an avatar the user already owns and notify listeners.
+ * @param {string} avatarId - Avatar identifier to equip
+ * @returns {{success: boolean, reason?: string}} `{success:true}` on success;
+ *   `{success:false, reason:'not_owned'}` if the avatar is not in ownedAvatars.
+ */
 function equipAvatar(avatarId) {
   const state = load();
   if (!state.ownedAvatars.includes(avatarId)) {
@@ -140,6 +192,11 @@ function equipAvatar(avatarId) {
   return { success: true };
 }
 
+/**
+ * Subscribe to state changes.
+ * @param {Function} callback - Called with the new state on each change
+ * @returns {Function} Unsubscribe function that removes the listener when called
+ */
 function onChange(callback) {
   if (typeof callback !== 'function') return () => {};
   _listeners.push(callback);
@@ -149,21 +206,29 @@ function onChange(callback) {
   };
 }
 
+/**
+ * Reset state to defaults and persist.
+ */
 function reset() {
   _state = { ...DEFAULT_STATE };
   save();
   notify();
 }
 
+/**
+ * Force eager load at app startup and repair invalid state.
+ * Guarantees the default avatar is owned and that the equipped avatar is
+ * actually in the owned list (fixing corrupted/stale storage).
+ */
 function init() {
   load();
   if (!_state.ownedAvatars.includes(DEFAULT_AVATAR)) {
     _state.ownedAvatars.push(DEFAULT_AVATAR);
-    if (!_state.equippedAvatar) {
-      _state.equippedAvatar = DEFAULT_AVATAR;
-    }
-    save();
   }
+  if (!_state.equippedAvatar || !_state.ownedAvatars.includes(_state.equippedAvatar)) {
+    _state.equippedAvatar = DEFAULT_AVATAR;
+  }
+  save();
 }
 
 module.exports = {

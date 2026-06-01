@@ -89,4 +89,38 @@ const r5 = av.equipAvatar('hoopoe');
 assert.strictEqual(r5.success, false);
 assert.strictEqual(r5.reason, 'not_owned');
 
+// Test 11: getTotalEarned 返回 NaN 时 getAllAvatars 不应崩溃
+const originalGetTotalEarned = ps.getTotalEarned;
+ps.getTotalEarned = () => NaN;
+av.reset();
+av.init();
+assert.doesNotThrow(() => av.getAllAvatars(), 'getAllAvatars should not throw when totalEarned is NaN');
+const nanAll = av.getAllAvatars();
+assert.strictEqual(nanAll.length, av.AVATARS.length, 'should still return all avatars when totalEarned is NaN');
+ps.getTotalEarned = originalGetTotalEarned;
+
+// Test 12: init() 修复 equippedAvatar 不在 ownedAvatars 中的情况
+clearStorage();
+mockStorage['avatar-system'] = { ownedAvatars: ['sparrow'], equippedAvatar: 'ghost' };
+delete require.cache[require.resolve('./avatar-system')];
+const av2 = require('./avatar-system');
+av2.init();
+assert.strictEqual(
+  av2.getEquippedAvatar().id,
+  'sparrow',
+  'init() should repair equippedAvatar that is not in ownedAvatars'
+);
+
+// Test 13: load() 处理损坏的 ownedAvatars (非数组) - 回退到默认值
+clearStorage();
+mockStorage['avatar-system'] = { ownedAvatars: 'not-an-array', equippedAvatar: 'sparrow' };
+delete require.cache[require.resolve('./avatar-system')];
+const av3 = require('./avatar-system');
+av3.init();
+const corruptAll = av3.getAllAvatars();
+const sparrowAfterCorrupt = corruptAll.find(a => a.id === 'sparrow');
+assert.strictEqual(sparrowAfterCorrupt.owned, true, 'sparrow should be owned after corrupt array fallback');
+const ownedCount = corruptAll.filter(a => a.owned).length;
+assert.strictEqual(ownedCount, 1, 'only default avatar should be owned after corrupt ownedAvatars fallback');
+
 console.log('✓ All avatar-system tests passed');
