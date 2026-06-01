@@ -4,6 +4,7 @@
     "activity-panel": "/components/activity-panel/activity-panel",
     "bird-identification-game": "/components/bird-game/bird-identification-game",
     "bird-knowledge-quiz": "/components/bird-quiz/bird-knowledge-quiz",
-    "checkin-activity": "/components/checkin-activity/checkin-activity"
+    "checkin-activity": "/components/checkin-activity/checkin-activity",
+    "avatar-display": "/components/avatar-display/avatar-display"
   }
 }

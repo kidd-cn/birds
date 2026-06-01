@@ -1,5 +1,10 @@
 <!--index.wxml-->
 <view class="container">
+  <!-- Avatar Entry -->
+  <view class="avatar-entry">
+    <avatar-display size="small" bind:tap="goToAvatarShop"></avatar-display>
+  </view>
+
   <!-- Activity Entry Button -->
   <button class="activity-entry-button" bindtap="showActivityPanel" aria-label="打开活动中心">
     <text>活动中心</text>

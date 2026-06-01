@@ -648,5 +648,14 @@ Page({
     wx.navigateTo({
       url: '/pages/birding-school/school-home/school-home'
     });
+  },
+
+  /**
+   * 跳转到头像商店
+   */
+  goToAvatarShop() {
+    wx.navigateTo({
+      url: '/pages/avatar-shop/avatar-shop'
+    });
   }
 });
