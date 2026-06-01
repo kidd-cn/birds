@@ -1,4 +1,15 @@
 <view class="container">
+  <!-- 头像与积分入口 -->
+  <view class="avatar-section" bindtap="goToAvatarShop">
+    <avatar-display size="large" show-border="{{true}}"></avatar-display>
+    <view class="points-info">
+      <text class="points-title">我的积分</text>
+      <text class="points-balance">{{currentPoints}}</text>
+      <text class="points-hint">总获得 {{totalEarned}} 分</text>
+    </view>
+    <text class="shop-arrow">›</text>
+  </view>
+
   <!-- 顶部Banner -->
   <view class="top-banner">
     <view class="banner-content">
@@ -122,6 +133,9 @@
       </view>
     </view>
   </view>
+
+  <!-- 头像商店按钮 -->
+  <button class="shop-btn" bindtap="goToAvatarShop">去兑换头像</button>
 
   <!-- 海报按钮 -->
   <button class="poster-btn" bindtap="generatePoster">

@@ -82,6 +82,12 @@ Page({
     return iconMap[this.data.titles[0]] || '🎓';
   },
 
+  goToAvatarShop() {
+    wx.navigateTo({
+      url: '/pages/avatar-shop/avatar-shop'
+    });
+  },
+
   generatePoster() {
     // 显示加载中
     wx.showLoading({ title: '生成海报中...' });
