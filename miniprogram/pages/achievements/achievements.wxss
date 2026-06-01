@@ -367,3 +367,52 @@
   width: 600rpx;
   height: 800rpx;
 }
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+}
+
+.points-info {
+  flex: 1;
+  margin-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.points-title {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.points-balance {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2e8b57;
+  margin: 4rpx 0;
+}
+
+.points-hint {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.shop-arrow {
+  font-size: 40rpx;
+  color: #ccc;
+  margin-left: 16rpx;
+}
+
+.shop-btn {
+  background: linear-gradient(135deg, #2e8b57, #43a047);
+  color: #fff;
+  border-radius: 16rpx;
+  margin: 24rpx 0;
+  font-size: 30rpx;
+  border: none;
+}

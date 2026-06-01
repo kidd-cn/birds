@@ -26,6 +26,10 @@ Component({
   lifetimes: {
     attached() {
       this.refresh();
+      this._unsub = avatarSystem.onChange(() => this.refresh());
+    },
+    detached() {
+      if (this._unsub) this._unsub();
     }
   },
 

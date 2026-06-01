@@ -52,12 +52,12 @@ Page({
     const totalLevels = 12; // 4 topics * 3 levels
     const progressPercent = Math.round((completedCount / totalLevels) * 100);
 
-    // 称号升级检测（升级时奖励50积分，去重 key 用 title 名）
-    const previousTitle = wx.getStorageSync('previous-title') || '';
-    if (previousTitle && previousTitle !== title) {
+    // 称号升级时奖励50积分（用 title 名作为 dedup key，自动幂等）
+    const previousTitle = wx.getStorageSync('previous-title');
+    if (previousTitle !== title) {
       pointsSystem.addPoints(`title:${title}`, 50);
+      wx.setStorageSync('previous-title', title);
     }
-    wx.setStorageSync('previous-title', title);
 
     this.setData({
       badges,

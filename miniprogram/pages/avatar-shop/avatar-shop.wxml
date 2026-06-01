@@ -30,7 +30,7 @@
           class="avatar-card {{item.equipped ? 'equipped' : ''}} {{item.unlocked ? '' : 'locked'}} {{item.owned ? 'owned' : ''}}"
           data-id="{{item.id}}"
           bindtap="onAvatarTap">
-      <image class="card-img" src="{{item.image}}" mode="aspectFit"></image>
+      <image class="card-img" src="{{item.image}}" mode="aspectFit" binderror="onCardImgError" data-index="{{index}}"></image>
       <text class="card-name">{{item.name}}</text>
       <view wx:if="{{item.equipped}}" class="badge using">使用中</view>
       <view wx:elif="{{item.owned}}" class="badge owned">已拥有</view>

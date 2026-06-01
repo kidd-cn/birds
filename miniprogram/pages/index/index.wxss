@@ -25,6 +25,13 @@ page {
   justify-content: center;
 }
 
+.avatar-entry {
+  position: absolute;
+  top: 40rpx;
+  right: 250rpx;
+  z-index: 10;
+}
+
 .activity-entry-button:active {
   transform: scale(0.95);
   box-shadow: 0 2rpx 8rpx rgba(46, 139, 87, 0.3);

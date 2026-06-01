@@ -50,6 +50,13 @@ Page({
     this.setData({ currentTier: tier });
   },
 
+  onCardImgError(e) {
+    // 头像图片加载失败时回退到默认图
+    const index = e.currentTarget.dataset.index;
+    const key = `avatars[${index}].image`;
+    this.setData({ [key]: '/images/default-bird.jpg' });
+  },
+
   onAvatarTap(e) {
     const avatarId = e.currentTarget.dataset.id;
     const avatar = this.data.avatars.find(a => a.id === avatarId);

@@ -47,3 +47,13 @@
   font-size: 24rpx;
   color: #888;
 }
+
+.points-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #2e8b57, #43a047);
+  color: #fff;
+  padding: 8rpx 24rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  margin: 16rpx 24rpx;
+}
