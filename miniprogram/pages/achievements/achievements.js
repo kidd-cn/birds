@@ -1,4 +1,5 @@
 const schoolData = require('../../utils/school-data');
+const pointsSystem = require('../../utils/points-system');
 
 Page({
   data: {
@@ -51,6 +52,13 @@ Page({
     const totalLevels = 12; // 4 topics * 3 levels
     const progressPercent = Math.round((completedCount / totalLevels) * 100);
 
+    // 称号升级检测（升级时奖励50积分，去重 key 用 title 名）
+    const previousTitle = wx.getStorageSync('previous-title') || '';
+    if (previousTitle && previousTitle !== title) {
+      pointsSystem.addPoints(`title:${title}`, 50);
+    }
+    wx.setStorageSync('previous-title', title);
+
     this.setData({
       badges,
       titles: [title],
@@ -58,7 +66,9 @@ Page({
       level,
       completedLevels: completedCount,
       totalBadges: Object.keys(badgeMap).length,
-      progressPercent
+      progressPercent,
+      currentPoints: pointsSystem.getCurrentPoints(),
+      totalEarned: pointsSystem.getTotalEarned()
     });
   },
 
