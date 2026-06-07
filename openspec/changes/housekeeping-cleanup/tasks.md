@@ -46,7 +46,7 @@ equire('../../miniprogram/utils/xxx.js'). Verified by reading each file end-to-e
 ## 5. Consolidate image-display history docs
 
 - [x] 5.1 Create `docs/decisions/` directory.
-- [x] 5.2 Write `docs/decisions/image-display.md`: a 1-page "what we finally decided" doc for the 闂傚倸鍊峰ù鍥儍椤愶箑纾兼繝濠傛噽閸橆垶鏌?/ map-marker image display problem, with: (a) the current authoritative implementation (pointer to `miniprogram/utils/birdData.js` `imageUrl` field), (b) the marker strategy decision (system marker + text label, not custom image), (c) a "why we did not X" section listing the rejected approaches. Keep it short; this is the canonical entry point.
+- [x] 5.2 Write `docs/decisions/image-display.md`: a 1-page "what we finally decided" doc for the 闂傚倸鍊搁崐宄懊归崶顒佸剭妞ゆ劧绠戠壕鍏肩節婵犲倹鍣介柛姗嗗灦閺?/ map-marker image display problem, with: (a) the current authoritative implementation (pointer to `miniprogram/utils/birdData.js` `imageUrl` field), (b) the marker strategy decision (system marker + text label, not custom image), (c) a "why we did not X" section listing the rejected approaches. Keep it short; this is the canonical entry point.
 - [x] 5.3 Create `docs/archive/2026-image-display-debug-saga/` directory.
 - [x] 5.4 `git mv` the 10 legacy md files from repo root into the archive directory:
   - `EGRET_IMAGE_ASSOCIATION.md`
@@ -63,7 +63,7 @@ equire('../../miniprogram/utils/xxx.js'). Verified by reading each file end-to-e
 
 ## 6. Update README
 
-- [x] 6.1 Update the `## 濠电姷顣槐鏇㈠磻閹达箑纾归柡鍥╁剳閼板潡鏌涘Δ鍐х闯婵炲樊浜滅粻銉︺亜閺傚灝鈷旈柨娑欑矒濮婅櫣鎲撮崟顐㈠Б濡炪倖娲﹂崣鍐春閳ь剚銇勯幒鎴濃偓褰捤?section in `README.md` to reflect: (a) no `.bak` files, (b) no root test/scratch files, (c) tests under `tests/` and `tests/utils/`, (d) new `docs/decisions/` and `docs/archive/` directories.
+- [x] 6.1 Update the `## 婵犵數濮烽。顔炬閺囥垹纾婚柟杈剧畱绾惧綊鏌￠崶鈺佸壋闁兼澘娼￠弻娑樜旈崘褏闂┑鐐叉▕娴滄粎绮婚妷锔轰簻闁哄倸鐏濋埛鏃堟煥濞戞瑧鐭掓慨濠呮閹叉挳宕熼銏犘戞俊鐐€栧ú锕傚矗閸愵喖鏄ラ柍褜鍓氶妵鍕箳閹存績鍋撹ぐ鎹?section in `README.md` to reflect: (a) no `.bak` files, (b) no root test/scratch files, (c) tests under `tests/` and `tests/utils/`, (d) new `docs/decisions/` and `docs/archive/` directories.
 - [x] 6.2 Re-read README to confirm no other references to deleted files.
 
 ## 7. Self-verify before commit
@@ -72,4 +72,4 @@ equire('../../miniprogram/utils/xxx.js'). Verified by reading each file end-to-e
 - [x] 7.2 Run `git diff --stat` and confirm the file count and net add/delete ratio makes sense (expect ~10 moves into archive, 12 moves into tests/utils, 4 deletions, 2 new docs, 1 new docs/decisions/, package.json + README updates).
 - [x] 7.3 Run `npm test` one last time and confirm the same N tests as step 2.5 are passing.
 - [x] 7.4 Spot-check that `miniprogram/utils/` now contains only the 8 production modules (`activity-utils.js`, `avatar-system.js`, `badge-data.js`, `birdData.js`, `birdingSpots.js`, `completeBirdData.js`, `points-system.js`, `school-data.js`).
-- [ ] 7.5 `git add -A && git commit` with a message that references this change name (`housekeeping-cleanup`).
+- [x] 7.5 `git add -A && git commit` with a message that references this change name (`housekeeping-cleanup`).
