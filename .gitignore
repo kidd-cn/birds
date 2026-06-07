@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build / coverage output
+coverage/
+dist/
+build/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.bak.*
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# WeChat DevTools cache
+miniprogram_npm/

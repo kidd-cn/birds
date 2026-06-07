@@ -1,6 +1,6 @@
 // Simple test to check that badge data integrates well with the rest of the system
-const { SHENZHEN_BIRDING_SPOTS } = require('./birdingSpots.js');
-const badgeModule = require('./badge-data.js');
+const { SHENZHEN_BIRDING_SPOTS } = require('../../miniprogram/utils/birdingSpots.js');
+const badgeModule = require('../../miniprogram/utils/badge-data.js');
 
 console.log('Testing integration between birding spots and badge data...');
 

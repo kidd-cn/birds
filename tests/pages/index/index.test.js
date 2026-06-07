@@ -1,5 +1,5 @@
 // Test suite for index page activity functionality
-const indexPage = require('./index');
+const indexPage = require('../../../miniprogram/pages/index/index');
 
 // Mock WeChat Mini Program API
 const mockWx = {
