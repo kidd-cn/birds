@@ -1,5 +1,5 @@
 // Final verification test
-const badgeModule = require('./badge-data.js');
+const badgeModule = require('../../miniprogram/utils/badge-data.js');
 
 // Verify all functions exist and work correctly
 console.log('Final Verification of Badge Data Management File:');

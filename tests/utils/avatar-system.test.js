@@ -8,11 +8,11 @@ global.wx = {
 function clearStorage() { Object.keys(mockStorage).forEach(k => delete mockStorage[k]); }
 
 // Clear require cache
-delete require.cache[require.resolve('./avatar-system')];
-delete require.cache[require.resolve('./points-system')];
+delete require.cache[require.resolve('../../miniprogram/utils/avatar-system.js')];
+delete require.cache[require.resolve('../../miniprogram/utils/points-system.js')];
 
-const ps = require('./points-system');
-const av = require('./avatar-system');
+const ps = require('../../miniprogram/utils/points-system.js');
+const av = require('../../miniprogram/utils/avatar-system.js');
 const assert = require('assert');
 
 clearStorage();
@@ -102,8 +102,8 @@ ps.getTotalEarned = originalGetTotalEarned;
 // Test 12: init() 修复 equippedAvatar 不在 ownedAvatars 中的情况
 clearStorage();
 mockStorage['avatar-system'] = { ownedAvatars: ['sparrow'], equippedAvatar: 'ghost' };
-delete require.cache[require.resolve('./avatar-system')];
-const av2 = require('./avatar-system');
+delete require.cache[require.resolve('../../miniprogram/utils/avatar-system.js')];
+const av2 = require('../../miniprogram/utils/avatar-system.js');
 av2.init();
 assert.strictEqual(
   av2.getEquippedAvatar().id,
@@ -114,8 +114,8 @@ assert.strictEqual(
 // Test 13: load() 处理损坏的 ownedAvatars (非数组) - 回退到默认值
 clearStorage();
 mockStorage['avatar-system'] = { ownedAvatars: 'not-an-array', equippedAvatar: 'sparrow' };
-delete require.cache[require.resolve('./avatar-system')];
-const av3 = require('./avatar-system');
+delete require.cache[require.resolve('../../miniprogram/utils/avatar-system.js')];
+const av3 = require('../../miniprogram/utils/avatar-system.js');
 av3.init();
 const corruptAll = av3.getAllAvatars();
 const sparrowAfterCorrupt = corruptAll.find(a => a.id === 'sparrow');

@@ -1,5 +1,5 @@
 // Comprehensive test for badge data functionality
-const badgeModule = require('./badge-data.js');
+const badgeModule = require('../../miniprogram/utils/badge-data.js');
 
 console.log('=== Comprehensive Badge Data Test ===\n');
 

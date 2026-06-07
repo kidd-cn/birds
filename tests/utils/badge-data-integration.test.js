@@ -1,34 +1,6 @@
 // Test file for badge-data.js
 
-// Mock badge data for testing
-const mockBadgeData = [
-  {
-    id: 'shenzhen_bay_park',
-    name: '深圳湾公园',
-    spotName: '深圳湾公园',
-    description: '访问深圳湾公园获得此徽章',
-    icon: 'binoculars',
-    requirements: { spotName: '深圳湾公园' }
-  },
-  {
-    id: 'futian_mangrove',
-    name: '福田红树林',
-    spotName: '福田红树林生态公园',
-    description: '访问福田红树林生态公园获得此徽章',
-    icon: 'leaf',
-    requirements: { spotName: '福田红树林生态公园' }
-  },
-  {
-    id: 'oct_wetland',
-    name: '华侨城湿地',
-    spotName: '华侨城国家湿地公园',
-    description: '访问华侨城国家湿地公园获得此徽章',
-    icon: 'water',
-    requirements: { spotName: '华侨城国家湿地公园' }
-  }
-];
-
-// Mock user check-in data for testing
+// Mock user check-in data for testing with real birding spot names
 const mockUserData = {
   checkIns: [
     { spotName: '深圳湾公园', date: '2023-01-01' },
@@ -48,10 +20,7 @@ function assert(condition, message) {
 function runTests() {
   try {
     // Load the badge data module
-    const badgeModule = require('./badge-data.js');
-
-    // Override the default badge data with mock data for testing
-    badgeModule.BADGE_DATA = mockBadgeData;
+    const badgeModule = require('../../miniprogram/utils/badge-data.js');
 
     console.log('Testing getBadgesForSpot function...');
 
@@ -84,8 +53,10 @@ function runTests() {
     // Test getting user badge status
     const userStatus = badgeModule.getUserBadgeStatus(mockUserData);
     assert(Array.isArray(userStatus), 'Should return an array');
-    assert(userStatus.length === 3, 'Should return 3 badges for user with 3 check-ins');
-    assert(userStatus.every(badge => badge.isEarned === true), 'All badges should be earned');
+    assert(userStatus.length === 5, 'Should return 5 badges (one for each birding spot)');
+    // Of the 5, 3 should be earned based on the mock data
+    const earnedCount = userStatus.filter(badge => badge.isEarned).length;
+    assert(earnedCount === 3, 'Should have 3 earned badges for user with 3 matching check-ins');
     console.log('✓ getUserBadgeStatus test passed');
 
     console.log('Testing getUserBadgeCount function...');
@@ -93,12 +64,12 @@ function runTests() {
     // Test getting user badge count
     const userBadgeCount = badgeModule.getUserBadgeCount(mockUserData);
     assert(typeof userBadgeCount === 'number', 'Should return a number');
-    assert(userBadgeCount === 3, 'Should return 3 earned badges for user with 3 check-ins');
+    assert(userBadgeCount === 3, 'Should return 3 earned badges for user with 3 matching check-ins');
     console.log('✓ getUserBadgeCount test passed');
 
     console.log('Testing isCollectionComplete function...');
 
-    // Test isCollectionComplete with all badges earned
+    // Test isCollectionComplete with 3 of 5 badges earned
     const isComplete1 = badgeModule.isCollectionComplete(mockUserData);
     assert(isComplete1 === false, 'Collection should not be complete with only 3 of 5 possible badges');
 
@@ -106,6 +77,20 @@ function runTests() {
     const emptyUserData = { checkIns: [] };
     const isComplete2 = badgeModule.isCollectionComplete(emptyUserData);
     assert(isComplete2 === false, 'Collection should not be complete with no check-ins');
+
+    // Test with all spots visited
+    const completeUserData = {
+      checkIns: [
+        { spotName: '深圳湾公园', date: '2023-01-01' },
+        { spotName: '福田红树林生态公园', date: '2023-01-02' },
+        { spotName: '华侨城国家湿地公园', date: '2023-01-03' },
+        { spotName: '内伶仃福田国家级自然保护区', date: '2023-01-04' },
+        { spotName: '仙湖植物园', date: '2023-01-05' }
+      ]
+    };
+    const isComplete3 = badgeModule.isCollectionComplete(completeUserData);
+    assert(isComplete3 === true, 'Collection should be complete with all 5 spots visited');
+
     console.log('✓ isCollectionComplete test passed');
 
     console.log('\n🎉 All tests passed!');

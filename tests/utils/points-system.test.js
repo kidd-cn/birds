@@ -4,7 +4,7 @@ global.wx = {
   setStorageSync: () => {}
 };
 
-const ps = require('./points-system');
+const ps = require('../../miniprogram/utils/points-system.js');
 const assert = require('assert');
 
 // Tests run in a linear flow and share state via the points-system module.
