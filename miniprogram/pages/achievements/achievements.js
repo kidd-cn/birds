@@ -161,7 +161,7 @@ Page({
     // 绘制底部提示
     ctx.setFillStyle('#888');
     ctx.setFontSize(22);
-    ctx.fillText('深圳观鸟助手', width / 2, 580);
+    ctx.fillText('深圳观鸟记', width / 2, 580);
 
     // 绘制到 canvas
     ctx.draw();

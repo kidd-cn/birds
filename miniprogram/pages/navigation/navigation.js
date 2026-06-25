@@ -99,7 +99,7 @@ Page({
    */
   onShareAppMessage() {
     return {
-      title: '深圳观鸟助手',
+      title: '深圳观鸟记',
       path: '/pages/navigation/navigation'
     };
   }
