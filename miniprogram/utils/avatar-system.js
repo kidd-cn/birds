@@ -13,19 +13,19 @@ const TIERS = {
 };
 
 const AVATARS = [
-  { id: 'sparrow',          name: '小麻雀',   tier: 'normal', price: 0,   image: '/images/avatars/sparrow.png' },
-  { id: 'pigeon',           name: '城市鸽',   tier: 'normal', price: 50,  image: '/images/avatars/pigeon.png' },
-  { id: 'swallow',          name: '小燕子',   tier: 'normal', price: 50,  image: '/images/avatars/swallow.png' },
-  { id: 'kingfisher',       name: '蓝翠鸟',   tier: 'normal', price: 50,  image: '/images/avatars/kingfisher.png' },
-  { id: 'egret',            name: '白鹭仙子', tier: 'normal', price: 50,  image: '/images/avatars/egret.png' },
-  { id: 'hoopoe',           name: '戴胜',     tier: 'rare',   price: 200, image: '/images/avatars/hoopoe.png' },
-  { id: 'magpie',           name: '蓝鹊',     tier: 'rare',   price: 200, image: '/images/avatars/magpie.png' },
-  { id: 'lapwing',          name: '凤头麦鸡', tier: 'rare',   price: 200, image: '/images/avatars/lapwing.png' },
-  { id: 'goose',            name: '斑头雁',   tier: 'rare',   price: 200, image: '/images/avatars/goose.png' },
-  { id: 'redstart',         name: '红尾鸲',   tier: 'rare',   price: 200, image: '/images/avatars/redstart.png' },
-  { id: 'spoonbill',        name: '黑脸琵鹭', tier: 'epic',   price: 500, image: '/images/avatars/spoonbill.png' },
-  { id: 'crested_ibis',     name: '朱鹮',     tier: 'epic',   price: 500, image: '/images/avatars/crested_ibis.png' },
-  { id: 'oriental_stork',   name: '东方白鹳', tier: 'epic',   price: 500, image: '/images/avatars/oriental_stork.png' }
+  { id: 'sparrow',          name: '小麻雀',   tier: 'normal', price: 0,   image: '/images/default-bird.jpg' },
+  { id: 'pigeon',           name: '城市鸽',   tier: 'normal', price: 50,  image: '/images/default-bird.jpg' },
+  { id: 'swallow',          name: '小燕子',   tier: 'normal', price: 50,  image: '/images/default-bird.jpg' },
+  { id: 'kingfisher',       name: '蓝翠鸟',   tier: 'normal', price: 50,  image: '/images/default-bird.jpg' },
+  { id: 'egret',            name: '白鹭仙子', tier: 'normal', price: 50,  image: '/images/default-bird.jpg' },
+  { id: 'hoopoe',           name: '戴胜',     tier: 'rare',   price: 200, image: '/images/default-bird.jpg' },
+  { id: 'magpie',           name: '蓝鹊',     tier: 'rare',   price: 200, image: '/images/default-bird.jpg' },
+  { id: 'lapwing',          name: '凤头麦鸡', tier: 'rare',   price: 200, image: '/images/default-bird.jpg' },
+  { id: 'goose',            name: '斑头雁',   tier: 'rare',   price: 200, image: '/images/default-bird.jpg' },
+  { id: 'redstart',         name: '红尾鸲',   tier: 'rare',   price: 200, image: '/images/default-bird.jpg' },
+  { id: 'spoonbill',        name: '黑脸琵鹭', tier: 'epic',   price: 500, image: '/images/default-bird.jpg' },
+  { id: 'crested_ibis',     name: '朱鹮',     tier: 'epic',   price: 500, image: '/images/default-bird.jpg' },
+  { id: 'oriental_stork',   name: '东方白鹳', tier: 'epic',   price: 500, image: '/images/default-bird.jpg' }
 ];
 
 const DEFAULT_STATE = {

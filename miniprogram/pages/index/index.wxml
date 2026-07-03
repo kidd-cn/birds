@@ -39,7 +39,7 @@
     </view>
 
     <view class="bird-image-container" bindtap="previewBirdImage">
-      <image class="bird-image" src="{{currentBird.imageUrl || '/images/default-bird.webp'}}" mode="aspectFit" binderror="onImageError"></image>
+      <image class="bird-image" src="{{currentBird.imageUrl || '/images/default-bird.jpg'}}" mode="aspectFit" binderror="onImageError"></image>
     </view>
 
     <view class="bird-info">

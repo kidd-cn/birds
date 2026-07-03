@@ -20,7 +20,7 @@
   <view class="game-content" wx:if="{{gameStarted && !gameCompleted}}">
     <view class="bird-image-container">
       <image
-        src="{{currentQuestion.imageUrl || '/images/default-bird.webp'}}"
+        src="{{currentQuestion.imageUrl || '/images/default-bird.jpg'}}"
         class="bird-image"
         mode="aspectFit"
         style="{{getImageStyle()}}"

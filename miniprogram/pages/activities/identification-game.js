@@ -116,10 +116,10 @@ Page({
   getSampleBirdData() {
     // Return sample bird data for the game
     const existingImages = [
-      '/images/alba.webp',           // 白鹭
-      '/images/Ardea_cinerea.webp',  // 苍鹭
-      '/images/crowned_Night_Heron.webp', // 夜鹭
-      '/images/Black_faced_spoonbill.webp' // 黑脸琵鹭
+      '/images/alba.jpg',           // 白鹭
+      '/images/Ardea_cinerea.jpg',  // 苍鹭
+      '/images/crowned_Night_Heron.jpg', // 夜鹭
+      '/images/Black_faced_spoonbill.jpeg' // 黑脸琵鹭
     ];
 
     return [
@@ -127,28 +127,28 @@ Page({
         id: 1,
         commonName: '白鹭',
         species: 'Egretta garzetta',
-        imageUrl: '/images/alba.webp',
+        imageUrl: '/images/alba.jpg',
         confidence: 0.9
       },
       {
         id: 2,
         commonName: '苍鹭',
         species: 'Ardea cinerea',
-        imageUrl: '/images/Ardea_cinerea.webp',
+        imageUrl: '/images/Ardea_cinerea.jpg',
         confidence: 0.85
       },
       {
         id: 3,
         commonName: '夜鹭',
         species: 'Nycticorax nycticorax',
-        imageUrl: '/images/crowned_Night_Heron.webp',
+        imageUrl: '/images/crowned_Night_Heron.jpg',
         confidence: 0.8
       },
       {
         id: 4,
         commonName: '黑脸琵鹭',
         species: 'Platalea minor',
-        imageUrl: '/images/Black_faced_spoonbill.webp',
+        imageUrl: '/images/Black_faced_spoonbill.jpeg',
         confidence: 0.75
       }
     ];

@@ -176,7 +176,7 @@ Page({
     // 处理图片路径，确保使用正确的本地图片资源
     birdData = birdData.map(bird => {
       // 定义一个默认图片
-      const defaultImageUrl = '/images/Black_faced_spoonbill.webp';
+      const defaultImageUrl = '/images/Black_faced_spoonbill.jpeg';
 
       // 检查图片路径并进行标准化处理
       let correctedImageUrl = bird.imageUrl;
