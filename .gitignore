@@ -23,3 +23,6 @@ Thumbs.db
 
 # WeChat DevTools cache
 miniprogram_npm/
+
+# Backup archives
+miniprogram.tar.gz
