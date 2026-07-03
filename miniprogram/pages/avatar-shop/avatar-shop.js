@@ -54,7 +54,7 @@ Page({
     // 头像图片加载失败时回退到默认图
     const index = e.currentTarget.dataset.index;
     const key = `avatars[${index}].image`;
-    this.setData({ [key]: '/images/default-bird.jpg' });
+    this.setData({ [key]: '/images/default-bird.webp' });
   },
 
   onAvatarTap(e) {

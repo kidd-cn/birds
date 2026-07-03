@@ -53,7 +53,7 @@ Component({
       // 图片加载失败时回退到默认鸟图
       console.warn('avatar image load failed:', e);
       this.setData({
-        avatarImage: '/images/default-bird.jpg'
+        avatarImage: '/images/default-bird.webp'
       });
     }
   }

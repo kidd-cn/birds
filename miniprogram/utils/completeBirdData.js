@@ -2,42 +2,42 @@
 // 将图片文件名映射到鸟类名称
 
 const imageToBirdMap = {
-  'Accipiter_soloensis.jpg': {
+  'Accipiter_soloensis.webp': {
     species: '赤腹鹰',
     scientificName: 'Accipiter soloensis',
     commonName: '赤腹鹰'
   },
-  'alba.jpg': {
+  'alba.webp': {
     species: '大白鹭',
     scientificName: 'Ardea alba',
     commonName: '大白鹭'
   },
-  'Ardea_cinerea.jpg': {
+  'Ardea_cinerea.webp': {
     species: '苍鹭',
     scientificName: 'Ardea cinerea',
     commonName: '苍鹭'
   },
-  'Black_faced_spoonbill.jpeg': {
+  'Black_faced_spoonbill.webp': {
     species: '黑脸琵鹭',
     scientificName: 'Platalea minor',
     commonName: '黑脸琵鹭'
   },
-  'Chinese_Bubul.jpeg': {
+  'Chinese_Bubul.webp': {
     species: '白头鹎',
     scientificName: 'Pycnonotus sinensis',
     commonName: '白头鹎'
   },
-  'crowned_Night_Heron.jpg': {
+  'crowned_Night_Heron.webp': {
     species: '夜鹭',
     scientificName: 'Nycticorax nycticorax',
     commonName: '夜鹭'
   },
-  'Emberiza_aureola.jpg': {
+  'Emberiza_aureola.webp': {
     species: '黄胸鹀',
     scientificName: 'Emberiza aureola',
     commonName: '黄胸鹀'
   },
-  'Recurvirostra_avosetta.jpg': {
+  'Recurvirostra_avosetta.webp': {
     species: '反嘴鹬',
     scientificName: 'Recurvirostra avosetta',
     commonName: '反嘴鹬'

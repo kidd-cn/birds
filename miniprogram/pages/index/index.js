@@ -176,7 +176,7 @@ Page({
     // 处理图片路径，确保使用正确的本地图片资源
     birdData = birdData.map(bird => {
       // 定义一个默认图片
-      const defaultImageUrl = '/images/Black_faced_spoonbill.jpeg';
+      const defaultImageUrl = '/images/Black_faced_spoonbill.webp';
 
       // 检查图片路径并进行标准化处理
       let correctedImageUrl = bird.imageUrl;
@@ -219,7 +219,7 @@ Page({
       // 只有当路径以 /images/ 开头时才认为有效
       if (imagePath.startsWith('/images/') || imagePath.startsWith('/assets/')) {
         // 验证路径是否包含有效的图片扩展名
-        const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
+        const validExtensions = ['', '', '.png', '.gif', '.bmp', '.webp'];
         return validExtensions.some(ext => imagePath.toLowerCase().endsWith(ext));
       }
 

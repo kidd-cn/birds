@@ -13,7 +13,7 @@
   <block wx:if="{{gameStarted && !gameCompleted}}">
     <view class="question-container" wx:if="{{currentBird}}">
       <view class="bird-image-container">
-        <image src="{{currentBird.imageUrl || '/images/default-bird.jpg'}}" mode="aspectFit" class="bird-image" binderror="onImageError" bindload="onImageLoad"/>
+        <image src="{{currentBird.imageUrl || '/images/default-bird.webp'}}" mode="aspectFit" class="bird-image" binderror="onImageError" bindload="onImageLoad"/>
       </view>
 
       <view class="options-container">

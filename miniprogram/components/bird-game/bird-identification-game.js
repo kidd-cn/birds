@@ -37,7 +37,7 @@ Component({
       if (!this.data.birdData || this.data.birdData.length === 0) {
         this.setData({
           birdData: [
-            { id: 1, name: 'Great Egret', image: '/images/alba.png', species: 'Ardea alba' },
+            { id: 1, name: 'Great Egret', image: '/images/alba.webp', species: 'Ardea alba' },
             { id: 2, name: 'Red-winged Blackbird', image: '/images/blackbird-redwinged.png', species: 'Agelaius phoeniceus' },
             { id: 3, name: 'Canada Goose', image: '/images/goose-canada.png', species: 'Branta canadensis' },
             { id: 4, name: 'Blue Jay', image: '/images/jay-blue.png', species: 'Cyanocitta cristata' },
